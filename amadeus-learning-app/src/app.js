@@ -1,4 +1,10 @@
 import { getAllWeeks, getLessonById } from './lessonRepository.mjs';
+import {
+  DISCLAIMER,
+  createTerminalSession,
+  getAutocompleteSuggestions,
+  runTerminalCommand,
+} from './terminalSimulator.mjs';
 
 const storageKey = 'amadeus-learning-coach-progress';
 const app = document.querySelector('#app');
@@ -8,6 +14,7 @@ let state = {
   selectedLessonId: null,
   answers: {},
   progress: loadProgress(),
+  terminal: createTerminalSession(),
 };
 
 function loadProgress() {
@@ -58,6 +65,7 @@ function renderShell(content, activeView = 'dashboard') {
       <nav class="nav" aria-label="Principal">
         <button data-view="dashboard" class="${activeView === 'dashboard' ? 'active' : ''}">Curso</button>
         <button data-view="lesson" class="${activeView === 'lesson' ? 'active' : ''}">Lección</button>
+        <button data-view="terminal" class="${activeView === 'terminal' ? 'active' : ''}">Terminal</button>
       </nav>
       <div class="progress-box">
         <span>${completedCount()} de ${lessonCount()} lecciones</span>
@@ -69,6 +77,7 @@ function renderShell(content, activeView = 'dashboard') {
 
   shell.querySelector('[data-view="dashboard"]').addEventListener('click', () => setView('dashboard'));
   shell.querySelector('[data-view="lesson"]').addEventListener('click', () => setView('lesson'));
+  shell.querySelector('[data-view="terminal"]').addEventListener('click', () => setView('terminal'));
   shell.querySelector('.content').append(content);
   app.append(shell);
 }
@@ -202,9 +211,132 @@ function completeLesson(lessonId) {
   renderLesson();
 }
 
+function renderTerminal() {
+  const page = document.createElement('section');
+  page.className = 'page terminal-page';
+  page.innerHTML = `
+    <header class="page-header">
+      <h1>Terminal seguro</h1>
+      <p>Practica conceptos con comandos ficticios. No hay conexion externa ni acciones reales.</p>
+    </header>
+    <section class="safe-banner">
+      <strong>Safe mode activo.</strong> ${DISCLAIMER}
+    </section>
+    <section class="terminal-layout">
+      <div class="terminal-panel">
+        <div class="terminal-output" aria-live="polite"></div>
+        <form class="terminal-form">
+          <label for="terminal-command">Comando</label>
+          <div class="terminal-input-row">
+            <span aria-hidden="true">&gt;</span>
+            <input id="terminal-command" name="command" list="terminal-suggestions" autocomplete="off" placeholder="HELP" />
+            <datalist id="terminal-suggestions"></datalist>
+            <button class="button" type="submit">Ejecutar</button>
+          </div>
+        </form>
+      </div>
+      <aside class="terminal-side">
+        <section>
+          <h2>Ayuda contextual</h2>
+          <p class="contextual-help">Escribe HELP para empezar o SHOW SAMPLE_PNR para ver datos ficticios.</p>
+        </section>
+        <section>
+          <h2>Puntuacion</h2>
+          <p class="terminal-score">0 correctas de 0 intentos</p>
+        </section>
+        <section>
+          <h2>Historial</h2>
+          <ol class="history-list"></ol>
+        </section>
+        <section>
+          <h2>Errores de practica</h2>
+          <ul class="mistakes-list"></ul>
+        </section>
+      </aside>
+    </section>
+  `;
+
+  renderShell(page, 'terminal');
+
+  const form = document.querySelector('.terminal-form');
+  const input = document.querySelector('#terminal-command');
+  const datalist = document.querySelector('#terminal-suggestions');
+
+  function updateSuggestions() {
+    datalist.innerHTML = getAutocompleteSuggestions(input.value)
+      .map((suggestion) => `<option value="${suggestion}"></option>`)
+      .join('');
+  }
+
+  input.addEventListener('input', updateSuggestions);
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowUp') {
+      const previous = state.terminal.history.at(-1);
+      if (previous) {
+        event.preventDefault();
+        input.value = previous;
+        updateSuggestions();
+      }
+    }
+  });
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const result = runTerminalCommand(state.terminal, input.value);
+    input.value = '';
+    updateSuggestions();
+    renderTerminalState(result);
+    input.focus();
+  });
+
+  updateSuggestions();
+  renderTerminalState();
+}
+
+function renderTerminalState(latestResult) {
+  const output = document.querySelector('.terminal-output');
+  const history = document.querySelector('.history-list');
+  const mistakes = document.querySelector('.mistakes-list');
+  const score = document.querySelector('.terminal-score');
+  const help = document.querySelector('.contextual-help');
+
+  if (!output || !history || !mistakes || !score || !help) {
+    return;
+  }
+
+  const visibleTranscript = state.terminal.transcript.length ? state.terminal.transcript : (latestResult ? [latestResult] : []);
+
+  output.innerHTML = visibleTranscript.length
+    ? visibleTranscript.map((entry) => `
+      <article class="terminal-entry">
+        <p class="terminal-command-line">&gt; ${entry.input}</p>
+        <pre>${entry.output.join('\n')}</pre>
+        <p>${entry.explanation}</p>
+      </article>
+    `).join('')
+    : `<article class="terminal-entry"><pre>${DISCLAIMER}\nEscribe HELP para ver comandos seguros.</pre></article>`;
+
+  history.innerHTML = state.terminal.history.length
+    ? state.terminal.history.map((item) => `<li>${item}</li>`).join('')
+    : '<li>Sin comandos todavia.</li>';
+
+  mistakes.innerHTML = state.terminal.mistakes.length
+    ? state.terminal.mistakes.map((item) => `<li><strong>${item.practice}:</strong> ${item.input}. ${item.explanation}</li>`).join('')
+    : '<li>Sin errores registrados.</li>';
+
+  score.textContent = `${state.terminal.score.correct} correctas de ${state.terminal.score.total} intentos`;
+  help.textContent = latestResult?.contextualHelp ?? 'Escribe HELP para empezar o SHOW SAMPLE_PNR para ver datos ficticios.';
+  output.scrollTop = output.scrollHeight;
+}
+
 function render(view = 'dashboard') {
   if (view === 'lesson') {
     renderLesson();
+    return;
+  }
+
+  if (view === 'terminal') {
+    renderTerminal();
     return;
   }
 

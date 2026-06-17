@@ -1,7 +1,8 @@
 import * as curriculumData from './curriculum-data.test.mjs';
 import * as lessonLoader from './lesson-loader.test.mjs';
+import * as terminalParser from './terminal-parser.test.mjs';
 
-const suites = [curriculumData, lessonLoader];
+const suites = [curriculumData, lessonLoader, terminalParser];
 let passed = 0;
 let failed = 0;
 
