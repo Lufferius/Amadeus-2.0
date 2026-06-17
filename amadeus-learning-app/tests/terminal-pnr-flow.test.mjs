@@ -8,6 +8,7 @@ import {
   touchPnr,
 } from '../src/terminal/sessionState.mjs';
 import { executeProfessionalCommand } from '../src/terminal/commandExecutor.mjs';
+import { generateAvailabilityRows } from '../src/terminal/fixtures.mjs';
 
 function assert(condition, message) {
   if (!condition) {
@@ -210,6 +211,9 @@ export function testIgnoreRetrievedEditRestoresCommittedSnapshot() {
 export function testAvailabilityCreatesTenSimulatedFilteredRowsAndFirstPage() {
   const session = createProfessionalTerminalSession();
   const result = executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
+  const outputLines = result.output.split('\n');
+  const rowLines = outputLines.filter((line) => /^\s+\d+\s+[A-Z0-9]{2}\d{4}\s+/.test(line));
+  const firstRow = session.availability.rows[0];
 
   assert(result.status === 'OK' && result.type === 'CRYPTIC_AVAILABILITY', 'Availability should execute successfully');
   assert(session.availability.rows.length === 10, 'MAD-AMS should contain exactly ten rows');
@@ -218,10 +222,14 @@ export function testAvailabilityCreatesTenSimulatedFilteredRowsAndFirstPage() {
   assertDeepEqual(session.availability.query, {
     date: '17JUN', origin: 'MAD', destination: 'AMS', airlineCode: 'IB',
   }, 'Availability should preserve its parsed query');
-  assert(result.output.includes('SIMULATED AVAILABILITY - NO LIVE INVENTORY'), 'Output should carry the simulation marker');
+  assert(outputLines[0] === 'AVAILABILITY 17JUN MAD-AMS /IB', 'Header should include date, route, and carrier');
+  assert(outputLines[1] === 'SIMULATED AVAILABILITY - NO LIVE INVENTORY', 'Output should carry the exact simulation marker');
   assert(result.output.includes('PAGE 1/2'), 'First response should show page one of two');
-  assert(result.output.includes(' 1 ') && result.output.includes(' 6 '), 'First page should include lines one through six');
-  assert(!result.output.includes('\n 7 '), 'First page should not include line seven');
+  assert(rowLines.length === 6, 'First page should contain exactly six actual row lines');
+  assert(/^\s+1\s+/.test(rowLines[0]) && /^\s+6\s+/.test(rowLines[5]), 'First page should include stable lines one through six');
+  assert(rowLines[0].includes(firstRow.classes), 'A row should display representative class inventory');
+  assert(rowLines[0].includes(`${firstRow.departure}-${firstRow.arrival}`), 'A row should display departure and arrival');
+  assert(rowLines[0].includes('NONSTOP'), 'A row should display its stop representation');
 }
 
 export function testAvailabilityMovementUsesOverlappingClampedPages() {
@@ -248,8 +256,19 @@ export function testAvailabilityDetailUsesStableLineAcrossPages() {
   executeProfessionalCommand(session, 'MD');
 
   const detail = executeProfessionalCommand(session, 'DO1');
-  assert(detail.status === 'OK' && detail.output.includes(session.availability.rows[0].flight), 'DO1 should find original line one off-page');
-  assert(detail.output.includes('MAD-AMS') && detail.output.includes('TRAINING / SIMULATED'), 'Detail should include route and training marker');
+  const firstRow = session.availability.rows[0];
+  assert(detail.status === 'OK' && detail.output.includes(firstRow.flight), 'DO1 should find original line one off-page');
+  assert(detail.output.includes(firstRow.classes), 'Detail should include class inventory');
+  assert(detail.output.includes(`${firstRow.departure}-${firstRow.arrival}`), 'Detail should include departure and arrival');
+  assert(detail.output.includes(`EQUIPMENT ${firstRow.equipment}`), 'Detail should include equipment');
+  assert(detail.output.includes(`DURATION ${firstRow.duration}`), 'Detail should include duration');
+  assert(detail.output.includes('STOPS: NONSTOP'), 'Detail should represent a nonstop flight');
+  assert(detail.output.includes('ROUTE MAD-AMS 17JUN'), 'Detail should include route and date');
+  assert(detail.output.includes('TRAINING / SIMULATED - NO LIVE INVENTORY'), 'Detail should include the training marker');
+
+  const connectingRow = session.availability.rows.find((row) => row.via);
+  const connectingDetail = executeProfessionalCommand(session, `DO${connectingRow.line}`);
+  assert(connectingDetail.output.includes(`STOPS: ${connectingRow.stops} VIA ${connectingRow.via}`), 'Detail should include stops and via point');
 
   const missing = executeProfessionalCommand(session, 'DO99');
   assert(missing.status === 'ERROR' && missing.errorCode === 'CHECK_LINE_NUMBER', 'Unknown line should have a stable error code');
@@ -272,10 +291,23 @@ export function testAvailabilityCommandsWithoutContextDoNotMutatePnr() {
 export function testGeneratedAvailabilityIsDeterministicWithoutNetwork() {
   const first = createProfessionalTerminalSession();
   const second = createProfessionalTerminalSession();
+  const originalFetch = globalThis.fetch;
+  let fetchCalls = 0;
 
-  executeProfessionalCommand(first, 'AN03DECLISFRA');
-  executeProfessionalCommand(second, 'AN03DECLISFRA');
+  try {
+    globalThis.fetch = () => {
+      fetchCalls += 1;
+      throw new Error('Network access is forbidden in deterministic availability');
+    };
+    generateAvailabilityRows({ date: '03DEC', origin: 'LIS', destination: 'FRA' });
+    executeProfessionalCommand(first, 'AN03DECLISFRA');
+    executeProfessionalCommand(second, 'AN03DECLISFRA');
+  } finally {
+    if (originalFetch === undefined) delete globalThis.fetch;
+    else globalThis.fetch = originalFetch;
+  }
 
+  assert(fetchCalls === 0, 'Fixture generation and execution should make zero fetch calls');
   assertDeepEqual(first.availability.rows, second.availability.rows, 'Generated route rows should be deterministic across sessions');
   assert(first.availability.rows.length === 10, 'Generated routes should also return ten rows');
   assert(first.availability.rows.every((row) => row.origin === 'LIS' && row.destination === 'FRA'), 'Generated rows should use the query route');
@@ -283,22 +315,25 @@ export function testGeneratedAvailabilityIsDeterministicWithoutNetwork() {
 
 export function testProfessionalCommandResultSchemaHasNoUndefinedOutputLines() {
   const session = createProfessionalTerminalSession();
-  const results = [
-    executeProfessionalCommand(session, 'HELP'),
-    executeProfessionalCommand(session, 'AN17JUNMADAMS/IB'),
-    executeProfessionalCommand(session, 'MD'),
-    executeProfessionalCommand(session, 'DO1'),
-    executeProfessionalCommand(session, 'DO99'),
-  ];
+  const notImplemented = executeProfessionalCommand(session, 'HELP');
+  const success = executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
+  const error = executeProfessionalCommand(session, 'DO99');
+  const results = [success, error, notImplemented];
 
   for (const result of results) {
-    for (const key of ['type', 'input', 'output', 'explanation', 'disclaimer', 'safeMode', 'status']) {
+    const stringKeys = ['type', 'input', 'output', 'explanation', 'disclaimer', 'status'];
+    for (const key of [...stringKeys, 'safeMode']) {
       assert(Object.hasOwn(result, key), `Result should define ${key}`);
+      assert(result[key] !== undefined && result[key] !== null, `Result ${key} should not be undefined or null`);
     }
-    assert(result.safeMode === true, 'Every executor result should remain in safe mode');
+    for (const key of stringKeys) assert(typeof result[key] === 'string', `Result ${key} should be a string`);
+    assert(typeof result.safeMode === 'boolean' && result.safeMode === true, 'Every executor result should remain in safe mode');
     assert(['OK', 'ERROR', 'NOT_IMPLEMENTED'].includes(result.status), 'Status should use the defined result vocabulary');
-    assert(typeof result.output === 'string' && !result.output.split('\n').includes('undefined'), 'Output should be a defined string with no undefined lines');
+    assert(result.output.split('\n').every((line) => typeof line === 'string'), 'Every output line should be a string');
+    assert(!result.output.split('\n').includes('undefined'), 'Output should contain no undefined lines');
   }
 
-  assert(results[0].status === 'NOT_IMPLEMENTED', 'Unhandled parsed commands should be explicitly not implemented');
+  assert(success.status === 'OK', 'Availability should exercise the success schema');
+  assert(error.status === 'ERROR' && typeof error.errorCode === 'string', 'Missing detail should exercise the error schema');
+  assert(notImplemented.status === 'NOT_IMPLEMENTED', 'Unhandled parsed commands should exercise the not-implemented schema');
 }

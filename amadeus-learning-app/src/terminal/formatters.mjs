@@ -27,6 +27,7 @@ export function formatAvailabilityDetail(row) {
     `FLIGHT ${row.flight}`,
     `ROUTE ${row.origin}-${row.destination} ${row.date}`,
     `TIMES ${row.departure}-${row.arrival}`,
+    `CLASSES ${row.classes}`,
     `EQUIPMENT ${row.equipment}`,
     `DURATION ${row.duration}`,
     stops,
