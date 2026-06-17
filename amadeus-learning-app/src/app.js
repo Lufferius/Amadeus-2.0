@@ -130,14 +130,18 @@ function renderLesson() {
     </header>
     <section class="lesson-block">
       <h2>Explicación</h2>
-      <p>${lesson.explanation}</p>
+      ${lesson.explanation.map((paragraph) => `<p>${paragraph}</p>`).join('')}
+    </section>
+    <section class="lesson-block">
+      <h2>Conceptos clave</h2>
+      <dl class="concept-list">${lesson.keyConcepts.map((concept) => `<div><dt>${concept.term}</dt><dd>${concept.definition}</dd></div>`).join('')}</dl>
     </section>
     <section class="lesson-columns">
-      <div class="lesson-block"><h2>Ejemplos</h2><ul>${lesson.examples.map((item) => `<li>${item}</li>`).join('')}</ul></div>
-      <div class="lesson-block"><h2>Ejercicios</h2><ul>${lesson.exercises.map((item) => `<li>${item}</li>`).join('')}</ul></div>
+      <div class="lesson-block"><h2>Ejemplos</h2><ul>${lesson.examples.map((item) => `<li><strong>${item.title}:</strong> ${item.content}</li>`).join('')}</ul></div>
+      <div class="lesson-block"><h2>Ejercicios</h2><ul>${lesson.exercises.map((item) => `<li><strong>${item.question}</strong><br><span>${item.expectedAnswer}</span></li>`).join('')}</ul></div>
     </section>
     <section class="lesson-block quiz"><h2>Quiz</h2></section>
-    <section class="lesson-block safety"><h2>Resumen</h2><p>${lesson.summary}</p><p><strong>Nota de seguridad:</strong> ${lesson.safetyNote}</p></section>
+    <section class="lesson-block safety"><h2>Resumen</h2><ul>${lesson.summary.map((item) => `<li>${item}</li>`).join('')}</ul><p><strong>Nota de seguridad:</strong> ${lesson.safetyNote}</p></section>
   `;
 
   const quiz = page.querySelector('.quiz');
@@ -174,7 +178,7 @@ function gradeLesson(lesson, page) {
 
   lesson.quiz.forEach((question, questionIndex) => {
     const selected = page.querySelector(`input[name="${lesson.id}-${questionIndex}"]:checked`);
-    if (selected && Number(selected.value) === question.correctOptionIndex) {
+    if (selected && Number(selected.value) === question.correctAnswer) {
       score += 1;
     }
   });
@@ -185,7 +189,8 @@ function gradeLesson(lesson, page) {
   }
   saveProgress();
 
-  page.querySelector('.quiz-result').textContent = `Resultado: ${score} de ${lesson.quiz.length}. ${lesson.correctionCriteria}`;
+  const criteria = lesson.exercises.flatMap((exercise) => exercise.correctionCriteria).slice(0, 3).join(' ');
+  page.querySelector('.quiz-result').textContent = `Resultado: ${score} de ${lesson.quiz.length}. ${criteria}`;
   renderShell(page, 'lesson');
 }
 

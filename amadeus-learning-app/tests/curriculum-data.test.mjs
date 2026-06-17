@@ -28,32 +28,57 @@ function assertQuiz(quiz, lessonId) {
   assert(quiz.length >= 2, `${lessonId}: quiz must include at least 2 questions`);
 
   for (const question of quiz) {
+    assertText(question.id, `${lessonId}: quiz id is required`);
+    assert(question.type === 'multiple-choice', `${lessonId}: quiz type must be multiple-choice`);
     assertText(question.question, `${lessonId}: quiz question text is required`);
     assertArray(question.options, `${lessonId}: quiz options must be an array`);
     assert(question.options.length >= 3, `${lessonId}: quiz must include at least 3 options`);
-    assert(Number.isInteger(question.correctOptionIndex), `${lessonId}: quiz correctOptionIndex is required`);
+    assert(Number.isInteger(question.correctAnswer), `${lessonId}: quiz correctAnswer is required`);
     assert(
-      question.correctOptionIndex >= 0 && question.correctOptionIndex < question.options.length,
-      `${lessonId}: quiz correctOptionIndex must point to an option`,
+      question.correctAnswer >= 0 && question.correctAnswer < question.options.length,
+      `${lessonId}: quiz correctAnswer must point to an option`,
     );
+    assertText(question.explanation, `${lessonId}: quiz explanation is required`);
   }
 }
 
 function assertLesson(lesson, expectedPrefix) {
   assertText(lesson.id, `${expectedPrefix}: lesson id is required`);
-  assert(lesson.id.startsWith(expectedPrefix), `${lesson.id}: lesson id must start with ${expectedPrefix}`);
+  assert(lesson.id === expectedPrefix, `${lesson.id}: lesson id must be ${expectedPrefix}`);
+  assert(Number.isInteger(lesson.week), `${lesson.id}: week is required`);
+  assert(Number.isInteger(lesson.day), `${lesson.id}: day is required`);
   assertText(lesson.title, `${lesson.id}: title is required`);
   assert(Number.isInteger(lesson.estimatedMinutes), `${lesson.id}: estimatedMinutes is required`);
-  assert(lesson.estimatedMinutes >= 8 && lesson.estimatedMinutes <= 30, `${lesson.id}: estimatedMinutes looks unrealistic`);
+  assert(lesson.estimatedMinutes >= 30 && lesson.estimatedMinutes <= 45, `${lesson.id}: estimatedMinutes should follow the lesson format`);
   assertText(lesson.objective, `${lesson.id}: objective is required`);
-  assertText(lesson.explanation, `${lesson.id}: explanation is required`);
+  assertArray(lesson.explanation, `${lesson.id}: explanation must be an array`);
+  assert(lesson.explanation.length >= 1, `${lesson.id}: explanation must include at least 1 paragraph`);
+  lesson.explanation.forEach((paragraph) => assertText(paragraph, `${lesson.id}: explanation paragraph is required`));
+  assertArray(lesson.keyConcepts, `${lesson.id}: keyConcepts must be an array`);
+  assert(lesson.keyConcepts.length >= 1, `${lesson.id}: keyConcepts must include at least 1 item`);
+  lesson.keyConcepts.forEach((concept) => {
+    assertText(concept.term, `${lesson.id}: key concept term is required`);
+    assertText(concept.definition, `${lesson.id}: key concept definition is required`);
+  });
   assertArray(lesson.examples, `${lesson.id}: examples must be an array`);
   assert(lesson.examples.length >= 2, `${lesson.id}: examples must include at least 2 items`);
+  lesson.examples.forEach((example) => {
+    assertText(example.title, `${lesson.id}: example title is required`);
+    assertText(example.content, `${lesson.id}: example content is required`);
+  });
   assertArray(lesson.exercises, `${lesson.id}: exercises must be an array`);
   assert(lesson.exercises.length >= 2, `${lesson.id}: exercises must include at least 2 items`);
+  lesson.exercises.forEach((exercise) => {
+    assertText(exercise.id, `${lesson.id}: exercise id is required`);
+    assert(exercise.type === 'open', `${lesson.id}: exercise type must be open`);
+    assertText(exercise.question, `${lesson.id}: exercise question is required`);
+    assertText(exercise.expectedAnswer, `${lesson.id}: exercise expectedAnswer is required`);
+    assertArray(exercise.correctionCriteria, `${lesson.id}: exercise correctionCriteria must be an array`);
+  });
   assertQuiz(lesson.quiz, lesson.id);
-  assertText(lesson.correctionCriteria, `${lesson.id}: correctionCriteria is required`);
-  assertText(lesson.summary, `${lesson.id}: summary is required`);
+  assertArray(lesson.summary, `${lesson.id}: summary must be an array`);
+  assert(lesson.summary.length >= 1, `${lesson.id}: summary must include at least 1 item`);
+  lesson.summary.forEach((item) => assertText(item, `${lesson.id}: summary item is required`));
   assertText(lesson.safetyNote, `${lesson.id}: safetyNote is required`);
   const lessonText = JSON.stringify(lesson).toLowerCase();
   assert(!lessonText.includes('formación oficial'), `${lesson.id}: must not claim official training`);
@@ -73,7 +98,9 @@ export function testCurriculumWeeksAreStructured() {
     assertArray(week.lessons, `${file}: lessons must be an array`);
     assert(week.lessons.length === 5, `${file}: expected 5 lessons`);
     week.lessons.forEach((lesson, lessonIndex) => {
-      assertLesson(lesson, `w${String(expectedWeek).padStart(2, '0')}-l${String(lessonIndex + 1).padStart(2, '0')}`);
+      assertLesson(lesson, `week-${String(expectedWeek).padStart(2, '0')}-day-${String(lessonIndex + 1).padStart(2, '0')}`);
+      assert(lesson.week === expectedWeek, `${lesson.id}: lesson week must match parent week`);
+      assert(lesson.day === lessonIndex + 1, `${lesson.id}: lesson day must match position`);
     });
   });
 }

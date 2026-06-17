@@ -4,193 +4,388 @@
   "objective": "Aprender a interpretar disponibilidad simulada y construir itinerarios de práctica sin crear reservas reales.",
   "lessons": [
     {
-      "id": "w02-l01",
+      "id": "week-02-day-01",
+      "week": 2,
+      "day": 1,
       "title": "Origen, destino y fecha",
-      "estimatedMinutes": 14,
+      "estimatedMinutes": 30,
       "objective": "Identificar los datos mínimos para una consulta de disponibilidad simulada.",
-      "explanation": "Toda búsqueda de disponibilidad parte de una ruta y una fecha. El origen y el destino suelen expresarse con códigos de aeropuerto o ciudad, pero en este curso se trabajan como etiquetas de entrenamiento. Antes de revisar opciones, el consultor debe confirmar qué quiere hacer el viajero ficticio, cuándo quiere salir y si necesita regreso.",
+      "explanation": [
+        "Toda búsqueda de disponibilidad parte de una ruta y una fecha. El origen y el destino suelen expresarse con códigos de aeropuerto o ciudad, pero en este curso se trabajan como etiquetas de entrenamiento. Antes de revisar opciones, el consultor debe confirmar qué quiere hacer el viajero ficticio, cuándo quiere salir y si necesita regreso."
+      ],
+      "keyConcepts": [
+        {
+          "term": "GDS",
+          "definition": "Sistema de distribuci?n global usado como concepto de entrenamiento para consultar y organizar informaci?n de viaje."
+        }
+      ],
       "examples": [
-        "MAD puede representar Madrid y AMS puede representar Ámsterdam en una práctica.",
-        "Una solicitud incompleta sería: 'quiero viajar a Ámsterdam', sin fecha ni origen."
+        {
+          "title": "Ejemplo 1",
+          "content": "MAD puede representar Madrid y AMS puede representar Ámsterdam en una práctica."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Una solicitud incompleta sería: 'quiero viajar a Ámsterdam', sin fecha ni origen."
+        }
       ],
       "exercises": [
-        "Completa una solicitud ficticia añadiendo origen, destino y fecha.",
-        "Detecta qué información falta en tres peticiones breves."
+        {
+          "id": "ex-020101",
+          "type": "open",
+          "question": "Completa una solicitud ficticia añadiendo origen, destino y fecha.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe identificar datos mínimos y proponer preguntas de aclaración antes de avanzar."
+          ]
+        },
+        {
+          "id": "ex-020102",
+          "type": "open",
+          "question": "Detecta qué información falta en tres peticiones breves.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe identificar datos mínimos y proponer preguntas de aclaración antes de avanzar."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-020101",
+          "type": "multiple-choice",
           "question": "¿Qué dato es imprescindible para interpretar disponibilidad?",
           "options": [
             "La fecha del viaje",
             "El número de tarjeta",
             "La contraseña del pasajero"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-020102",
+          "type": "multiple-choice",
           "question": "¿Qué debe hacer el consultor si falta el destino?",
           "options": [
             "Inventarlo sin avisar",
             "Preguntar y confirmar la necesidad",
             "Crear una reserva de prueba"
           ],
-          "correctOptionIndex": 1
+          "correctAnswer": 1,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe identificar datos mínimos y proponer preguntas de aclaración antes de avanzar.",
-      "summary": "Origen, destino y fecha sostienen cualquier lectura de disponibilidad.",
+      "summary": [
+        "Origen, destino y fecha sostienen cualquier lectura de disponibilidad."
+      ],
       "safetyNote": "Los códigos y fechas usados son ficticios y no consultan inventario real."
     },
     {
-      "id": "w02-l02",
+      "id": "week-02-day-02",
+      "week": 2,
+      "day": 2,
       "title": "Segmentos aéreos",
-      "estimatedMinutes": 16,
+      "estimatedMinutes": 30,
       "objective": "Entender cómo se ordenan los segmentos en un itinerario.",
-      "explanation": "Un itinerario se compone de segmentos. Un viaje simple puede tener un segmento de ida y otro de vuelta. Un viaje con conexión puede tener varios segmentos en el mismo sentido. Para principiantes, la prioridad es comprobar que el orden sea lógico, que las ciudades encajen y que no haya saltos extraños en la historia del viaje.",
+      "explanation": [
+        "Un itinerario se compone de segmentos. Un viaje simple puede tener un segmento de ida y otro de vuelta. Un viaje con conexión puede tener varios segmentos en el mismo sentido. Para principiantes, la prioridad es comprobar que el orden sea lógico, que las ciudades encajen y que no haya saltos extraños en la historia del viaje."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Segmento",
+          "definition": "Cada tramo individual de un itinerario."
+        }
+      ],
       "examples": [
-        "MAD-AMS es un segmento directo simulado.",
-        "MAD-PAR y PAR-AMS podrían representar dos segmentos con conexión ficticia."
+        {
+          "title": "Ejemplo 1",
+          "content": "MAD-AMS es un segmento directo simulado."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "MAD-PAR y PAR-AMS podrían representar dos segmentos con conexión ficticia."
+        }
       ],
       "exercises": [
-        "Ordena tres segmentos simulados para formar un itinerario coherente.",
-        "Encuentra el error en un itinerario donde el segundo tramo sale de una ciudad distinta."
+        {
+          "id": "ex-020201",
+          "type": "open",
+          "question": "Ordena tres segmentos simulados para formar un itinerario coherente.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe ordenar tramos y detectar inconsistencias de continuidad."
+          ]
+        },
+        {
+          "id": "ex-020202",
+          "type": "open",
+          "question": "Encuentra el error en un itinerario donde el segundo tramo sale de una ciudad distinta.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe ordenar tramos y detectar inconsistencias de continuidad."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-020201",
+          "type": "multiple-choice",
           "question": "¿Qué es un segmento en un itinerario?",
           "options": [
             "Una parte del recorrido",
             "Una forma de pago",
             "Una contraseña temporal"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-020202",
+          "type": "multiple-choice",
           "question": "¿Qué conviene revisar en varios segmentos?",
           "options": [
             "Que el orden y las ciudades tengan sentido",
             "Que incluyan datos reales del pasajero",
             "Que se emitan automáticamente"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe ordenar tramos y detectar inconsistencias de continuidad.",
-      "summary": "Los segmentos cuentan la historia del viaje en orden.",
+      "summary": [
+        "Los segmentos cuentan la historia del viaje en orden."
+      ],
       "safetyNote": "No crees ni modifiques segmentos reales; trabaja solo con ejemplos de entrenamiento."
     },
     {
-      "id": "w02-l03",
+      "id": "week-02-day-03",
+      "week": 2,
+      "day": 3,
       "title": "Clases de reserva como concepto",
-      "estimatedMinutes": 15,
+      "estimatedMinutes": 30,
       "objective": "Comprender que una clase de reserva representa disponibilidad y condiciones en un contexto formativo.",
-      "explanation": "Las clases de reserva son códigos asociados a plazas, tarifas o condiciones, pero aquí se explican de forma conceptual. No hay que memorizar códigos reales ni interpretar disponibilidad real. Lo importante es saber que distintas opciones pueden tener condiciones diferentes y que el consultor debe leer antes de recomendar.",
+      "explanation": [
+        "Las clases de reserva son códigos asociados a plazas, tarifas o condiciones, pero aquí se explican de forma conceptual. No hay que memorizar códigos reales ni interpretar disponibilidad real. Lo importante es saber que distintas opciones pueden tener condiciones diferentes y que el consultor debe leer antes de recomendar."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Tarifa",
+          "definition": "Precio y condiciones asociadas a una opci?n de viaje."
+        }
+      ],
       "examples": [
-        "Una opción simulada puede aparecer como 'Básica' y otra como 'Flexible'.",
-        "Dos opciones con horario parecido pueden tener condiciones de cambio diferentes."
+        {
+          "title": "Ejemplo 1",
+          "content": "Una opción simulada puede aparecer como 'Básica' y otra como 'Flexible'."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Dos opciones con horario parecido pueden tener condiciones de cambio diferentes."
+        }
       ],
       "exercises": [
-        "Compara dos clases ficticias y escribe qué preguntarías antes de elegir.",
-        "Identifica por qué la opción más barata no siempre es la más adecuada."
+        {
+          "id": "ex-020301",
+          "type": "open",
+          "question": "Compara dos clases ficticias y escribe qué preguntarías antes de elegir.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe explicar diferencias conceptuales sin usar códigos operativos reales."
+          ]
+        },
+        {
+          "id": "ex-020302",
+          "type": "open",
+          "question": "Identifica por qué la opción más barata no siempre es la más adecuada.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe explicar diferencias conceptuales sin usar códigos operativos reales."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-020301",
+          "type": "multiple-choice",
           "question": "¿Qué idea debe asociarse a una clase de reserva?",
           "options": [
             "Que puede implicar condiciones distintas",
             "Que siempre permite cambios gratis",
             "Que confirma una emisión real"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-020302",
+          "type": "multiple-choice",
           "question": "¿Qué no se busca en esta lección?",
           "options": [
             "Memorizar códigos reales de producción",
             "Entender diferencias conceptuales",
             "Practicar comparación segura"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe explicar diferencias conceptuales sin usar códigos operativos reales.",
-      "summary": "Las clases ayudan a comparar opciones, pero en el curso se tratan como conceptos de entrenamiento.",
+      "summary": [
+        "Las clases ayudan a comparar opciones, pero en el curso se tratan como conceptos de entrenamiento."
+      ],
       "safetyNote": "No infieras condiciones reales a partir de clases ficticias del simulador."
     },
     {
-      "id": "w02-l04",
+      "id": "week-02-day-04",
+      "week": 2,
+      "day": 4,
       "title": "Escalas y conexiones",
-      "estimatedMinutes": 18,
+      "estimatedMinutes": 30,
       "objective": "Reconocer conexiones y riesgos básicos en itinerarios simulados.",
-      "explanation": "Una conexión une dos segmentos. Para evaluarla de forma básica hay que mirar ciudad de conexión, tiempo entre llegada y salida, y coherencia general. No se enseñan reglas reales de mínimos de conexión; se entrena la prudencia: si algo parece ajustado o confuso, hay que señalarlo y pedir verificación profesional en un entorno real.",
+      "explanation": [
+        "Una conexión une dos segmentos. Para evaluarla de forma básica hay que mirar ciudad de conexión, tiempo entre llegada y salida, y coherencia general. No se enseñan reglas reales de mínimos de conexión; se entrena la prudencia: si algo parece ajustado o confuso, hay que señalarlo y pedir verificación profesional en un entorno real."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Segmento",
+          "definition": "Cada tramo individual de un itinerario."
+        }
+      ],
       "examples": [
-        "Llegar a las 10:00 y salir a las 10:20 puede parecer una conexión ajustada.",
-        "Cambiar de ciudad entre segmentos sin traslado explicado es una alerta conceptual."
+        {
+          "title": "Ejemplo 1",
+          "content": "Llegar a las 10:00 y salir a las 10:20 puede parecer una conexión ajustada."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Cambiar de ciudad entre segmentos sin traslado explicado es una alerta conceptual."
+        }
       ],
       "exercises": [
-        "Marca qué conexión simulada parece más cómoda y explica por qué.",
-        "Escribe una advertencia neutral para una conexión ficticia ajustada."
+        {
+          "id": "ex-020401",
+          "type": "open",
+          "question": "Marca qué conexión simulada parece más cómoda y explica por qué.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe identificar señales de riesgo y recomendar verificación autorizada para casos reales."
+          ]
+        },
+        {
+          "id": "ex-020402",
+          "type": "open",
+          "question": "Escribe una advertencia neutral para una conexión ficticia ajustada.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe identificar señales de riesgo y recomendar verificación autorizada para casos reales."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-020401",
+          "type": "multiple-choice",
           "question": "¿Qué debes revisar en una conexión?",
           "options": [
             "Tiempo entre llegada y salida",
             "Datos bancarios del viajero",
             "Contraseña del sistema"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-020402",
+          "type": "multiple-choice",
           "question": "Si una conexión real parece dudosa, ¿qué corresponde?",
           "options": [
             "Verificar con canales autorizados",
             "Asumir que sirve porque el simulador lo muestra",
             "Emitir sin revisar"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe identificar señales de riesgo y recomendar verificación autorizada para casos reales.",
-      "summary": "Las conexiones requieren atención al tiempo, lugar y continuidad del viaje.",
+      "summary": [
+        "Las conexiones requieren atención al tiempo, lugar y continuidad del viaje."
+      ],
       "safetyNote": "No uses estos ejemplos como reglas reales de conexión."
     },
     {
-      "id": "w02-l05",
+      "id": "week-02-day-05",
+      "week": 2,
+      "day": 5,
       "title": "Validación de itinerario simulado",
-      "estimatedMinutes": 17,
+      "estimatedMinutes": 30,
       "objective": "Aplicar una revisión básica antes de dar por válido un itinerario de práctica.",
-      "explanation": "Validar un itinerario significa revisar que la ruta responde a la solicitud, que las fechas son coherentes, que los segmentos están ordenados y que las condiciones pendientes se han identificado. En entrenamiento no se confirma nada real; se practica la disciplina de revisar antes de comunicar.",
+      "explanation": [
+        "Validar un itinerario significa revisar que la ruta responde a la solicitud, que las fechas son coherentes, que los segmentos están ordenados y que las condiciones pendientes se han identificado. En entrenamiento no se confirma nada real; se practica la disciplina de revisar antes de comunicar."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Segmento",
+          "definition": "Cada tramo individual de un itinerario."
+        }
+      ],
       "examples": [
-        "La solicitud pide ida y vuelta, pero el itinerario solo incluye ida.",
-        "El viajero ficticio prefiere mañana y la opción simulada sale por la noche."
+        {
+          "title": "Ejemplo 1",
+          "content": "La solicitud pide ida y vuelta, pero el itinerario solo incluye ida."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "El viajero ficticio prefiere mañana y la opción simulada sale por la noche."
+        }
       ],
       "exercises": [
-        "Usa una checklist de cuatro puntos para revisar un itinerario ficticio.",
-        "Detecta dos diferencias entre solicitud e itinerario de muestra."
+        {
+          "id": "ex-020501",
+          "type": "open",
+          "question": "Usa una checklist de cuatro puntos para revisar un itinerario ficticio.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe usar una checklist y detectar discrepancias relevantes."
+          ]
+        },
+        {
+          "id": "ex-020502",
+          "type": "open",
+          "question": "Detecta dos diferencias entre solicitud e itinerario de muestra.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe usar una checklist y detectar discrepancias relevantes."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-020501",
+          "type": "multiple-choice",
           "question": "¿Qué significa validar en este curso?",
           "options": [
             "Revisar coherencia de un caso simulado",
             "Confirmar una reserva real",
             "Cobrar una emisión"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-020502",
+          "type": "multiple-choice",
           "question": "¿Qué debe hacerse antes de recomendar una opción?",
           "options": [
             "Compararla con la necesidad planteada",
             "Ignorar restricciones",
             "Introducir datos reales para probar"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe usar una checklist y detectar discrepancias relevantes.",
-      "summary": "Una revisión ordenada reduce errores incluso en prácticas sencillas.",
+      "summary": [
+        "Una revisión ordenada reduce errores incluso en prácticas sencillas."
+      ],
       "safetyNote": "Validar aquí no equivale a confirmar disponibilidad o reserva real."
     }
   ]

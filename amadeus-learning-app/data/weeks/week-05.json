@@ -4,193 +4,388 @@
   "objective": "Practicar razonamiento profesional, comunicación clara y revisión de errores sin usar datos reales.",
   "lessons": [
     {
-      "id": "w05-l01",
+      "id": "week-05-day-01",
+      "week": 5,
+      "day": 1,
       "title": "Confirmar necesidades del viajero",
-      "estimatedMinutes": 15,
+      "estimatedMinutes": 30,
       "objective": "Aprender a transformar una petición vaga en requisitos claros.",
-      "explanation": "Un buen consultor no empieza por la pantalla, empieza por la necesidad. Debe confirmar destino, fechas, horarios preferidos, equipaje, flexibilidad y prioridades. En esta app todas las personas son ficticias, pero la práctica de preguntar con claridad prepara para conversaciones profesionales.",
+      "explanation": [
+        "Un buen consultor no empieza por la pantalla, empieza por la necesidad. Debe confirmar destino, fechas, horarios preferidos, equipaje, flexibilidad y prioridades. En esta app todas las personas son ficticias, pero la práctica de preguntar con claridad prepara para conversaciones profesionales."
+      ],
+      "keyConcepts": [
+        {
+          "term": "GDS",
+          "definition": "Sistema de distribuci?n global usado como concepto de entrenamiento para consultar y organizar informaci?n de viaje."
+        }
+      ],
       "examples": [
-        "Petición vaga: necesito ir a Ámsterdam pronto.",
-        "Petición clara: salida desde Madrid el lunes, regreso el jueves, preferencia de mañana."
+        {
+          "title": "Ejemplo 1",
+          "content": "Petición vaga: necesito ir a Ámsterdam pronto."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Petición clara: salida desde Madrid el lunes, regreso el jueves, preferencia de mañana."
+        }
       ],
       "exercises": [
-        "Convierte una petición vaga en cinco datos concretos.",
-        "Escribe tres preguntas abiertas para un viajero ficticio."
+        {
+          "id": "ex-050101",
+          "type": "open",
+          "question": "Convierte una petición vaga en cinco datos concretos.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe formular preguntas claras y extraer requisitos útiles."
+          ]
+        },
+        {
+          "id": "ex-050102",
+          "type": "open",
+          "question": "Escribe tres preguntas abiertas para un viajero ficticio.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe formular preguntas claras y extraer requisitos útiles."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-050101",
+          "type": "multiple-choice",
           "question": "¿Qué debe hacer el consultor ante una petición incompleta?",
           "options": [
             "Preguntar y confirmar",
             "Inventar los datos",
             "Emitir una opción"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-050102",
+          "type": "multiple-choice",
           "question": "¿Qué prioridad puede cambiar la recomendación?",
           "options": [
             "Flexibilidad del viaje",
             "Color favorito",
             "Contraseña del pasajero"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe formular preguntas claras y extraer requisitos útiles.",
-      "summary": "Confirmar necesidades evita búsquedas mal orientadas.",
+      "summary": [
+        "Confirmar necesidades evita búsquedas mal orientadas."
+      ],
       "safetyNote": "No uses necesidades reales de clientes para ejercicios sin autorización y anonimización."
     },
     {
-      "id": "w05-l02",
+      "id": "week-05-day-02",
+      "week": 5,
+      "day": 2,
       "title": "Explicar alternativas",
-      "estimatedMinutes": 16,
+      "estimatedMinutes": 30,
       "objective": "Comunicar opciones de forma neutral y comprensible.",
-      "explanation": "Explicar alternativas implica presentar ventajas, límites y dudas pendientes sin presionar. Un principiante debe evitar frases absolutas cuando trabaja con información incompleta. En ejercicios simulados, se practica lenguaje claro: 'esta opción parece más flexible en el ejemplo' en lugar de promesas cerradas.",
+      "explanation": [
+        "Explicar alternativas implica presentar ventajas, límites y dudas pendientes sin presionar. Un principiante debe evitar frases absolutas cuando trabaja con información incompleta. En ejercicios simulados, se practica lenguaje claro: 'esta opción parece más flexible en el ejemplo' en lugar de promesas cerradas."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Tarifa",
+          "definition": "Precio y condiciones asociadas a una opci?n de viaje."
+        }
+      ],
       "examples": [
-        "Opción A simulada: salida temprana y tarifa más restrictiva.",
-        "Opción B simulada: salida más tarde y mejores condiciones de cambio en el ejemplo."
+        {
+          "title": "Ejemplo 1",
+          "content": "Opción A simulada: salida temprana y tarifa más restrictiva."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Opción B simulada: salida más tarde y mejores condiciones de cambio en el ejemplo."
+        }
       ],
       "exercises": [
-        "Redacta una comparación neutral entre dos opciones ficticias.",
-        "Sustituye una promesa arriesgada por una frase prudente."
+        {
+          "id": "ex-050201",
+          "type": "open",
+          "question": "Redacta una comparación neutral entre dos opciones ficticias.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe usar lenguaje equilibrado y señalar dudas pendientes."
+          ]
+        },
+        {
+          "id": "ex-050202",
+          "type": "open",
+          "question": "Sustituye una promesa arriesgada por una frase prudente.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe usar lenguaje equilibrado y señalar dudas pendientes."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-050201",
+          "type": "multiple-choice",
           "question": "¿Qué caracteriza una explicación neutral?",
           "options": [
             "Presenta ventajas y límites",
             "Promete resultados no verificados",
             "Oculta restricciones"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-050202",
+          "type": "multiple-choice",
           "question": "¿Qué frase es más prudente?",
           "options": [
             "En el ejemplo, esta opción parece más flexible",
             "Seguro que podrás cambiar sin coste",
             "No hace falta leer condiciones"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe usar lenguaje equilibrado y señalar dudas pendientes.",
-      "summary": "Una buena explicación ayuda a decidir sin crear falsas garantías.",
+      "summary": [
+        "Una buena explicación ayuda a decidir sin crear falsas garantías."
+      ],
       "safetyNote": "No prometas condiciones reales desde ejemplos simulados."
     },
     {
-      "id": "w05-l03",
+      "id": "week-05-day-03",
+      "week": 5,
+      "day": 3,
       "title": "Detectar inconsistencias",
-      "estimatedMinutes": 18,
+      "estimatedMinutes": 30,
       "objective": "Encontrar errores habituales en itinerarios simulados.",
-      "explanation": "Las inconsistencias pueden aparecer en fechas, ciudades, número de pasajeros, horarios o condiciones. El consultor debe revisar con calma y preguntar antes de avanzar. En el simulador, detectar errores es una forma segura de entrenar criterio sin afectar a una reserva real.",
+      "explanation": [
+        "Las inconsistencias pueden aparecer en fechas, ciudades, número de pasajeros, horarios o condiciones. El consultor debe revisar con calma y preguntar antes de avanzar. En el simulador, detectar errores es una forma segura de entrenar criterio sin afectar a una reserva real."
+      ],
+      "keyConcepts": [
+        {
+          "term": "PNR",
+          "definition": "Expediente de reserva que agrupa datos de viaje, pasajeros, segmentos y notas."
+        }
+      ],
       "examples": [
-        "La solicitud pide regreso el viernes, pero el itinerario vuelve el jueves.",
-        "El PNR ficticio muestra dos pasajeros y la solicitud menciona uno."
+        {
+          "title": "Ejemplo 1",
+          "content": "La solicitud pide regreso el viernes, pero el itinerario vuelve el jueves."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "El PNR ficticio muestra dos pasajeros y la solicitud menciona uno."
+        }
       ],
       "exercises": [
-        "Encuentra tres inconsistencias en un caso ficticio.",
-        "Escribe cómo pedirías aclaración sin culpar al viajero."
+        {
+          "id": "ex-050301",
+          "type": "open",
+          "question": "Encuentra tres inconsistencias en un caso ficticio.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe detectar diferencias y proponer una aclaración profesional."
+          ]
+        },
+        {
+          "id": "ex-050302",
+          "type": "open",
+          "question": "Escribe cómo pedirías aclaración sin culpar al viajero.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe detectar diferencias y proponer una aclaración profesional."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-050301",
+          "type": "multiple-choice",
           "question": "¿Qué dato puede revelar una inconsistencia?",
           "options": [
             "Fecha de regreso",
             "Contraseña del sistema",
             "Número de tarjeta"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-050302",
+          "type": "multiple-choice",
           "question": "¿Qué hacer al detectar una diferencia?",
           "options": [
             "Pedir aclaración antes de avanzar",
             "Ignorarla",
             "Cambiar una reserva real"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe detectar diferencias y proponer una aclaración profesional.",
-      "summary": "La revisión de inconsistencias protege la calidad de la respuesta.",
+      "summary": [
+        "La revisión de inconsistencias protege la calidad de la respuesta."
+      ],
       "safetyNote": "No corrijas reservas reales desde ejercicios de práctica."
     },
     {
-      "id": "w05-l04",
+      "id": "week-05-day-04",
+      "week": 5,
+      "day": 4,
       "title": "Evitar promesas indebidas",
-      "estimatedMinutes": 14,
+      "estimatedMinutes": 30,
       "objective": "Reconocer frases que pueden crear expectativas incorrectas.",
-      "explanation": "En viajes, las palabras importan. Decir 'seguro', 'garantizado' o 'sin coste' sin verificar puede causar problemas. Esta lección entrena respuestas prudentes: explicar lo que se ve en el ejemplo, indicar lo pendiente de confirmar y separar la práctica de cualquier caso real.",
+      "explanation": [
+        "En viajes, las palabras importan. Decir 'seguro', 'garantizado' o 'sin coste' sin verificar puede causar problemas. Esta lección entrena respuestas prudentes: explicar lo que se ve en el ejemplo, indicar lo pendiente de confirmar y separar la práctica de cualquier caso real."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Tarifa",
+          "definition": "Precio y condiciones asociadas a una opci?n de viaje."
+        }
+      ],
       "examples": [
-        "Arriesgado: te devuelven todo sin problema.",
-        "Prudente: en este ejemplo no aparece reembolso; habría que verificar condiciones reales."
+        {
+          "title": "Ejemplo 1",
+          "content": "Arriesgado: te devuelven todo sin problema."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Prudente: en este ejemplo no aparece reembolso; habría que verificar condiciones reales."
+        }
       ],
       "exercises": [
-        "Reescribe tres frases arriesgadas en lenguaje prudente.",
-        "Identifica qué información falta antes de prometer una condición."
+        {
+          "id": "ex-050401",
+          "type": "open",
+          "question": "Reescribe tres frases arriesgadas en lenguaje prudente.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe sustituir promesas por lenguaje condicionado y verificable."
+          ]
+        },
+        {
+          "id": "ex-050402",
+          "type": "open",
+          "question": "Identifica qué información falta antes de prometer una condición.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe sustituir promesas por lenguaje condicionado y verificable."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-050401",
+          "type": "multiple-choice",
           "question": "¿Qué palabra suele ser arriesgada sin verificación?",
           "options": [
             "Garantizado",
             "Podría",
             "Pendiente"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-050402",
+          "type": "multiple-choice",
           "question": "¿Qué enfoque es más seguro?",
           "options": [
             "Indicar límites y verificar",
             "Prometer para tranquilizar",
             "Omitir restricciones"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe sustituir promesas por lenguaje condicionado y verificable.",
-      "summary": "La prudencia verbal evita malentendidos y protege al cliente.",
+      "summary": [
+        "La prudencia verbal evita malentendidos y protege al cliente."
+      ],
       "safetyNote": "No prometas cambios, reembolsos, reemisiones, emisiones ni cancelaciones reales."
     },
     {
-      "id": "w05-l05",
+      "id": "week-05-day-05",
+      "week": 5,
+      "day": 5,
       "title": "Checklist de calidad",
-      "estimatedMinutes": 17,
+      "estimatedMinutes": 30,
       "objective": "Crear una revisión final antes de cerrar una práctica.",
-      "explanation": "Una checklist ayuda a comprobar solicitud, itinerario, pasajeros ficticios, condiciones, dudas pendientes y lenguaje usado. No busca convertir la práctica en operación real, sino reforzar hábitos: revisar, explicar, preguntar y documentar de forma segura.",
+      "explanation": [
+        "Una checklist ayuda a comprobar solicitud, itinerario, pasajeros ficticios, condiciones, dudas pendientes y lenguaje usado. No busca convertir la práctica en operación real, sino reforzar hábitos: revisar, explicar, preguntar y documentar de forma segura."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Segmento",
+          "definition": "Cada tramo individual de un itinerario."
+        }
+      ],
       "examples": [
-        "Checklist: ruta, fechas, segmentos, condiciones y seguridad de datos.",
-        "Punto pendiente: confirmar si el viajero ficticio necesita equipaje."
+        {
+          "title": "Ejemplo 1",
+          "content": "Checklist: ruta, fechas, segmentos, condiciones y seguridad de datos."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Punto pendiente: confirmar si el viajero ficticio necesita equipaje."
+        }
       ],
       "exercises": [
-        "Diseña una checklist de seis puntos para una práctica completa.",
-        "Aplica la checklist a un caso ficticio y marca pendientes."
+        {
+          "id": "ex-050501",
+          "type": "open",
+          "question": "Diseña una checklist de seis puntos para una práctica completa.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe incluir puntos de revisión útiles y mantener seguridad de datos."
+          ]
+        },
+        {
+          "id": "ex-050502",
+          "type": "open",
+          "question": "Aplica la checklist a un caso ficticio y marca pendientes.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe incluir puntos de revisión útiles y mantener seguridad de datos."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-050501",
+          "type": "multiple-choice",
           "question": "¿Para qué sirve la checklist?",
           "options": [
             "Para revisar calidad antes de cerrar la práctica",
             "Para saltarse reglas",
             "Para operar pagos reales"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-050502",
+          "type": "multiple-choice",
           "question": "¿Qué debe incluir siempre?",
           "options": [
             "Revisión de datos ficticios y condiciones",
             "Datos bancarios reales",
             "Acceso a sistemas de producción"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe incluir puntos de revisión útiles y mantener seguridad de datos.",
-      "summary": "La calidad se construye con una revisión final sencilla y constante.",
+      "summary": [
+        "La calidad se construye con una revisión final sencilla y constante."
+      ],
       "safetyNote": "La checklist es formativa y no sustituye procedimientos reales de agencia."
     }
   ]

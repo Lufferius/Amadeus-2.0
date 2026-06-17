@@ -4,193 +4,396 @@
   "objective": "Comprender la estructura de un PNR ficticio y reconocer sus partes sin modificar reservas reales.",
   "lessons": [
     {
-      "id": "w03-l01",
+      "id": "week-03-day-01",
+      "week": 3,
+      "day": 1,
       "title": "Qué es un PNR",
-      "estimatedMinutes": 16,
+      "estimatedMinutes": 30,
       "objective": "Entender el PNR como agrupación de información de una reserva simulada.",
-      "explanation": "Un PNR de entrenamiento reúne datos ficticios de pasajero, itinerario, contacto y observaciones. Para un principiante, sirve como mapa de una reserva: muestra qué información existe y cómo se relaciona. En esta app no se crea ni se modifica ningún PNR real; solo se leen ejemplos preparados.",
+      "explanation": [
+        "Un PNR de entrenamiento reúne datos ficticios de pasajero, itinerario, contacto y observaciones. Para un principiante, sirve como mapa de una reserva: muestra qué información existe y cómo se relaciona. En esta app no se crea ni se modifica ningún PNR real; solo se leen ejemplos preparados."
+      ],
+      "keyConcepts": [
+        {
+          "term": "PNR",
+          "definition": "Expediente de reserva que agrupa datos de viaje, pasajeros, segmentos y notas."
+        },
+        {
+          "term": "Segmento",
+          "definition": "Cada tramo individual de un itinerario."
+        }
+      ],
       "examples": [
-        "Un PNR ficticio puede incluir una pasajera llamada Laura Demo.",
-        "El itinerario de muestra puede tener un segmento MAD-AMS de práctica."
+        {
+          "title": "Ejemplo 1",
+          "content": "Un PNR ficticio puede incluir una pasajera llamada Laura Demo."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "El itinerario de muestra puede tener un segmento MAD-AMS de práctica."
+        }
       ],
       "exercises": [
-        "Enumera cuatro bloques de información que puede contener un PNR ficticio.",
-        "Explica por qué un PNR de muestra no debe mezclarse con datos reales."
+        {
+          "id": "ex-030101",
+          "type": "open",
+          "question": "Enumera cuatro bloques de información que puede contener un PNR ficticio.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe describir el PNR como estructura de lectura y no como operación real."
+          ]
+        },
+        {
+          "id": "ex-030102",
+          "type": "open",
+          "question": "Explica por qué un PNR de muestra no debe mezclarse con datos reales.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe describir el PNR como estructura de lectura y no como operación real."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-030101",
+          "type": "multiple-choice",
           "question": "¿Qué es un PNR en esta formación?",
           "options": [
             "Un conjunto de datos ficticios de una reserva simulada",
             "Un pago real pendiente",
             "Una autorización para cancelar"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-030102",
+          "type": "multiple-choice",
           "question": "¿Qué acción no permite esta app?",
           "options": [
             "Leer un ejemplo",
             "Modificar una reserva real",
             "Identificar bloques de información"
           ],
-          "correctOptionIndex": 1
+          "correctAnswer": 1,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe describir el PNR como estructura de lectura y no como operación real.",
-      "summary": "El PNR de entrenamiento ayuda a entender cómo se agrupa la información de viaje.",
+      "summary": [
+        "El PNR de entrenamiento ayuda a entender cómo se agrupa la información de viaje."
+      ],
       "safetyNote": "No uses localizadores, nombres ni contactos reales dentro de prácticas."
     },
     {
-      "id": "w03-l02",
+      "id": "week-03-day-02",
+      "week": 3,
+      "day": 2,
       "title": "Elementos de pasajero ficticio",
-      "estimatedMinutes": 15,
+      "estimatedMinutes": 30,
       "objective": "Distinguir datos de pasajero ficticios de datos personales reales.",
-      "explanation": "Los datos de pasajero en entrenamiento deben ser inventados, claros y no identificables. Un buen ejemplo permite practicar lectura sin exponer privacidad. No se necesitan documentos reales, teléfonos reales ni correos reales para aprender la estructura de un caso.",
+      "explanation": [
+        "Los datos de pasajero en entrenamiento deben ser inventados, claros y no identificables. Un buen ejemplo permite practicar lectura sin exponer privacidad. No se necesitan documentos reales, teléfonos reales ni correos reales para aprender la estructura de un caso."
+      ],
+      "keyConcepts": [
+        {
+          "term": "PNR",
+          "definition": "Expediente de reserva que agrupa datos de viaje, pasajeros, segmentos y notas."
+        }
+      ],
       "examples": [
-        "Nombre válido de práctica: Alex Prueba.",
-        "Dato no válido: copiar el documento de identidad de una persona real."
+        {
+          "title": "Ejemplo 1",
+          "content": "Nombre válido de práctica: Alex Prueba."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Dato no válido: copiar el documento de identidad de una persona real."
+        }
       ],
       "exercises": [
-        "Crea dos nombres ficticios adecuados para prácticas.",
-        "Señala qué datos personales deben eliminarse de un caso de entrenamiento."
+        {
+          "id": "ex-030201",
+          "type": "open",
+          "question": "Crea dos nombres ficticios adecuados para prácticas.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe proponer datos ficticios y rechazar información identificable."
+          ]
+        },
+        {
+          "id": "ex-030202",
+          "type": "open",
+          "question": "Señala qué datos personales deben eliminarse de un caso de entrenamiento.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe proponer datos ficticios y rechazar información identificable."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-030201",
+          "type": "multiple-choice",
           "question": "¿Qué dato es apropiado para entrenamiento?",
           "options": [
             "Un nombre inventado",
             "Un pasaporte real",
             "Un teléfono personal real"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-030202",
+          "type": "multiple-choice",
           "question": "¿Por qué se evitan datos reales?",
           "options": [
             "Para proteger privacidad y reducir riesgos",
             "Porque impiden aprender conceptos",
             "Porque el simulador los valida oficialmente"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe proponer datos ficticios y rechazar información identificable.",
-      "summary": "Un caso seguro usa pasajeros inventados y datos sin valor real.",
+      "summary": [
+        "Un caso seguro usa pasajeros inventados y datos sin valor real."
+      ],
       "safetyNote": "No introduzcas documentos, contactos o preferencias reales de clientes."
     },
     {
-      "id": "w03-l03",
+      "id": "week-03-day-03",
+      "week": 3,
+      "day": 3,
       "title": "Contacto, agencia y observaciones",
-      "estimatedMinutes": 14,
+      "estimatedMinutes": 30,
       "objective": "Reconocer información auxiliar en un PNR ficticio.",
-      "explanation": "Además del itinerario, un PNR de muestra puede incluir contacto ficticio, referencia de agencia y observaciones de entrenamiento. Estos campos ayudan a practicar lectura ordenada. En un contexto real tendrían implicaciones, por eso aquí se usan valores neutros y simulados.",
+      "explanation": [
+        "Además del itinerario, un PNR de muestra puede incluir contacto ficticio, referencia de agencia y observaciones de entrenamiento. Estos campos ayudan a practicar lectura ordenada. En un contexto real tendrían implicaciones, por eso aquí se usan valores neutros y simulados."
+      ],
+      "keyConcepts": [
+        {
+          "term": "PNR",
+          "definition": "Expediente de reserva que agrupa datos de viaje, pasajeros, segmentos y notas."
+        }
+      ],
       "examples": [
-        "Contacto ficticio: agencia.demo@example.invalid.",
-        "Observación simulada: pasajero prefiere comunicación por correo de prueba."
+        {
+          "title": "Ejemplo 1",
+          "content": "Contacto ficticio: agencia.demo@example.invalid."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Observación simulada: pasajero prefiere comunicación por correo de prueba."
+        }
       ],
       "exercises": [
-        "Clasifica tres datos como contacto, agencia u observación.",
-        "Reescribe una observación para que no contenga datos reales."
+        {
+          "id": "ex-030301",
+          "type": "open",
+          "question": "Clasifica tres datos como contacto, agencia u observación.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe clasificar campos auxiliares y mantenerlos ficticios."
+          ]
+        },
+        {
+          "id": "ex-030302",
+          "type": "open",
+          "question": "Reescribe una observación para que no contenga datos reales.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe clasificar campos auxiliares y mantenerlos ficticios."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-030301",
+          "type": "multiple-choice",
           "question": "¿Para qué sirven las observaciones en un caso de práctica?",
           "options": [
             "Para registrar contexto simulado",
             "Para confirmar pagos reales",
             "Para emitir documentación"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-030302",
+          "type": "multiple-choice",
           "question": "¿Qué contacto es más seguro para entrenar?",
           "options": [
             "Uno ficticio y claramente no operativo",
             "El correo real de un cliente",
             "Un teléfono personal"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe clasificar campos auxiliares y mantenerlos ficticios.",
-      "summary": "Los datos auxiliares completan el contexto, pero deben ser seguros y de entrenamiento.",
+      "summary": [
+        "Los datos auxiliares completan el contexto, pero deben ser seguros y de entrenamiento."
+      ],
       "safetyNote": "No guardes información real de contacto en escenarios formativos."
     },
     {
-      "id": "w03-l04",
+      "id": "week-03-day-04",
+      "week": 3,
+      "day": 4,
       "title": "SSR y OSI en contexto simulado",
-      "estimatedMinutes": 18,
+      "estimatedMinutes": 30,
       "objective": "Comprender SSR y OSI como comunicaciones estructuradas de práctica.",
-      "explanation": "SSR y OSI representan formas de comunicar información especial u observaciones. En esta app se estudian como conceptos, no como instrucciones para enviar mensajes a proveedores. El foco está en redactar información clara, prudente y ficticia, entendiendo que en un entorno real se aplican reglas y supervisión.",
+      "explanation": [
+        "SSR y OSI representan formas de comunicar información especial u observaciones. En esta app se estudian como conceptos, no como instrucciones para enviar mensajes a proveedores. El foco está en redactar información clara, prudente y ficticia, entendiendo que en un entorno real se aplican reglas y supervisión."
+      ],
+      "keyConcepts": [
+        {
+          "term": "SSR/OSI",
+          "definition": "Categor?as de comunicaci?n estructurada que aqu? se estudian solo de forma simulada."
+        }
+      ],
       "examples": [
-        "Un SSR simulado puede representar una necesidad especial ficticia.",
-        "Un OSI simulado puede registrar una nota general de entrenamiento."
+        {
+          "title": "Ejemplo 1",
+          "content": "Un SSR simulado puede representar una necesidad especial ficticia."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Un OSI simulado puede registrar una nota general de entrenamiento."
+        }
       ],
       "exercises": [
-        "Decide si una nota ficticia encaja mejor como SSR conceptual u OSI conceptual.",
-        "Redacta una observación segura sin datos personales."
+        {
+          "id": "ex-030401",
+          "type": "open",
+          "question": "Decide si una nota ficticia encaja mejor como SSR conceptual u OSI conceptual.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe distinguir SSR/OSI conceptuales y redactar sin datos reales."
+          ]
+        },
+        {
+          "id": "ex-030402",
+          "type": "open",
+          "question": "Redacta una observación segura sin datos personales.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe distinguir SSR/OSI conceptuales y redactar sin datos reales."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-030401",
+          "type": "multiple-choice",
           "question": "¿Cómo se tratan SSR y OSI aquí?",
           "options": [
             "Como conceptos simulados de comunicación",
             "Como mensajes reales a aerolíneas",
             "Como pagos de servicios"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-030402",
+          "type": "multiple-choice",
           "question": "¿Qué debe evitar una observación de práctica?",
           "options": [
             "Datos personales reales",
             "Lenguaje claro",
             "Contexto ficticio"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe distinguir SSR/OSI conceptuales y redactar sin datos reales.",
-      "summary": "SSR y OSI se aprenden como categorías de comunicación, siempre en modo simulado.",
+      "summary": [
+        "SSR y OSI se aprenden como categorías de comunicación, siempre en modo simulado."
+      ],
       "safetyNote": "No uses el simulador para comunicar necesidades reales a proveedores."
     },
     {
-      "id": "w03-l05",
+      "id": "week-03-day-05",
+      "week": 3,
+      "day": 5,
       "title": "Revisión segura de un PNR de muestra",
-      "estimatedMinutes": 20,
+      "estimatedMinutes": 30,
       "objective": "Aplicar una checklist de lectura a un PNR ficticio.",
-      "explanation": "Revisar un PNR de muestra consiste en leer pasajeros, segmentos, contactos y notas, y comprobar que todo encaja con la solicitud ficticia. Una revisión segura no modifica nada. El aprendizaje está en detectar incoherencias y formular preguntas antes de avanzar.",
+      "explanation": [
+        "Revisar un PNR de muestra consiste en leer pasajeros, segmentos, contactos y notas, y comprobar que todo encaja con la solicitud ficticia. Una revisión segura no modifica nada. El aprendizaje está en detectar incoherencias y formular preguntas antes de avanzar."
+      ],
+      "keyConcepts": [
+        {
+          "term": "PNR",
+          "definition": "Expediente de reserva que agrupa datos de viaje, pasajeros, segmentos y notas."
+        },
+        {
+          "term": "Segmento",
+          "definition": "Cada tramo individual de un itinerario."
+        }
+      ],
       "examples": [
-        "El PNR muestra ida, pero la solicitud pedía ida y vuelta.",
-        "La nota de entrenamiento menciona equipaje, pero la tarifa no se ha revisado."
+        {
+          "title": "Ejemplo 1",
+          "content": "El PNR muestra ida, pero la solicitud pedía ida y vuelta."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "La nota de entrenamiento menciona equipaje, pero la tarifa no se ha revisado."
+        }
       ],
       "exercises": [
-        "Usa una checklist para revisar un PNR ficticio.",
-        "Escribe dos preguntas que harías al detectar una inconsistencia."
+        {
+          "id": "ex-030501",
+          "type": "open",
+          "question": "Usa una checklist para revisar un PNR ficticio.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe seguir checklist, detectar problemas y no proponer cambios reales."
+          ]
+        },
+        {
+          "id": "ex-030502",
+          "type": "open",
+          "question": "Escribe dos preguntas que harías al detectar una inconsistencia.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe seguir checklist, detectar problemas y no proponer cambios reales."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-030501",
+          "type": "multiple-choice",
           "question": "¿Qué significa revisar de forma segura?",
           "options": [
             "Leer y detectar incoherencias sin modificar nada real",
             "Cambiar segmentos reales",
             "Cancelar si algo parece mal"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-030502",
+          "type": "multiple-choice",
           "question": "¿Qué debe hacerse ante una incoherencia?",
           "options": [
             "Formular preguntas y verificar",
             "Ignorarla",
             "Emitir inmediatamente"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe seguir checklist, detectar problemas y no proponer cambios reales.",
-      "summary": "La revisión segura mejora criterio sin tocar sistemas de producción.",
+      "summary": [
+        "La revisión segura mejora criterio sin tocar sistemas de producción."
+      ],
       "safetyNote": "Nunca apliques cambios reales a partir de una práctica."
     }
   ]

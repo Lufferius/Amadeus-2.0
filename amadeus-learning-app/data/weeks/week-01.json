@@ -4,193 +4,396 @@
   "objective": "Entender qué es un GDS, qué papel cumple Amadeus en una agencia y cómo separar práctica simulada de operación real.",
   "lessons": [
     {
-      "id": "w01-l01",
+      "id": "week-01-day-01",
+      "week": 1,
+      "day": 1,
       "title": "Qué es un GDS",
-      "estimatedMinutes": 14,
+      "estimatedMinutes": 30,
       "objective": "Comprender la función de un GDS en la distribución de viajes.",
-      "explanation": "Un GDS es una plataforma que ayuda a consultar información de viajes, comparar opciones y organizar datos de una reserva. Para empezar, lo importante no es memorizar pantallas, sino entender el flujo: una persona solicita un viaje, el consultor interpreta la necesidad, revisa opciones y comunica alternativas de forma clara. En esta app todo se practica con datos inventados y sin conexión a sistemas reales.",
+      "explanation": [
+        "Un GDS es una plataforma que ayuda a consultar información de viajes, comparar opciones y organizar datos de una reserva. Para empezar, lo importante no es memorizar pantallas, sino entender el flujo: una persona solicita un viaje, el consultor interpreta la necesidad, revisa opciones y comunica alternativas de forma clara. En esta app todo se practica con datos inventados y sin conexión a sistemas reales."
+      ],
+      "keyConcepts": [
+        {
+          "term": "GDS",
+          "definition": "Sistema de distribuci?n global usado como concepto de entrenamiento para consultar y organizar informaci?n de viaje."
+        }
+      ],
       "examples": [
-        "Una consulta simulada de disponibilidad muestra varias opciones entre Madrid y Ámsterdam.",
-        "Un itinerario de entrenamiento agrupa origen, destino, fecha y una opción elegida."
+        {
+          "title": "Ejemplo 1",
+          "content": "Una consulta simulada de disponibilidad muestra varias opciones entre Madrid y Ámsterdam."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Un itinerario de entrenamiento agrupa origen, destino, fecha y una opción elegida."
+        }
       ],
       "exercises": [
-        "Explica con tus palabras qué problema resuelve un GDS en una agencia.",
-        "Separa en dos columnas lo que es consulta de información y lo que sería operación real."
+        {
+          "id": "ex-010101",
+          "type": "open",
+          "question": "Explica con tus palabras qué problema resuelve un GDS en una agencia.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "La respuesta debe distinguir consulta formativa de operación real y mencionar que los datos son ficticios."
+          ]
+        },
+        {
+          "id": "ex-010102",
+          "type": "open",
+          "question": "Separa en dos columnas lo que es consulta de información y lo que sería operación real.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "La respuesta debe distinguir consulta formativa de operación real y mencionar que los datos son ficticios."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-010101",
+          "type": "multiple-choice",
           "question": "¿Cuál es el objetivo principal de un GDS en este contexto formativo?",
           "options": [
             "Ayudar a consultar y organizar información de viajes",
             "Cobrar automáticamente al pasajero",
             "Emitir billetes reales desde el simulador"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-010102",
+          "type": "multiple-choice",
           "question": "¿Qué debe recordar siempre un principiante al practicar aquí?",
           "options": [
             "Que puede usar datos reales si son antiguos",
             "Que todo es entrenamiento y no hay conexión real",
             "Que las prácticas sustituyen a la supervisión profesional"
           ],
-          "correctOptionIndex": 1
+          "correctAnswer": 1,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "La respuesta debe distinguir consulta formativa de operación real y mencionar que los datos son ficticios.",
-      "summary": "Un GDS organiza información de viaje, pero en este curso se trabaja solo con simulaciones seguras.",
+      "summary": [
+        "Un GDS organiza información de viaje, pero en este curso se trabaja solo con simulaciones seguras."
+      ],
       "safetyNote": "No introduzcas datos reales de clientes ni interpretes el simulador como una herramienta operativa."
     },
     {
-      "id": "w01-l02",
+      "id": "week-01-day-02",
+      "week": 1,
+      "day": 2,
       "title": "Roles básicos en una agencia",
-      "estimatedMinutes": 12,
+      "estimatedMinutes": 30,
       "objective": "Identificar los roles que intervienen en una solicitud de viaje.",
-      "explanation": "El Travel Consultant escucha la necesidad del viajero, revisa opciones y explica alternativas. El pasajero es la persona que viaja, el proveedor ofrece el servicio y el sistema organiza información. En entrenamiento conviene hablar de roles para no confundir una pantalla simulada con una acción real. La responsabilidad del consultor incluye preguntar, verificar y comunicar límites.",
+      "explanation": [
+        "El Travel Consultant escucha la necesidad del viajero, revisa opciones y explica alternativas. El pasajero es la persona que viaja, el proveedor ofrece el servicio y el sistema organiza información. En entrenamiento conviene hablar de roles para no confundir una pantalla simulada con una acción real. La responsabilidad del consultor incluye preguntar, verificar y comunicar límites."
+      ],
+      "keyConcepts": [
+        {
+          "term": "PNR",
+          "definition": "Expediente de reserva que agrupa datos de viaje, pasajeros, segmentos y notas."
+        }
+      ],
       "examples": [
-        "Un viajero ficticio pide viajar de MAD a AMS por trabajo.",
-        "El consultor compara opciones simuladas antes de explicar pros y contras."
+        {
+          "title": "Ejemplo 1",
+          "content": "Un viajero ficticio pide viajar de MAD a AMS por trabajo."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "El consultor compara opciones simuladas antes de explicar pros y contras."
+        }
       ],
       "exercises": [
-        "Relaciona cada rol con una responsabilidad básica.",
-        "Describe qué harías si una solicitud ficticia no incluye fecha de regreso."
+        {
+          "id": "ex-010201",
+          "type": "open",
+          "question": "Relaciona cada rol con una responsabilidad básica.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe reconocer al consultor como mediador entre necesidad y opciones, sin acciones reales."
+          ]
+        },
+        {
+          "id": "ex-010202",
+          "type": "open",
+          "question": "Describe qué harías si una solicitud ficticia no incluye fecha de regreso.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe reconocer al consultor como mediador entre necesidad y opciones, sin acciones reales."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-010201",
+          "type": "multiple-choice",
           "question": "¿Qué hace principalmente el Travel Consultant?",
           "options": [
             "Escucha, interpreta y comunica opciones",
             "Opera pagos reales desde esta app",
             "Modifica reservas reales durante la práctica"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-010202",
+          "type": "multiple-choice",
           "question": "¿Por qué se usan pasajeros ficticios?",
           "options": [
             "Para acelerar emisiones reales",
             "Para practicar sin exponer datos personales",
             "Para evitar leer reglas de seguridad"
           ],
-          "correctOptionIndex": 1
+          "correctAnswer": 1,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe reconocer al consultor como mediador entre necesidad y opciones, sin acciones reales.",
-      "summary": "Los roles ayudan a ordenar la conversación y a practicar con seguridad.",
+      "summary": [
+        "Los roles ayudan a ordenar la conversación y a practicar con seguridad."
+      ],
       "safetyNote": "Usa siempre nombres inventados y evita cualquier dato identificable."
     },
     {
-      "id": "w01-l03",
+      "id": "week-01-day-03",
+      "week": 1,
+      "day": 3,
       "title": "Conceptos esenciales",
-      "estimatedMinutes": 18,
+      "estimatedMinutes": 30,
       "objective": "Reconocer disponibilidad, segmento, tarifa, PNR y SSR/OSI como conceptos base.",
-      "explanation": "La disponibilidad indica opciones posibles en una ruta y fecha simuladas. Un segmento representa una parte del viaje, por ejemplo un vuelo de ida. Una tarifa describe precio y condiciones de forma conceptual. Un PNR de entrenamiento agrupa datos ficticios de una reserva simulada. SSR y OSI son formas estructuradas de comunicar información especial o comentarios en un contexto controlado.",
+      "explanation": [
+        "La disponibilidad indica opciones posibles en una ruta y fecha simuladas. Un segmento representa una parte del viaje, por ejemplo un vuelo de ida. Una tarifa describe precio y condiciones de forma conceptual. Un PNR de entrenamiento agrupa datos ficticios de una reserva simulada. SSR y OSI son formas estructuradas de comunicar información especial o comentarios en un contexto controlado."
+      ],
+      "keyConcepts": [
+        {
+          "term": "PNR",
+          "definition": "Expediente de reserva que agrupa datos de viaje, pasajeros, segmentos y notas."
+        },
+        {
+          "term": "Segmento",
+          "definition": "Cada tramo individual de un itinerario."
+        }
+      ],
       "examples": [
-        "MAD-AMS en una fecha ficticia puede verse como un segmento.",
-        "Una nota de entrenamiento puede indicar una preferencia sin tocar sistemas reales."
+        {
+          "title": "Ejemplo 1",
+          "content": "MAD-AMS en una fecha ficticia puede verse como un segmento."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Una nota de entrenamiento puede indicar una preferencia sin tocar sistemas reales."
+        }
       ],
       "exercises": [
-        "Define cada concepto en una frase sencilla.",
-        "Elige qué concepto usarías para hablar de condiciones de cambio."
+        {
+          "id": "ex-010301",
+          "type": "open",
+          "question": "Define cada concepto en una frase sencilla.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe usar definiciones simples y no convertir los conceptos en instrucciones operativas reales."
+          ]
+        },
+        {
+          "id": "ex-010302",
+          "type": "open",
+          "question": "Elige qué concepto usarías para hablar de condiciones de cambio.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe usar definiciones simples y no convertir los conceptos en instrucciones operativas reales."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-010301",
+          "type": "multiple-choice",
           "question": "¿Qué describe mejor un segmento?",
           "options": [
             "Una parte concreta de un itinerario",
             "Una contraseña de acceso",
             "Un pago pendiente"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-010302",
+          "type": "multiple-choice",
           "question": "¿Qué agrupa un PNR de entrenamiento?",
           "options": [
             "Datos ficticios de una reserva simulada",
             "Datos bancarios reales",
             "Documentos oficiales del pasajero"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe usar definiciones simples y no convertir los conceptos en instrucciones operativas reales.",
-      "summary": "Estos conceptos forman el vocabulario mínimo para entender las siguientes semanas.",
+      "summary": [
+        "Estos conceptos forman el vocabulario mínimo para entender las siguientes semanas."
+      ],
       "safetyNote": "Las explicaciones son conceptuales y no autorizan crear, modificar o cancelar reservas reales."
     },
     {
-      "id": "w01-l04",
+      "id": "week-01-day-04",
+      "week": 1,
+      "day": 4,
       "title": "Seguridad en entrenamiento",
-      "estimatedMinutes": 16,
+      "estimatedMinutes": 30,
       "objective": "Aplicar límites claros para practicar sin riesgo.",
-      "explanation": "Una práctica segura usa escenarios inventados, rutas de ejemplo y resultados simulados. No se deben introducir nombres, teléfonos, correos, documentos ni necesidades reales de clientes. Tampoco se deben tomar decisiones comerciales reales a partir de una pantalla de entrenamiento. Si una duda afecta a una reserva real, debe resolverse fuera del simulador y con supervisión autorizada.",
+      "explanation": [
+        "Una práctica segura usa escenarios inventados, rutas de ejemplo y resultados simulados. No se deben introducir nombres, teléfonos, correos, documentos ni necesidades reales de clientes. Tampoco se deben tomar decisiones comerciales reales a partir de una pantalla de entrenamiento. Si una duda afecta a una reserva real, debe resolverse fuera del simulador y con supervisión autorizada."
+      ],
+      "keyConcepts": [
+        {
+          "term": "Tarifa",
+          "definition": "Precio y condiciones asociadas a una opci?n de viaje."
+        }
+      ],
       "examples": [
-        "Correcto: usar 'María Demo' como pasajera ficticia.",
-        "Incorrecto: copiar el itinerario real de una persona para practicar."
+        {
+          "title": "Ejemplo 1",
+          "content": "Correcto: usar 'María Demo' como pasajera ficticia."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Incorrecto: copiar el itinerario real de una persona para practicar."
+        }
       ],
       "exercises": [
-        "Marca tres tipos de datos que nunca debes usar en una práctica.",
-        "Reescribe una solicitud realista para convertirla en un caso ficticio."
+        {
+          "id": "ex-010401",
+          "type": "open",
+          "question": "Marca tres tipos de datos que nunca debes usar en una práctica.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe priorizar privacidad, datos ficticios y derivación a supervisión para casos reales."
+          ]
+        },
+        {
+          "id": "ex-010402",
+          "type": "open",
+          "question": "Reescribe una solicitud realista para convertirla en un caso ficticio.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe priorizar privacidad, datos ficticios y derivación a supervisión para casos reales."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-010401",
+          "type": "multiple-choice",
           "question": "¿Qué dato debe evitarse siempre?",
           "options": [
             "Un nombre ficticio",
             "Un número de documento real",
             "Una ciudad de ejemplo"
           ],
-          "correctOptionIndex": 1
+          "correctAnswer": 1,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-010402",
+          "type": "multiple-choice",
           "question": "¿Qué hacer si una duda afecta a una reserva real?",
           "options": [
             "Resolverla en el simulador",
             "Pedir supervisión fuera del simulador",
             "Probar varias opciones hasta acertar"
           ],
-          "correctOptionIndex": 1
+          "correctAnswer": 1,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe priorizar privacidad, datos ficticios y derivación a supervisión para casos reales.",
-      "summary": "La seguridad consiste en practicar con límites claros y escenarios inventados.",
+      "summary": [
+        "La seguridad consiste en practicar con límites claros y escenarios inventados."
+      ],
       "safetyNote": "No uses este entorno para validar decisiones sobre clientes, reservas o pagos reales."
     },
     {
-      "id": "w01-l05",
+      "id": "week-01-day-05",
+      "week": 1,
+      "day": 5,
       "title": "Lectura de pantallas simuladas",
-      "estimatedMinutes": 15,
+      "estimatedMinutes": 30,
       "objective": "Leer resultados simulados sin asumir que proceden de un sistema real.",
-      "explanation": "Las pantallas simuladas sirven para entrenar la atención: identificar rutas, horarios, segmentos, condiciones y notas. El objetivo es aprender a observar antes de actuar. En la vida profesional, una pantalla real puede tener consecuencias; aquí, en cambio, cada resultado está diseñado para practicar razonamiento y vocabulario.",
+      "explanation": [
+        "Las pantallas simuladas sirven para entrenar la atención: identificar rutas, horarios, segmentos, condiciones y notas. El objetivo es aprender a observar antes de actuar. En la vida profesional, una pantalla real puede tener consecuencias; aquí, en cambio, cada resultado está diseñado para practicar razonamiento y vocabulario."
+      ],
+      "keyConcepts": [
+        {
+          "term": "PNR",
+          "definition": "Expediente de reserva que agrupa datos de viaje, pasajeros, segmentos y notas."
+        },
+        {
+          "term": "Segmento",
+          "definition": "Cada tramo individual de un itinerario."
+        }
+      ],
       "examples": [
-        "Una disponibilidad simulada puede mostrar salida, llegada y duración aproximada.",
-        "Un PNR de muestra puede incluir pasajeros ficticios y segmentos de práctica."
+        {
+          "title": "Ejemplo 1",
+          "content": "Una disponibilidad simulada puede mostrar salida, llegada y duración aproximada."
+        },
+        {
+          "title": "Ejemplo 2",
+          "content": "Un PNR de muestra puede incluir pasajeros ficticios y segmentos de práctica."
+        }
       ],
       "exercises": [
-        "Lee una disponibilidad de muestra y enumera la información que entiendes.",
-        "Escribe dos preguntas que harías antes de recomendar una opción."
+        {
+          "id": "ex-010501",
+          "type": "open",
+          "question": "Lee una disponibilidad de muestra y enumera la información que entiendes.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe interpretar información visible sin afirmar disponibilidad, precio o condiciones reales."
+          ]
+        },
+        {
+          "id": "ex-010502",
+          "type": "open",
+          "question": "Escribe dos preguntas que harías antes de recomendar una opción.",
+          "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
+          "correctionCriteria": [
+            "Debe interpretar información visible sin afirmar disponibilidad, precio o condiciones reales."
+          ]
+        }
       ],
       "quiz": [
         {
+          "id": "q-010501",
+          "type": "multiple-choice",
           "question": "¿Cuál es una buena actitud ante una pantalla simulada?",
           "options": [
             "Observar, interpretar y confirmar límites",
             "Tratarla como una reserva real",
             "Copiar datos de clientes para compararlos"
           ],
-          "correctOptionIndex": 0
+          "correctAnswer": 0,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         },
         {
+          "id": "q-010502",
+          "type": "multiple-choice",
           "question": "¿Qué demuestra una pantalla de entrenamiento?",
           "options": [
             "Disponibilidad real garantizada",
             "Un escenario ficticio para practicar",
             "Una autorización para emitir"
           ],
-          "correctOptionIndex": 1
+          "correctAnswer": 1,
+          "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
         }
       ],
-      "correctionCriteria": "Debe interpretar información visible sin afirmar disponibilidad, precio o condiciones reales.",
-      "summary": "Leer bien una pantalla simulada prepara para preguntar mejor y cometer menos errores conceptuales.",
+      "summary": [
+        "Leer bien una pantalla simulada prepara para preguntar mejor y cometer menos errores conceptuales."
+      ],
       "safetyNote": "Nunca presentes resultados simulados como confirmaciones reales de disponibilidad o tarifa."
     }
   ]

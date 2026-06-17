@@ -145,9 +145,30 @@ button {
 
 .week-card p,
 .lesson-block p,
-.lesson-block li {
+.lesson-block li,
+.lesson-block dd {
   color: var(--muted);
   line-height: 1.65;
+}
+
+.concept-list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.concept-list div {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.concept-list dt {
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.concept-list dd {
+  margin: 0;
 }
 
 .week-card ul {
