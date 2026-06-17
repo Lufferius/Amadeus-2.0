@@ -23,11 +23,35 @@
       "examples": [
         {
           "title": "Ejemplo 1",
-          "content": "Petición vaga: necesito ir a Ámsterdam pronto."
+          "content": "Petición vaga: necesito ir a Ámsterdam pronto.",
+          "simulatedTerminal": {
+            "command": "SHOW AVAILABILITY MAD AMS",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> SHOW AVAILABILITY MAD AMS",
+              "Disponibilidad ficticia MAD-AMS",
+              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
+              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
+              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
+            ],
+            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         },
         {
           "title": "Ejemplo 2",
-          "content": "Petición clara: salida desde Madrid el lunes, regreso el jueves, preferencia de mañana."
+          "content": "Petición clara: salida desde Madrid el lunes, regreso el jueves, preferencia de mañana.",
+          "simulatedTerminal": {
+            "command": "SHOW AVAILABILITY MAD AMS",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> SHOW AVAILABILITY MAD AMS",
+              "Disponibilidad ficticia MAD-AMS",
+              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
+              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
+              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
+            ],
+            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         }
       ],
       "exercises": [
@@ -128,11 +152,35 @@
       "examples": [
         {
           "title": "Ejemplo 1",
-          "content": "Opción A simulada: salida temprana y tarifa más restrictiva."
+          "content": "Opción A simulada: salida temprana y tarifa más restrictiva.",
+          "simulatedTerminal": {
+            "command": "SHOW FARE_RULE BASIC",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> SHOW FARE_RULE BASIC",
+              "BASIC ficticia: menor precio inicial.",
+              "Cambios: no permitidos en el ejemplo.",
+              "Reembolso: no contemplado en el ejemplo.",
+              "Riesgo: alta restriccion si el plan cambia."
+            ],
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         },
         {
           "title": "Ejemplo 2",
-          "content": "Opción B simulada: salida más tarde y mejores condiciones de cambio en el ejemplo."
+          "content": "Opción B simulada: salida más tarde y mejores condiciones de cambio en el ejemplo.",
+          "simulatedTerminal": {
+            "command": "SHOW FARE_RULE BASIC",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> SHOW FARE_RULE BASIC",
+              "BASIC ficticia: menor precio inicial.",
+              "Cambios: no permitidos en el ejemplo.",
+              "Reembolso: no contemplado en el ejemplo.",
+              "Riesgo: alta restriccion si el plan cambia."
+            ],
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         }
       ],
       "exercises": [
@@ -233,11 +281,29 @@
       "examples": [
         {
           "title": "Ejemplo 1",
-          "content": "La solicitud pide regreso el viernes, pero el itinerario vuelve el jueves."
+          "content": "La solicitud pide regreso el viernes, pero el itinerario vuelve el jueves.",
+          "simulatedTerminal": {
+            "command": "PRACTICE SEGMENTS",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> PRACTICE SEGMENTS",
+              "Practica: MAD-AMS, AMS-LHR, LHR-MAD. Cuantos segmentos hay?"
+            ],
+            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         },
         {
           "title": "Ejemplo 2",
-          "content": "El PNR ficticio muestra dos pasajeros y la solicitud menciona uno."
+          "content": "El PNR ficticio muestra dos pasajeros y la solicitud menciona uno.",
+          "simulatedTerminal": {
+            "command": "PRACTICE SEGMENTS",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> PRACTICE SEGMENTS",
+              "Practica: MAD-AMS, AMS-LHR, LHR-MAD. Cuantos segmentos hay?"
+            ],
+            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         }
       ],
       "exercises": [
@@ -338,11 +404,29 @@
       "examples": [
         {
           "title": "Ejemplo 1",
-          "content": "Arriesgado: te devuelven todo sin problema."
+          "content": "Arriesgado: te devuelven todo sin problema.",
+          "simulatedTerminal": {
+            "command": "PRACTICE FARES",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> PRACTICE FARES",
+              "Practica: A) tarifa BASIC barata sin cambios. B) tarifa FLEX mas cara con cambios. La politica ficticia prioriza flexibilidad. Responde A o B."
+            ],
+            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         },
         {
           "title": "Ejemplo 2",
-          "content": "Prudente: en este ejemplo no aparece reembolso; habría que verificar condiciones reales."
+          "content": "Prudente: en este ejemplo no aparece reembolso; habría que verificar condiciones reales.",
+          "simulatedTerminal": {
+            "command": "PRACTICE FARES",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> PRACTICE FARES",
+              "Practica: A) tarifa BASIC barata sin cambios. B) tarifa FLEX mas cara con cambios. La politica ficticia prioriza flexibilidad. Responde A o B."
+            ],
+            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         }
       ],
       "exercises": [
@@ -443,11 +527,57 @@
       "examples": [
         {
           "title": "Ejemplo 1",
-          "content": "Checklist: ruta, fechas, segmentos, condiciones y seguridad de datos."
+          "content": "Checklist: ruta, fechas, segmentos, condiciones y seguridad de datos.",
+          "simulatedTerminal": {
+            "command": "HELP",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> HELP",
+              "Comandos disponibles:",
+              "- HELP",
+              "- GLOSSARY PNR",
+              "- GLOSSARY GDS",
+              "- GLOSSARY SSR",
+              "- GLOSSARY OSI",
+              "- GLOSSARY FARE_RULE",
+              "- SHOW SAMPLE_PNR",
+              "- SHOW AVAILABILITY MAD AMS",
+              "- SHOW FARE_RULE BASIC",
+              "- SHOW FARE_RULE FLEX",
+              "- PRACTICE SEGMENTS",
+              "- PRACTICE SSR_OSI",
+              "- PRACTICE FARES",
+              "- RESET"
+            ],
+            "explanation": "HELP muestra solo comandos ficticios admitidos por el entorno de entrenamiento. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         },
         {
           "title": "Ejemplo 2",
-          "content": "Punto pendiente: confirmar si el viajero ficticio necesita equipaje."
+          "content": "Punto pendiente: confirmar si el viajero ficticio necesita equipaje.",
+          "simulatedTerminal": {
+            "command": "HELP",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> HELP",
+              "Comandos disponibles:",
+              "- HELP",
+              "- GLOSSARY PNR",
+              "- GLOSSARY GDS",
+              "- GLOSSARY SSR",
+              "- GLOSSARY OSI",
+              "- GLOSSARY FARE_RULE",
+              "- SHOW SAMPLE_PNR",
+              "- SHOW AVAILABILITY MAD AMS",
+              "- SHOW FARE_RULE BASIC",
+              "- SHOW FARE_RULE FLEX",
+              "- PRACTICE SEGMENTS",
+              "- PRACTICE SSR_OSI",
+              "- PRACTICE FARES",
+              "- RESET"
+            ],
+            "explanation": "HELP muestra solo comandos ficticios admitidos por el entorno de entrenamiento. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         }
       ],
       "exercises": [

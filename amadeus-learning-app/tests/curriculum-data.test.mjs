@@ -65,6 +65,15 @@ function assertLesson(lesson, expectedPrefix) {
   lesson.examples.forEach((example) => {
     assertText(example.title, `${lesson.id}: example title is required`);
     assertText(example.content, `${lesson.id}: example content is required`);
+    assert(example.simulatedTerminal, `${lesson.id}: example simulatedTerminal is required`);
+    assertText(example.simulatedTerminal.command, `${lesson.id}: example simulated terminal command is required`);
+    assertArray(example.simulatedTerminal.output, `${lesson.id}: example simulated terminal output must be an array`);
+    assert(example.simulatedTerminal.output.length >= 2, `${lesson.id}: example simulated terminal output must include at least 2 lines`);
+    assertText(example.simulatedTerminal.explanation, `${lesson.id}: example simulated terminal explanation is required`);
+    assert(
+      /^(HELP|GLOSSARY\s+[A-Z_]+|SHOW\s+(SAMPLE_PNR|AVAILABILITY\s+[A-Z]{3}\s+[A-Z]{3}|FARE_RULE\s+(BASIC|FLEX))|PRACTICE\s+(SEGMENTS|SSR_OSI|FARES))$/.test(example.simulatedTerminal.command),
+      `${lesson.id}: example simulated terminal command must be supported and safe`,
+    );
   });
   assertArray(lesson.exercises, `${lesson.id}: exercises must be an array`);
   assert(lesson.exercises.length >= 2, `${lesson.id}: exercises must include at least 2 items`);

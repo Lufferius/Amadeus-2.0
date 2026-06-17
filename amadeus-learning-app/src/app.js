@@ -73,6 +73,20 @@ function renderExerciseItem(item) {
   return `<li><strong>${item.question}</strong><br><span>${item.expectedAnswer}</span></li>`;
 }
 
+function renderExampleItem(item) {
+  const terminal = item.simulatedTerminal
+    ? `
+      <div class="example-terminal">
+        <div class="example-terminal-title">Salida simulada del terminal seguro</div>
+        <pre>${item.simulatedTerminal.output.join('\n')}</pre>
+        <p>${item.simulatedTerminal.explanation}</p>
+      </div>
+    `
+    : '';
+
+  return `<li><strong>${item.title}:</strong> ${item.content}${terminal}</li>`;
+}
+
 function renderShell(content, activeView = 'dashboard') {
   app.innerHTML = '';
 
@@ -168,7 +182,7 @@ function renderLesson() {
       <dl class="concept-list">${lesson.keyConcepts.map((concept) => `<div><dt>${concept.term}</dt><dd>${concept.definition}</dd></div>`).join('')}</dl>
     </section>
     <section class="lesson-columns">
-      <div class="lesson-block"><h2>Ejemplos</h2><ul>${lesson.examples.map((item) => `<li><strong>${item.title}:</strong> ${item.content}</li>`).join('')}</ul></div>
+      <div class="lesson-block"><h2>Ejemplos</h2><ul>${lesson.examples.map(renderExampleItem).join('')}</ul></div>
       <div class="lesson-block"><h2>Ejercicios</h2><ul>${lesson.exercises.map(renderExerciseItem).join('')}</ul></div>
     </section>
     <section class="lesson-block quiz"><h2>Quiz</h2></section>

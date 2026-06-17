@@ -23,11 +23,57 @@
       "examples": [
         {
           "title": "Ejemplo 1",
-          "content": "Una consulta simulada de disponibilidad muestra varias opciones entre Madrid y Ámsterdam."
+          "content": "Una consulta simulada de disponibilidad muestra varias opciones entre Madrid y Ámsterdam.",
+          "simulatedTerminal": {
+            "command": "HELP",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> HELP",
+              "Comandos disponibles:",
+              "- HELP",
+              "- GLOSSARY PNR",
+              "- GLOSSARY GDS",
+              "- GLOSSARY SSR",
+              "- GLOSSARY OSI",
+              "- GLOSSARY FARE_RULE",
+              "- SHOW SAMPLE_PNR",
+              "- SHOW AVAILABILITY MAD AMS",
+              "- SHOW FARE_RULE BASIC",
+              "- SHOW FARE_RULE FLEX",
+              "- PRACTICE SEGMENTS",
+              "- PRACTICE SSR_OSI",
+              "- PRACTICE FARES",
+              "- RESET"
+            ],
+            "explanation": "HELP muestra solo comandos ficticios admitidos por el entorno de entrenamiento. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         },
         {
           "title": "Ejemplo 2",
-          "content": "Un itinerario de entrenamiento agrupa origen, destino, fecha y una opción elegida."
+          "content": "Un itinerario de entrenamiento agrupa origen, destino, fecha y una opción elegida.",
+          "simulatedTerminal": {
+            "command": "HELP",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> HELP",
+              "Comandos disponibles:",
+              "- HELP",
+              "- GLOSSARY PNR",
+              "- GLOSSARY GDS",
+              "- GLOSSARY SSR",
+              "- GLOSSARY OSI",
+              "- GLOSSARY FARE_RULE",
+              "- SHOW SAMPLE_PNR",
+              "- SHOW AVAILABILITY MAD AMS",
+              "- SHOW FARE_RULE BASIC",
+              "- SHOW FARE_RULE FLEX",
+              "- PRACTICE SEGMENTS",
+              "- PRACTICE SSR_OSI",
+              "- PRACTICE FARES",
+              "- RESET"
+            ],
+            "explanation": "HELP muestra solo comandos ficticios admitidos por el entorno de entrenamiento. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         }
       ],
       "exercises": [
@@ -128,11 +174,29 @@
       "examples": [
         {
           "title": "Ejemplo 1",
-          "content": "Un viajero ficticio pide viajar de MAD a AMS por trabajo."
+          "content": "Un viajero ficticio pide viajar de MAD a AMS por trabajo.",
+          "simulatedTerminal": {
+            "command": "GLOSSARY GDS",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> GLOSSARY GDS",
+              "Sistema de distribucion global que conecta agencias y proveedores de viaje. En este simulador se estudia solo como concepto."
+            ],
+            "explanation": "El glosario usa definiciones pedagogicas y no sustituye formacion autorizada. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         },
         {
           "title": "Ejemplo 2",
-          "content": "El consultor compara opciones simuladas antes de explicar pros y contras."
+          "content": "El consultor compara opciones simuladas antes de explicar pros y contras.",
+          "simulatedTerminal": {
+            "command": "GLOSSARY GDS",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> GLOSSARY GDS",
+              "Sistema de distribucion global que conecta agencias y proveedores de viaje. En este simulador se estudia solo como concepto."
+            ],
+            "explanation": "El glosario usa definiciones pedagogicas y no sustituye formacion autorizada. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         }
       ],
       "exercises": [
@@ -237,11 +301,29 @@
       "examples": [
         {
           "title": "Ejemplo 1",
-          "content": "MAD-AMS en una fecha ficticia puede verse como un segmento."
+          "content": "MAD-AMS en una fecha ficticia puede verse como un segmento.",
+          "simulatedTerminal": {
+            "command": "GLOSSARY PNR",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> GLOSSARY PNR",
+              "Expediente de reserva. Aqui se usa un PNR ficticio para aprender estructura sin modificar nada real."
+            ],
+            "explanation": "El glosario usa definiciones pedagogicas y no sustituye formacion autorizada. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         },
         {
           "title": "Ejemplo 2",
-          "content": "Una nota de entrenamiento puede indicar una preferencia sin tocar sistemas reales."
+          "content": "Una nota de entrenamiento puede indicar una preferencia sin tocar sistemas reales.",
+          "simulatedTerminal": {
+            "command": "GLOSSARY PNR",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> GLOSSARY PNR",
+              "Expediente de reserva. Aqui se usa un PNR ficticio para aprender estructura sin modificar nada real."
+            ],
+            "explanation": "El glosario usa definiciones pedagogicas y no sustituye formacion autorizada. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         }
       ],
       "exercises": [
@@ -342,11 +424,50 @@
       "examples": [
         {
           "title": "Ejemplo 1",
-          "content": "Correcto: usar 'María Demo' como pasajera ficticia."
+          "content": "Correcto: usar 'María Demo' como pasajera ficticia.",
+          "simulatedTerminal": {
+            "command": "SHOW SAMPLE_PNR",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> SHOW SAMPLE_PNR",
+              "PNR FICTICIO: DEMO42",
+              "Pasajera: Ana Demo",
+              "Cliente corporativo: DemoCorp",
+              "Segmentos: MAD-AMS 09:10-11:45 / AMS-MAD 18:20-20:55",
+              "Contacto: training@example.invalid",
+              "SSR ficticio: asistencia WCHR pendiente de confirmar en escenario",
+              "OSI ficticio: viaje de formacion interna",
+              "Ticketing deadline ficticio: 18:00 del dia de practica"
+            ],
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         },
         {
           "title": "Ejemplo 2",
-          "content": "Incorrecto: copiar el itinerario real de una persona para practicar."
+          "content": "Incorrecto: copiar el itinerario real de una persona para practicar.",
+          "simulatedTerminal": {
+            "command": "HELP",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> HELP",
+              "Comandos disponibles:",
+              "- HELP",
+              "- GLOSSARY PNR",
+              "- GLOSSARY GDS",
+              "- GLOSSARY SSR",
+              "- GLOSSARY OSI",
+              "- GLOSSARY FARE_RULE",
+              "- SHOW SAMPLE_PNR",
+              "- SHOW AVAILABILITY MAD AMS",
+              "- SHOW FARE_RULE BASIC",
+              "- SHOW FARE_RULE FLEX",
+              "- PRACTICE SEGMENTS",
+              "- PRACTICE SSR_OSI",
+              "- PRACTICE FARES",
+              "- RESET"
+            ],
+            "explanation": "HELP muestra solo comandos ficticios admitidos por el entorno de entrenamiento. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         }
       ],
       "exercises": [
@@ -451,11 +572,43 @@
       "examples": [
         {
           "title": "Ejemplo 1",
-          "content": "Una disponibilidad simulada puede mostrar salida, llegada y duración aproximada."
+          "content": "Una disponibilidad simulada puede mostrar salida, llegada y duración aproximada.",
+          "simulatedTerminal": {
+            "command": "SHOW SAMPLE_PNR",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> SHOW SAMPLE_PNR",
+              "PNR FICTICIO: DEMO42",
+              "Pasajera: Ana Demo",
+              "Cliente corporativo: DemoCorp",
+              "Segmentos: MAD-AMS 09:10-11:45 / AMS-MAD 18:20-20:55",
+              "Contacto: training@example.invalid",
+              "SSR ficticio: asistencia WCHR pendiente de confirmar en escenario",
+              "OSI ficticio: viaje de formacion interna",
+              "Ticketing deadline ficticio: 18:00 del dia de practica"
+            ],
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         },
         {
           "title": "Ejemplo 2",
-          "content": "Un PNR de muestra puede incluir pasajeros ficticios y segmentos de práctica."
+          "content": "Un PNR de muestra puede incluir pasajeros ficticios y segmentos de práctica.",
+          "simulatedTerminal": {
+            "command": "SHOW SAMPLE_PNR",
+            "output": [
+              "Training simulator only. Not connected to Amadeus or any real booking system.",
+              "> SHOW SAMPLE_PNR",
+              "PNR FICTICIO: DEMO42",
+              "Pasajera: Ana Demo",
+              "Cliente corporativo: DemoCorp",
+              "Segmentos: MAD-AMS 09:10-11:45 / AMS-MAD 18:20-20:55",
+              "Contacto: training@example.invalid",
+              "SSR ficticio: asistencia WCHR pendiente de confirmar en escenario",
+              "OSI ficticio: viaje de formacion interna",
+              "Ticketing deadline ficticio: 18:00 del dia de practica"
+            ],
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+          }
         }
       ],
       "exercises": [
