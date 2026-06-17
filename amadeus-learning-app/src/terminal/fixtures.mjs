@@ -20,7 +20,7 @@ function durationText(minutes) {
   return `${String(Math.floor(minutes / 60)).padStart(2, '0')}${String(minutes % 60).padStart(2, '0')}`;
 }
 
-export function generateAvailabilityRows({ date, origin, destination, airlineCode }) {
+function buildAvailabilityRows({ date, origin, destination, airlineCode }) {
   const seed = hashText(`${date}:${origin}:${destination}:${airlineCode ?? ''}`);
 
   return Array.from({ length: 10 }, (_, index) => {
@@ -49,14 +49,21 @@ export function generateAvailabilityRows({ date, origin, destination, airlineCod
   });
 }
 
-export const MAD_AMS_AVAILABILITY = generateAvailabilityRows({
+function deepFreeze(value) {
+  for (const child of Object.values(value)) {
+    if (child && typeof child === 'object' && !Object.isFrozen(child)) deepFreeze(child);
+  }
+  return Object.freeze(value);
+}
+
+const MAD_AMS_AVAILABILITY = deepFreeze(buildAvailabilityRows({
   date: '17JUN',
   origin: 'MAD',
   destination: 'AMS',
   airlineCode: 'IB',
-});
+}));
 
-export function getAvailabilityRows(query) {
+export function generateAvailabilityRows(query) {
   if (query.date === '17JUN'
     && query.origin === 'MAD'
     && query.destination === 'AMS'
@@ -64,5 +71,5 @@ export function getAvailabilityRows(query) {
     return MAD_AMS_AVAILABILITY.map((row) => ({ ...row }));
   }
 
-  return generateAvailabilityRows(query);
+  return buildAvailabilityRows(query);
 }

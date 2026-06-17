@@ -1,5 +1,5 @@
 import { normalizeCommand, parseCommand } from './commandParser.mjs';
-import { getAvailabilityRows } from './fixtures.mjs';
+import { generateAvailabilityRows } from './fixtures.mjs';
 import { formatAvailabilityDetail, formatAvailabilityPage } from './formatters.mjs';
 
 const DISCLAIMER = 'TRAINING SIMULATION ONLY - NO LIVE INVENTORY OR TRANSACTIONS';
@@ -34,7 +34,7 @@ export function executeProfessionalCommand(session, input) {
     const [date, origin, destination, airlineCode] = command.args;
     const query = { date, origin, destination, airlineCode };
     session.availability = {
-      rows: getAvailabilityRows(query),
+      rows: generateAvailabilityRows(query),
       offset: 0,
       pageSize: 6,
       query,
@@ -51,7 +51,12 @@ export function executeProfessionalCommand(session, input) {
     const maxOffset = Math.max(0, availability.rows.length - availability.pageSize);
     const direction = command.args[0];
     if (direction === 'DOWN') availability.offset = Math.min(availability.offset + availability.pageSize, maxOffset);
-    if (direction === 'UP') availability.offset = Math.max(availability.offset - availability.pageSize, 0);
+    if (direction === 'UP') {
+      const partialPageOffset = availability.offset % availability.pageSize;
+      availability.offset = partialPageOffset === 0
+        ? Math.max(availability.offset - availability.pageSize, 0)
+        : Math.floor(availability.offset / availability.pageSize) * availability.pageSize;
+    }
     if (direction === 'TOP') availability.offset = 0;
     if (direction === 'BOTTOM') availability.offset = maxOffset;
 

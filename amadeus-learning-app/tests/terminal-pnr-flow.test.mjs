@@ -8,7 +8,7 @@ import {
   touchPnr,
 } from '../src/terminal/sessionState.mjs';
 import { executeProfessionalCommand } from '../src/terminal/commandExecutor.mjs';
-import { generateAvailabilityRows } from '../src/terminal/fixtures.mjs';
+import * as availabilityFixtures from '../src/terminal/fixtures.mjs';
 
 function assert(condition, message) {
   if (!condition) {
@@ -232,6 +232,38 @@ export function testAvailabilityCreatesTenSimulatedFilteredRowsAndFirstPage() {
   assert(rowLines[0].includes('NONSTOP'), 'A row should display its stop representation');
 }
 
+export function testCanonicalAvailabilityCannotBeMutatedThroughPublicResultsOrExports() {
+  const query = { date: '17JUN', origin: 'MAD', destination: 'AMS', airlineCode: 'IB' };
+  const pristine = availabilityFixtures.generateAvailabilityRows(query);
+  const returnedRows = availabilityFixtures.generateAvailabilityRows(query);
+  returnedRows[0].flight = 'MUTATED';
+  returnedRows.push({ line: 99 });
+
+  assertDeepEqual(
+    availabilityFixtures.generateAvailabilityRows(query),
+    pristine,
+    'Mutating one returned result should not affect later generated results',
+  );
+
+  const exportedCanonical = availabilityFixtures.MAD_AMS_AVAILABILITY;
+  let externalMutationLeaked = false;
+  if (exportedCanonical) {
+    const originalFlight = exportedCanonical[0].flight;
+    try {
+      exportedCanonical[0].flight = 'EXTERNAL_MUTATION';
+      const session = createProfessionalTerminalSession();
+      executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
+      externalMutationLeaked = session.availability.rows[0].flight === 'EXTERNAL_MUTATION';
+    } finally {
+      exportedCanonical[0].flight = originalFlight;
+    }
+  }
+
+  assert(!externalMutationLeaked, 'External canonical mutation should not alter generated availability');
+  assert(!Object.hasOwn(availabilityFixtures, 'MAD_AMS_AVAILABILITY'), 'Canonical fixture should not be publicly exported');
+  assertDeepEqual(Object.keys(availabilityFixtures), ['generateAvailabilityRows'], 'Only the cloning generator should be public');
+}
+
 export function testAvailabilityMovementUsesOverlappingClampedPages() {
   const session = createProfessionalTerminalSession();
   executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
@@ -248,6 +280,33 @@ export function testAvailabilityMovementUsesOverlappingClampedPages() {
   assert(session.availability.offset === 4, 'Bottom should use rows minus page size');
   executeProfessionalCommand(session, 'MT');
   assert(session.availability.offset === 0, 'Top should return to zero');
+}
+
+export function testAvailabilityMovementIsSymmetricAcrossFourLogicalPages() {
+  const session = createProfessionalTerminalSession();
+  const query = { date: '03DEC', origin: 'LIS', destination: 'FRA', airlineCode: undefined };
+  const baseRows = availabilityFixtures.generateAvailabilityRows(query);
+  const rows = [...baseRows, ...baseRows.map((row) => ({ ...row, line: row.line + 10 }))];
+  session.availability = { rows, offset: 0, pageSize: 6, query };
+
+  assert(executeProfessionalCommand(session, 'MD').output.includes('PAGE 2/4'), 'First down should show page two');
+  assert(session.availability.offset === 6, 'First down should move to offset six');
+  assert(executeProfessionalCommand(session, 'MD').output.includes('PAGE 3/4'), 'Second down should show page three');
+  assert(session.availability.offset === 12, 'Second down should move to offset twelve');
+  assert(executeProfessionalCommand(session, 'MD').output.includes('PAGE 4/4'), 'Bottom clamp should show page four');
+  assert(session.availability.offset === 14, 'Third down should clamp to offset fourteen');
+
+  assert(executeProfessionalCommand(session, 'MU').output.includes('PAGE 3/4'), 'Up from bottom clamp should show page three');
+  assert(session.availability.offset === 12, 'Up from offset fourteen should return to offset twelve');
+  executeProfessionalCommand(session, 'MU');
+  assert(session.availability.offset === 6, 'Next up should return to offset six');
+  executeProfessionalCommand(session, 'MU');
+  assert(session.availability.offset === 0, 'Final up should return to offset zero');
+
+  assert(executeProfessionalCommand(session, 'MB').output.includes('PAGE 4/4'), 'Bottom should show the final logical page');
+  assert(session.availability.offset === 14, 'Bottom should use the final full-window offset');
+  assert(executeProfessionalCommand(session, 'MU').output.includes('PAGE 3/4'), 'Up after bottom should show page three');
+  assert(session.availability.offset === 12, 'Up after bottom should return to offset twelve');
 }
 
 export function testAvailabilityDetailUsesStableLineAcrossPages() {
@@ -299,7 +358,7 @@ export function testGeneratedAvailabilityIsDeterministicWithoutNetwork() {
       fetchCalls += 1;
       throw new Error('Network access is forbidden in deterministic availability');
     };
-    generateAvailabilityRows({ date: '03DEC', origin: 'LIS', destination: 'FRA' });
+    availabilityFixtures.generateAvailabilityRows({ date: '03DEC', origin: 'LIS', destination: 'FRA' });
     executeProfessionalCommand(first, 'AN03DECLISFRA');
     executeProfessionalCommand(second, 'AN03DECLISFRA');
   } finally {
