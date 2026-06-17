@@ -346,6 +346,78 @@ label {
   gap: 18px;
 }
 
+.terminal-toolbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.mode-control {
+  background: #dfe8f2;
+  border-radius: 8px;
+  display: inline-grid;
+  grid-template-columns: repeat(2, 96px);
+  padding: 3px;
+}
+
+.mode-control button {
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 800;
+  min-height: 38px;
+}
+
+.mode-control button[aria-pressed="true"] {
+  background: var(--paper);
+  box-shadow: 0 1px 4px rgba(16, 35, 63, 0.18);
+}
+
+.reset-confirmation {
+  background: #fff4e8;
+  border: 1px solid #e8b77f;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  padding: 14px;
+}
+
+.reset-confirmation[hidden],
+.scenario-panel[hidden] {
+  display: none;
+}
+
+.reset-confirmation p {
+  margin-top: 0;
+}
+
+.scenario-panel select {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  margin-top: 6px;
+  padding: 9px;
+  width: 100%;
+}
+
+.scenario-steps {
+  padding-left: 20px;
+}
+
+.scenario-steps .done {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.scenario-next {
+  border-top: 1px solid var(--line);
+  font-weight: 700;
+  margin-bottom: 0;
+  padding-top: 10px;
+}
+
 .terminal-panel,
 .terminal-side section {
   background: var(--paper);
@@ -495,6 +567,11 @@ label {
 
   .terminal-input-row {
     grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .terminal-toolbar {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .terminal-input-row .button {

@@ -5,6 +5,10 @@ import {
   getAutocompleteSuggestions,
   runTerminalCommand,
 } from './terminalSimulator.mjs';
+import { executeProfessionalCommand } from './terminal/commandExecutor.mjs';
+import { loadTerminalState, saveTerminalState } from './terminal/persistence.mjs';
+import { evaluateScenario, scenarios } from './terminal/scenarios.mjs';
+import { createProfessionalTerminalSession } from './terminal/sessionState.mjs';
 
 const storageKey = 'amadeus-learning-coach-progress';
 const app = document.querySelector('#app');
@@ -14,8 +18,35 @@ let state = {
   selectedLessonId: null,
   answers: {},
   progress: loadProgress(),
-  terminal: createTerminalSession(),
+  terminal: null,
+  terminalMode: 'guided',
+  selectedScenarioId: scenarios[0].id,
+  scenarioProgress: {},
 };
+
+const restoredTerminal = loadTerminalState(localStorage);
+state.terminal = restoredTerminal.session;
+state.terminalMode = restoredTerminal.mode;
+state.selectedScenarioId = restoredTerminal.selectedScenarioId;
+state.scenarioProgress = restoredTerminal.scenarioProgress;
+
+function persistProfessionalTerminal() {
+  saveTerminalState(localStorage, {
+    session: state.terminal,
+    mode: state.terminalMode,
+    selectedScenarioId: state.selectedScenarioId,
+    scenarioProgress: state.scenarioProgress,
+  });
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
 
 function loadProgress() {
   try {
@@ -272,12 +303,24 @@ function renderTerminal() {
   page.className = 'page terminal-page';
   page.innerHTML = `
     <header class="page-header">
-      <h1>Terminal seguro</h1>
-      <p>Practica conceptos con comandos ficticios. No hay conexion externa ni acciones reales.</p>
+      <h1>Terminal profesional de entrenamiento</h1>
+      <p>Practica disponibilidad, PNR, tarifas y colas con un entorno local completamente ficticio.</p>
     </header>
     <section class="safe-banner">
       <strong>Safe mode activo.</strong> ${DISCLAIMER}
     </section>
+    <div class="terminal-toolbar">
+      <div class="mode-control" role="group" aria-label="Modo del terminal">
+        <button type="button" data-terminal-mode="guided" aria-pressed="${state.terminalMode === 'guided'}">Guiado</button>
+        <button type="button" data-terminal-mode="free" aria-pressed="${state.terminalMode === 'free'}">Libre</button>
+      </div>
+      <button type="button" class="button secondary reset-terminal">Reiniciar sesion</button>
+    </div>
+    <div class="reset-confirmation" hidden>
+      <p>Se borrara el area de trabajo, el historial y el progreso de escenarios de esta sesion.</p>
+      <button type="button" class="button confirm-reset">Confirmar reinicio</button>
+      <button type="button" class="button secondary cancel-reset">Cancelar</button>
+    </div>
     <section class="terminal-layout">
       <div class="terminal-panel">
         <div class="terminal-output" aria-live="polite"></div>
@@ -294,11 +337,19 @@ function renderTerminal() {
       <aside class="terminal-side">
         <section>
           <h2>Ayuda contextual</h2>
-          <p class="contextual-help">Escribe HELP para empezar o SHOW SAMPLE_PNR para ver datos ficticios.</p>
+          <p class="contextual-help">Usa HE para consultar la ayuda local.</p>
+        </section>
+        <section class="scenario-panel" ${state.terminalMode === 'free' ? 'hidden' : ''}>
+          <h2>Escenario guiado</h2>
+          <label for="scenario-select">Caso</label>
+          <select id="scenario-select">${scenarios.map((scenario) => `<option value="${scenario.id}" ${scenario.id === state.selectedScenarioId ? 'selected' : ''}>${scenario.title}</option>`).join('')}</select>
+          <p class="scenario-objective"></p>
+          <ol class="scenario-steps"></ol>
+          <p class="scenario-next"></p>
         </section>
         <section>
-          <h2>Puntuacion</h2>
-          <p class="terminal-score">0 correctas de 0 intentos</p>
+          <h2>Estado del PNR</h2>
+          <p class="pnr-status"></p>
         </section>
         <section>
           <h2>Historial</h2>
@@ -317,9 +368,18 @@ function renderTerminal() {
   const form = document.querySelector('.terminal-form');
   const input = document.querySelector('#terminal-command');
   const datalist = document.querySelector('#terminal-suggestions');
+  const professionalSuggestions = [
+    'AN17JUNMADAMS/IB', 'MD', 'MU', 'MB', 'MT', 'DO1', 'SS1Y1', 'XE1',
+    'NM1GARCIA/ANA MS', 'AP MAD 600000000', 'TKOK', 'RF ANA', 'SR WCHR/P1',
+    'OS IB TRAINING PASSENGER', 'RM TRAINING ONLY', 'ER', 'ET', 'IG', 'RT',
+    'FXP', 'FXX', 'FQN1', 'TQT', 'QT', 'QS8', 'QN', 'PDN/DEMO CORP', 'HE', 'HE FXP',
+  ];
 
   function updateSuggestions() {
-    datalist.innerHTML = getAutocompleteSuggestions(input.value)
+    const prefix = input.value.trim().toUpperCase();
+    const suggestions = [...new Set([...professionalSuggestions, ...getAutocompleteSuggestions(input.value)])]
+      .filter((suggestion) => !prefix || suggestion.startsWith(prefix));
+    datalist.innerHTML = suggestions
       .map((suggestion) => `<option value="${suggestion}"></option>`)
       .join('');
   }
@@ -338,11 +398,50 @@ function renderTerminal() {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const result = runTerminalCommand(state.terminal, input.value);
+    const command = input.value.trim();
+    if (!command) return;
+    if (command.toUpperCase() === 'RESET') {
+      document.querySelector('.reset-confirmation').hidden = false;
+      return;
+    }
+    const result = executeProfessionalCommand(state.terminal, command);
+    state.terminal.history.push(command);
+    state.terminal.transcript.push(result);
+    const scenario = evaluateScenario(state.selectedScenarioId, state.terminal);
+    state.scenarioProgress[state.selectedScenarioId] = {
+      completedCount: scenario.completedCount,
+      totalSteps: scenario.totalSteps,
+      complete: scenario.complete,
+    };
+    persistProfessionalTerminal();
     input.value = '';
     updateSuggestions();
     renderTerminalState(result);
     input.focus();
+  });
+
+  document.querySelectorAll('[data-terminal-mode]').forEach((control) => {
+    control.addEventListener('click', () => {
+      state.terminalMode = control.dataset.terminalMode;
+      persistProfessionalTerminal();
+      renderTerminal();
+    });
+  });
+
+  document.querySelector('#scenario-select').addEventListener('change', (event) => {
+    state.selectedScenarioId = event.target.value;
+    persistProfessionalTerminal();
+    renderTerminalState();
+  });
+
+  const resetConfirmation = document.querySelector('.reset-confirmation');
+  document.querySelector('.reset-terminal').addEventListener('click', () => { resetConfirmation.hidden = false; });
+  document.querySelector('.cancel-reset').addEventListener('click', () => { resetConfirmation.hidden = true; });
+  document.querySelector('.confirm-reset').addEventListener('click', () => {
+    state.terminal = createProfessionalTerminalSession();
+    state.scenarioProgress = {};
+    persistProfessionalTerminal();
+    renderTerminal();
   });
 
   updateSuggestions();
@@ -353,10 +452,13 @@ function renderTerminalState(latestResult) {
   const output = document.querySelector('.terminal-output');
   const history = document.querySelector('.history-list');
   const mistakes = document.querySelector('.mistakes-list');
-  const score = document.querySelector('.terminal-score');
+  const pnrStatus = document.querySelector('.pnr-status');
   const help = document.querySelector('.contextual-help');
+  const scenarioSteps = document.querySelector('.scenario-steps');
+  const scenarioObjective = document.querySelector('.scenario-objective');
+  const scenarioNext = document.querySelector('.scenario-next');
 
-  if (!output || !history || !mistakes || !score || !help) {
+  if (!output || !history || !mistakes || !pnrStatus || !help) {
     return;
   }
 
@@ -365,23 +467,32 @@ function renderTerminalState(latestResult) {
   output.innerHTML = visibleTranscript.length
     ? visibleTranscript.map((entry) => `
       <article class="terminal-entry">
-        <p class="terminal-command-line">&gt; ${entry.input}</p>
-        <pre>${entry.output.join('\n')}</pre>
-        <p>${entry.explanation}</p>
+        <p class="terminal-command-line">&gt; ${escapeHtml(entry.input)}</p>
+        <pre>${escapeHtml(Array.isArray(entry.output) ? entry.output.join('\n') : entry.output)}</pre>
+        <p>${escapeHtml(entry.explanation)}</p>
       </article>
     `).join('')
     : `<article class="terminal-entry"><pre>${DISCLAIMER}\nEscribe HELP para ver comandos seguros.</pre></article>`;
 
   history.innerHTML = state.terminal.history.length
-    ? state.terminal.history.map((item) => `<li>${item}</li>`).join('')
+    ? state.terminal.history.map((item) => `<li>${escapeHtml(item)}</li>`).join('')
     : '<li>Sin comandos todavia.</li>';
 
   mistakes.innerHTML = state.terminal.mistakes.length
-    ? state.terminal.mistakes.map((item) => `<li><strong>${item.practice}:</strong> ${item.input}. ${item.explanation}</li>`).join('')
+    ? state.terminal.mistakes.map((item) => `<li><strong>${escapeHtml(item.practice)}:</strong> ${escapeHtml(item.input)}. ${escapeHtml(item.explanation)}</li>`).join('')
     : '<li>Sin errores registrados.</li>';
 
-  score.textContent = `${state.terminal.score.correct} correctas de ${state.terminal.score.total} intentos`;
-  help.textContent = latestResult?.contextualHelp ?? 'Escribe HELP para empezar o SHOW SAMPLE_PNR para ver datos ficticios.';
+  pnrStatus.textContent = `${state.terminal.pnr.status} · ${state.terminal.pnr.locator ?? 'sin localizador'} · ${state.terminal.pnr.segments.length} segmento(s)`;
+  help.textContent = latestResult?.contextualHelp ?? latestResult?.explanation ?? 'Usa HE para consultar la ayuda local.';
+  const scenario = scenarios.find((item) => item.id === state.selectedScenarioId);
+  const evaluation = evaluateScenario(state.selectedScenarioId, state.terminal);
+  if (scenarioSteps && scenarioObjective && scenarioNext && scenario) {
+    scenarioObjective.textContent = scenario.objective;
+    scenarioSteps.innerHTML = evaluation.steps.map((step) => `<li class="${step.complete ? 'done' : ''}">${step.complete ? 'Completado' : 'Pendiente'}: ${escapeHtml(step.title)}</li>`).join('');
+    scenarioNext.textContent = evaluation.complete
+      ? 'Escenario completado.'
+      : `Siguiente: ${evaluation.currentStep.hint}`;
+  }
   output.scrollTop = output.scrollHeight;
 }
 
