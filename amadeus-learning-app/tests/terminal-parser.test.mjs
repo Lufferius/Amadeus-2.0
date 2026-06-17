@@ -4,6 +4,7 @@ import {
   parseTerminalCommand,
   runTerminalCommand,
 } from '../src/terminalSimulator.mjs';
+import { normalizeCommand, parseCommand } from '../src/terminal/commandParser.mjs';
 
 function assert(condition, message) {
   if (!condition) {
@@ -42,6 +43,69 @@ export function testParserRecognisesSupportedCommands() {
   for (const [input, expectedType] of commands) {
     const parsed = parseTerminalCommand(input);
     assert(parsed.type === expectedType, `${input}: expected ${expectedType}, got ${parsed.type}`);
+  }
+}
+
+export function testExpandedCrypticCommandsHaveStableTypesAndArguments() {
+  const commands = [
+    ['MD', 'AVAILABILITY_MOVE', ['DOWN']],
+    ['MU', 'AVAILABILITY_MOVE', ['UP']],
+    ['MB', 'AVAILABILITY_MOVE', ['BOTTOM']],
+    ['MT', 'AVAILABILITY_MOVE', ['TOP']],
+    ['DO1', 'AVAILABILITY_DETAIL', ['1']],
+    ['XE1', 'PNR_CANCEL_ELEMENT', ['1']],
+    ['SR WCHR', 'PNR_SSR', ['WCHR']],
+    ['SR VGML', 'PNR_SSR', ['VGML']],
+    ['OS IB TRAINING NOTE', 'PNR_OSI', ['IB', 'TRAINING NOTE']],
+    ['RM TRAINING NOTE', 'PNR_REMARK', ['TRAINING NOTE']],
+    ['ER', 'PNR_END_RETRIEVE', []],
+    ['ET', 'PNR_END', []],
+    ['IG', 'PNR_IGNORE', []],
+    ['FXP', 'FARE_PRICE_STORE', []],
+    ['FXX', 'FARE_PRICE_INFORMATIVE', []],
+    ['FQN1', 'FARE_RULE_DETAIL', ['1']],
+    ['TQT', 'FARE_DISPLAY_STORED', []],
+    ['QT', 'QUEUE_TOTALS', []],
+    ['QS8', 'QUEUE_START', ['8']],
+    ['QN', 'QUEUE_NEXT', []],
+    ['PDN/DEMO CORP', 'PROFILE_DISPLAY', ['DEMO CORP']],
+    ['HE', 'HELP_TOPIC', []],
+    ['HE FXP', 'HELP_TOPIC', ['FXP']],
+  ];
+
+  for (const [input, type, args] of commands) {
+    const parsed = parseCommand(input);
+    assert(parsed.type === type, `${input}: expected ${type}, got ${parsed.type}`);
+    assert(JSON.stringify(parsed.args) === JSON.stringify(args), `${input}: unexpected args ${JSON.stringify(parsed.args)}`);
+    assert(parsed.safe === true, `${input}: supported command should be safe`);
+  }
+}
+
+export function testCommandNormalizationAndSimulatorFacade() {
+  assert(normalizeCommand('  os   ib training note  ') === 'OS IB TRAINING NOTE', 'Commands should be trimmed, collapsed, and uppercased');
+
+  const direct = parseCommand(' he   fxp ');
+  const facade = parseTerminalCommand(' he   fxp ');
+  assert(JSON.stringify(facade) === JSON.stringify(direct), 'Simulator parser facade should delegate to parseCommand');
+}
+
+export function testParserExplicitlyProhibitsTransactionalAndPaymentCommands() {
+  const prohibited = [
+    'TTP',
+    'TRF',
+    'FXQ',
+    'TRDC',
+    'REFUND 1234567890',
+    'REISSUE 1234567890',
+    'FP CCVI4111111111111111/1228',
+    'FPCCVI4111111111111111/1228',
+    'CARD 4111 1111 1111 1111',
+  ];
+
+  for (const input of prohibited) {
+    const parsed = parseCommand(input);
+    assert(parsed.type === 'PROHIBITED', `${input}: expected PROHIBITED, got ${parsed.type}`);
+    assert(parsed.safe === false, `${input}: prohibited command must be unsafe`);
   }
 }
 

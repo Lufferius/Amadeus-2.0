@@ -1,3 +1,5 @@
+import { normalizeCommand, parseCommand } from './terminal/commandParser.mjs';
+
 export const DISCLAIMER = 'Training simulator only. Not connected to Amadeus or any real booking system.';
 
 const supportedCommands = [
@@ -101,7 +103,7 @@ const practicePrompts = {
 };
 
 function normalize(input) {
-  return input.trim().replace(/\s+/g, ' ').toUpperCase();
+  return normalizeCommand(input);
 }
 
 export function createTerminalSession() {
@@ -134,122 +136,7 @@ export function getAutocompleteSuggestions(input = '') {
 }
 
 export function parseTerminalCommand(input = '') {
-  const normalized = normalize(input);
-
-  if (!normalized) {
-    return {
-      type: 'EMPTY',
-      safe: true,
-      args: [],
-      message: 'Escribe HELP para ver comandos disponibles del simulador.',
-    };
-  }
-
-  if (normalized === 'HELP') {
-    return { type: 'HELP', safe: true, args: [] };
-  }
-
-  if (normalized === 'RESET') {
-    return { type: 'RESET', safe: true, args: [] };
-  }
-
-  const glossaryMatch = normalized.match(/^GLOSSARY\s+([A-Z_]+)$/);
-  if (glossaryMatch) {
-    return { type: 'GLOSSARY', safe: true, args: [glossaryMatch[1]] };
-  }
-
-  if (normalized === 'SHOW SAMPLE_PNR') {
-    return { type: 'SHOW_SAMPLE_PNR', safe: true, args: [] };
-  }
-
-  const availabilityMatch = normalized.match(/^SHOW\s+AVAILABILITY\s+([A-Z]{3})\s+([A-Z]{3})(?:\s+([A-Z0-9]{2}))?$/);
-  if (availabilityMatch) {
-    return { type: 'SHOW_AVAILABILITY', safe: true, args: [availabilityMatch[1], availabilityMatch[2], availabilityMatch[3]] };
-  }
-
-  const fareRuleMatch = normalized.match(/^SHOW\s+FARE_RULE\s+(BASIC|FLEX)$/);
-  if (fareRuleMatch) {
-    return { type: 'SHOW_FARE_RULE', safe: true, args: [fareRuleMatch[1]] };
-  }
-
-  const practiceMatch = normalized.match(/^PRACTICE\s+(SEGMENTS|SSR_OSI|FARES)$/);
-  if (practiceMatch) {
-    return { type: 'PRACTICE', safe: true, args: [practiceMatch[1]] };
-  }
-
-  const airlineMatch = normalized.match(/^AIRLINE\s+([A-Z0-9]{2})$/);
-  if (airlineMatch) {
-    return { type: 'REFERENCE_AIRLINE', safe: true, args: [airlineMatch[1]] };
-  }
-
-  const airportMatch = normalized.match(/^AIRPORT\s+([A-Z]{3})$/);
-  if (airportMatch) {
-    return { type: 'REFERENCE_AIRPORT', safe: true, args: [airportMatch[1]] };
-  }
-
-  const trainMatch = normalized.match(/^TRAIN\s+([A-Z0-9_]+)$/);
-  if (trainMatch) {
-    return { type: 'REFERENCE_TRAIN', safe: true, args: [trainMatch[1]] };
-  }
-
-  const hotelMatch = normalized.match(/^HOTEL\s+([A-Z0-9_]+)$/);
-  if (hotelMatch) {
-    return { type: 'REFERENCE_HOTEL', safe: true, args: [hotelMatch[1]] };
-  }
-
-  const hotelsMatch = normalized.match(/^SHOW\s+HOTELS\s+([A-Z]{3})$/);
-  if (hotelsMatch) {
-    return { type: 'SHOW_HOTELS', safe: true, args: [hotelsMatch[1]] };
-  }
-
-  const trainsMatch = normalized.match(/^SHOW\s+TRAINS\s+([A-Z]{3})\s+([A-Z]{3})$/);
-  if (trainsMatch) {
-    return { type: 'SHOW_TRAINS', safe: true, args: [trainsMatch[1], trainsMatch[2]] };
-  }
-
-  const crypticAvailability = normalized.match(/^AN(\d{2}[A-Z]{3})([A-Z]{3})([A-Z]{3})(?:\/([A-Z0-9]{2}))?$/);
-  if (crypticAvailability) {
-    return {
-      type: 'CRYPTIC_AVAILABILITY',
-      safe: true,
-      args: [crypticAvailability[1], crypticAvailability[2], crypticAvailability[3], crypticAvailability[4]],
-    };
-  }
-
-  const crypticSell = normalized.match(/^SS(\d+)([A-Z])(\d+)$/);
-  if (crypticSell) {
-    return { type: 'CRYPTIC_SELL_SEGMENT', safe: true, args: [crypticSell[1], crypticSell[2], crypticSell[3]] };
-  }
-
-  const crypticName = normalized.match(/^NM(\d+)([A-Z]+\/[A-Z ]+(?:\s+(?:MR|MS|MRS|MSTR))?)$/);
-  if (crypticName) {
-    return { type: 'CRYPTIC_NAME', safe: true, args: [crypticName[1], crypticName[2]] };
-  }
-
-  const crypticContact = normalized.match(/^AP\s+(.+)$/);
-  if (crypticContact) {
-    return { type: 'CRYPTIC_CONTACT', safe: true, args: [crypticContact[1]] };
-  }
-
-  if (normalized === 'TKOK') {
-    return { type: 'CRYPTIC_TICKETING', safe: true, args: [] };
-  }
-
-  const crypticRf = normalized.match(/^RF\s+(.+)$/);
-  if (crypticRf) {
-    return { type: 'CRYPTIC_RECEIVED_FROM', safe: true, args: [crypticRf[1]] };
-  }
-
-  if (normalized === 'RT') {
-    return { type: 'CRYPTIC_RETRIEVE_PNR', safe: true, args: [] };
-  }
-
-  return {
-    type: 'UNKNOWN',
-    safe: false,
-    args: [normalized],
-    message: 'Comando no permitido en este simulador. Usa HELP: no hay conexion real ni operaciones de produccion.',
-  };
+  return parseCommand(input);
 }
 
 function baseResult(type, input, output, explanation, extra = {}) {
