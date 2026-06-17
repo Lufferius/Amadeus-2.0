@@ -1,8 +1,9 @@
 import * as curriculumData from './curriculum-data.test.mjs';
 import * as lessonLoader from './lesson-loader.test.mjs';
 import * as terminalParser from './terminal-parser.test.mjs';
+import * as terminalPnrFlow from './terminal-pnr-flow.test.mjs';
 
-const suites = [curriculumData, lessonLoader, terminalParser];
+const suites = [curriculumData, lessonLoader, terminalParser, terminalPnrFlow];
 let passed = 0;
 let failed = 0;
 
