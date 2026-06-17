@@ -7,6 +7,7 @@ import {
   retrievePnr,
   touchPnr,
 } from '../src/terminal/sessionState.mjs';
+import { executeProfessionalCommand } from '../src/terminal/commandExecutor.mjs';
 
 function assert(condition, message) {
   if (!condition) {
@@ -204,4 +205,100 @@ export function testIgnoreRetrievedEditRestoresCommittedSnapshot() {
   assertDeepEqual(restored, savedSnapshot, 'Ignore should restore the complete saved snapshot after a retrieved edit');
   assert(restored.status === 'COMMITTED', 'Ignore should restore the saved committed status');
   assert(restored.dirty === false, 'Ignore should clear dirty state after restoring a retrieved record');
+}
+
+export function testAvailabilityCreatesTenSimulatedFilteredRowsAndFirstPage() {
+  const session = createProfessionalTerminalSession();
+  const result = executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
+
+  assert(result.status === 'OK' && result.type === 'CRYPTIC_AVAILABILITY', 'Availability should execute successfully');
+  assert(session.availability.rows.length === 10, 'MAD-AMS should contain exactly ten rows');
+  assert(session.availability.rows.every((row) => row.simulated === true), 'Every row should be explicitly simulated');
+  assert(session.availability.rows.every((row) => row.airline === 'IB'), 'The airline filter should apply to every row');
+  assertDeepEqual(session.availability.query, {
+    date: '17JUN', origin: 'MAD', destination: 'AMS', airlineCode: 'IB',
+  }, 'Availability should preserve its parsed query');
+  assert(result.output.includes('SIMULATED AVAILABILITY - NO LIVE INVENTORY'), 'Output should carry the simulation marker');
+  assert(result.output.includes('PAGE 1/2'), 'First response should show page one of two');
+  assert(result.output.includes(' 1 ') && result.output.includes(' 6 '), 'First page should include lines one through six');
+  assert(!result.output.includes('\n 7 '), 'First page should not include line seven');
+}
+
+export function testAvailabilityMovementUsesOverlappingClampedPages() {
+  const session = createProfessionalTerminalSession();
+  executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
+
+  const down = executeProfessionalCommand(session, 'MD');
+  assert(session.availability.offset === 4, 'Down should clamp to the final full page offset');
+  assert(down.output.includes('PAGE 2/2'), 'Down should show page two');
+  assert(down.output.includes(' 5 ') && down.output.includes(' 10 '), 'Final page should contain stable lines five through ten');
+  assert(executeProfessionalCommand(session, 'MD').output === down.output, 'Repeated down should remain clamped');
+
+  executeProfessionalCommand(session, 'MU');
+  assert(session.availability.offset === 0, 'Up should return to zero');
+  executeProfessionalCommand(session, 'MB');
+  assert(session.availability.offset === 4, 'Bottom should use rows minus page size');
+  executeProfessionalCommand(session, 'MT');
+  assert(session.availability.offset === 0, 'Top should return to zero');
+}
+
+export function testAvailabilityDetailUsesStableLineAcrossPages() {
+  const session = createProfessionalTerminalSession();
+  executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
+  executeProfessionalCommand(session, 'MD');
+
+  const detail = executeProfessionalCommand(session, 'DO1');
+  assert(detail.status === 'OK' && detail.output.includes(session.availability.rows[0].flight), 'DO1 should find original line one off-page');
+  assert(detail.output.includes('MAD-AMS') && detail.output.includes('TRAINING / SIMULATED'), 'Detail should include route and training marker');
+
+  const missing = executeProfessionalCommand(session, 'DO99');
+  assert(missing.status === 'ERROR' && missing.errorCode === 'CHECK_LINE_NUMBER', 'Unknown line should have a stable error code');
+  assert(missing.output === 'CHECK LINE NUMBER', 'Unknown line should have exact output');
+}
+
+export function testAvailabilityCommandsWithoutContextDoNotMutatePnr() {
+  for (const input of ['MD', 'DO1']) {
+    const session = createProfessionalTerminalSession();
+    completePnr(session.pnr);
+    const pnrBefore = JSON.parse(JSON.stringify(session.pnr));
+    const result = executeProfessionalCommand(session, input);
+
+    assert(result.status === 'ERROR' && result.errorCode === 'NO_AVAILABILITY_ACTIVE', `${input} should report missing availability`);
+    assert(result.output === 'NO AVAILABILITY ACTIVE', `${input} should use the exact missing-context output`);
+    assertDeepEqual(session.pnr, pnrBefore, `${input} should not mutate the PNR`);
+  }
+}
+
+export function testGeneratedAvailabilityIsDeterministicWithoutNetwork() {
+  const first = createProfessionalTerminalSession();
+  const second = createProfessionalTerminalSession();
+
+  executeProfessionalCommand(first, 'AN03DECLISFRA');
+  executeProfessionalCommand(second, 'AN03DECLISFRA');
+
+  assertDeepEqual(first.availability.rows, second.availability.rows, 'Generated route rows should be deterministic across sessions');
+  assert(first.availability.rows.length === 10, 'Generated routes should also return ten rows');
+  assert(first.availability.rows.every((row) => row.origin === 'LIS' && row.destination === 'FRA'), 'Generated rows should use the query route');
+}
+
+export function testProfessionalCommandResultSchemaHasNoUndefinedOutputLines() {
+  const session = createProfessionalTerminalSession();
+  const results = [
+    executeProfessionalCommand(session, 'HELP'),
+    executeProfessionalCommand(session, 'AN17JUNMADAMS/IB'),
+    executeProfessionalCommand(session, 'MD'),
+    executeProfessionalCommand(session, 'DO1'),
+    executeProfessionalCommand(session, 'DO99'),
+  ];
+
+  for (const result of results) {
+    for (const key of ['type', 'input', 'output', 'explanation', 'disclaimer', 'safeMode', 'status']) {
+      assert(Object.hasOwn(result, key), `Result should define ${key}`);
+    }
+    assert(result.safeMode === true, 'Every executor result should remain in safe mode');
+    assert(['OK', 'ERROR', 'NOT_IMPLEMENTED'].includes(result.status), 'Status should use the defined result vocabulary');
+    assert(typeof result.output === 'string' && !result.output.split('\n').includes('undefined'), 'Output should be a defined string with no undefined lines');
+  }
+
+  assert(results[0].status === 'NOT_IMPLEMENTED', 'Unhandled parsed commands should be explicitly not implemented');
 }
