@@ -45,6 +45,7 @@ export function testFreshProfessionalSessionHasExactEmptyPnrShape() {
   const session = createProfessionalTerminalSession();
 
   assertDeepEqual(createPnrWorkArea(), expectedPnr, 'PNR factory should return the exact empty shape');
+  assertDeepEqual(Object.keys(createPnrWorkArea()), Object.keys(expectedPnr), 'PNR work area should not include extra keys');
   assertDeepEqual(session.pnr, expectedPnr, 'A professional session should start with an empty PNR');
   assertDeepEqual(session.history, [], 'History should start empty');
   assertDeepEqual(session.transcript, [], 'Transcript should start empty');
@@ -54,7 +55,16 @@ export function testFreshProfessionalSessionHasExactEmptyPnrShape() {
   assertDeepEqual(session.records, {}, 'Records should be a locator dictionary');
   assert(session.locatorCounter === 1, 'Locator counter should start at one');
   assert(session.availability === null, 'Availability should start inactive');
-  assert(typeof session.queue === 'object' && session.queue !== null, 'Queue state should be initialized');
+  assertDeepEqual(
+    Object.keys(session),
+    ['history', 'transcript', 'activePractice', 'score', 'mistakes', 'pnr', 'records', 'locatorCounter', 'availability', 'queue'],
+    'Professional session should have the exact top-level key set',
+  );
+  assertDeepEqual(
+    session.queue,
+    { activeNumber: null, items: [], currentIndex: -1 },
+    'Queue should have the exact initial shape chosen for later tasks',
+  );
 }
 
 export function testTouchPnrTransitionsWorkingButPreservesRetrievedStatus() {
@@ -90,13 +100,28 @@ export function testMissingRequiredElementsStayOrderedAndDisappearProgressively(
 
 export function testCommitRefusalDoesNotMutateRecordsOrCounter() {
   const session = createProfessionalTerminalSession();
-  const originalPnr = session.pnr;
+  session.history.push('NM1GARCIA/ANA MS');
+  const beforeCommit = JSON.parse(JSON.stringify(session));
   const result = commitPnr(session, { keepActive: true });
 
   assertDeepEqual(result, { ok: false, missing: ['NAME', 'SEGMENT', 'CONTACT', 'TICKETING', 'RECEIVED_FROM'] }, 'Invalid commit should explain missing fields');
-  assert(session.pnr === originalPnr, 'Invalid commit should leave the active work area in place');
-  assertDeepEqual(session.records, {}, 'Invalid commit should not store a record');
-  assert(session.locatorCounter === 1, 'Invalid commit should not consume a locator');
+  assertDeepEqual(session, beforeCommit, 'Invalid commit should not mutate any session state');
+}
+
+export function testRecommitReusesLocatorWithoutAdvancingCounter() {
+  const session = createProfessionalTerminalSession();
+  completePnr(session.pnr);
+  commitPnr(session, { keepActive: true });
+  const counterAfterFirstCommit = session.locatorCounter;
+
+  session.pnr.remarks.push('UPDATED TRAINING RECORD');
+  touchPnr(session.pnr);
+  const recommitted = commitPnr(session, { keepActive: true });
+
+  assert(recommitted.locator === 'TRN001', 'Recommit should reuse the existing locator');
+  assert(session.locatorCounter === counterAfterFirstCommit, 'Recommit should not advance the locator counter');
+  assertDeepEqual(Object.keys(session.records), ['TRN001'], 'Recommit should not create a second record key');
+  assertDeepEqual(session.records.TRN001.remarks, ['UPDATED TRAINING RECORD'], 'Recommit should replace the saved snapshot');
 }
 
 export function testCommitAllocatesDeterministicLocatorsAndHonorsKeepActive() {
@@ -163,4 +188,20 @@ export function testIgnoreRestoresSavedRecordOrClearsUnsavedArea() {
   session.pnr.names.push('UNSAVED/NEW');
   touchPnr(session.pnr);
   assertDeepEqual(ignorePnr(session), createPnrWorkArea(), 'Ignore should clear an unsaved new work area');
+}
+
+export function testIgnoreRetrievedEditRestoresCommittedSnapshot() {
+  const session = createProfessionalTerminalSession();
+  completePnr(session.pnr);
+  commitPnr(session, { keepActive: false });
+  const savedSnapshot = JSON.parse(JSON.stringify(session.records.TRN001));
+
+  retrievePnr(session, 'TRN001');
+  session.pnr.names.push('UNSAVED/RETRIEVED');
+  touchPnr(session.pnr);
+  const restored = ignorePnr(session);
+
+  assertDeepEqual(restored, savedSnapshot, 'Ignore should restore the complete saved snapshot after a retrieved edit');
+  assert(restored.status === 'COMMITTED', 'Ignore should restore the saved committed status');
+  assert(restored.dirty === false, 'Ignore should clear dirty state after restoring a retrieved record');
 }
