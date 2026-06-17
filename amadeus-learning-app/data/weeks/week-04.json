@@ -1,6 +1,197 @@
 {
   "week": 4,
-  "title": "Week 04",
-  "lessons": []
+  "title": "Tarifas y reglas de tarifa",
+  "objective": "Introducir tarifas, reglas y condiciones desde una perspectiva segura y comprensible.",
+  "lessons": [
+    {
+      "id": "w04-l01",
+      "title": "Qué es una tarifa",
+      "estimatedMinutes": 15,
+      "objective": "Comprender la tarifa como combinación de precio, disponibilidad y condiciones.",
+      "explanation": "Una tarifa no es solo una cifra. También puede estar asociada a condiciones de cambios, cancelaciones, equipaje o estancia. En esta formación las tarifas son ejemplos inventados. El objetivo es aprender a preguntar y leer con cuidado, no calcular precios reales.",
+      "examples": [
+        "Una tarifa simulada puede ser más barata pero menos flexible.",
+        "Otra tarifa ficticia puede permitir cambios con condiciones."
+      ],
+      "exercises": [
+        "Explica por qué no basta con mirar el precio.",
+        "Compara dos tarifas ficticias y elige qué información falta."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué puede incluir una tarifa además del precio?",
+          "options": [
+            "Condiciones y restricciones",
+            "Datos bancarios del cliente",
+            "Contraseñas internas"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué no hace esta lección?",
+          "options": [
+            "Calcular precios reales",
+            "Explicar conceptos de tarifa",
+            "Fomentar lectura cuidadosa"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe mencionar condiciones y evitar afirmaciones sobre precios reales.",
+      "summary": "Una tarifa debe entenderse junto con sus condiciones.",
+      "safetyNote": "No uses ejemplos de tarifa como presupuesto real para un cliente."
+    },
+    {
+      "id": "w04-l02",
+      "title": "Familias tarifarias",
+      "estimatedMinutes": 16,
+      "objective": "Interpretar familias tarifarias de forma conceptual.",
+      "explanation": "Las familias tarifarias agrupan opciones con características parecidas, como básica, estándar o flexible en escenarios simulados. Estos nombres ayudan a comparar, pero no sustituyen la lectura de reglas. El consultor debe evitar prometer beneficios sin confirmar condiciones en canales autorizados cuando el caso sea real.",
+      "examples": [
+        "Básica simulada: menor precio y más restricciones.",
+        "Flexible simulada: más margen de cambios en el ejemplo."
+      ],
+      "exercises": [
+        "Relaciona tres familias ficticias con posibles ventajas y límites.",
+        "Redacta una explicación neutral para una familia más restrictiva."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué ayudan a comparar las familias tarifarias?",
+          "options": [
+            "Características generales de opciones",
+            "Contraseñas de acceso",
+            "Datos reales del pasajero"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué debe evitarse?",
+          "options": [
+            "Prometer condiciones sin confirmarlas",
+            "Comparar opciones ficticias",
+            "Usar lenguaje claro"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe comparar de forma prudente y no convertir ejemplos en garantías reales.",
+      "summary": "Las familias tarifarias orientan, pero las condiciones deben leerse.",
+      "safetyNote": "No garantices beneficios reales desde una familia ficticia."
+    },
+    {
+      "id": "w04-l03",
+      "title": "Equipaje, cambios y cancelaciones",
+      "estimatedMinutes": 18,
+      "objective": "Reconocer condiciones habituales sin operar cambios reales.",
+      "explanation": "Equipaje, cambios y cancelaciones son temas sensibles porque afectan expectativas y costes. En esta app se tratan como categorías de lectura. El consultor principiante aprende a no prometer, a distinguir lo incluido de lo condicionado y a derivar casos reales a procedimientos autorizados.",
+      "examples": [
+        "Una regla ficticia puede decir que el equipaje no está incluido.",
+        "Una condición simulada puede permitir cambios con penalización de ejemplo."
+      ],
+      "exercises": [
+        "Subraya qué parte de una condición simulada limita al viajero.",
+        "Escribe una respuesta prudente sobre un cambio ficticio."
+      ],
+      "quiz": [
+        {
+          "question": "¿Por qué estos temas requieren prudencia?",
+          "options": [
+            "Porque afectan expectativas y posibles costes",
+            "Porque siempre son gratis",
+            "Porque no tienen condiciones"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué debe evitar un consultor?",
+          "options": [
+            "Prometer cambios reales desde un ejemplo",
+            "Leer condiciones",
+            "Preguntar cuando falta información"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe identificar condiciones y formular respuestas cautas.",
+      "summary": "Las condiciones sensibles se explican con claridad y sin promesas indebidas.",
+      "safetyNote": "No hagas cambios, reembolsos, reemisiones ni cancelaciones reales desde el entrenamiento."
+    },
+    {
+      "id": "w04-l04",
+      "title": "Lectura de una regla de tarifa básica simulada",
+      "estimatedMinutes": 20,
+      "objective": "Leer una regla de tarifa simulada y extraer puntos clave.",
+      "explanation": "Una regla de tarifa puede parecer densa. La práctica consiste en buscar preguntas concretas: qué incluye, qué restringe, qué falta y qué habría que verificar en un caso real. La regla de esta lección es simulada y simplificada para aprender a leer sin usar contenido operativo real.",
+      "examples": [
+        "Regla simulada: cambios permitidos con condición de ejemplo.",
+        "Regla simulada: reembolso no contemplado en el escenario de práctica."
+      ],
+      "exercises": [
+        "Extrae tres puntos clave de una regla ficticia.",
+        "Escribe una explicación breve para un viajero ficticio."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué debes buscar al leer una regla simulada?",
+          "options": [
+            "Incluido, restringido y pendiente de verificar",
+            "Datos de pago reales",
+            "Una forma de emitir"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué significa que la regla sea simulada?",
+          "options": [
+            "Que sirve para practicar lectura, no para informar casos reales",
+            "Que es una garantía de aerolínea",
+            "Que permite operar reservas"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe extraer puntos clave y mantener el marco de simulación.",
+      "summary": "Leer reglas exige foco, cautela y separación entre práctica y realidad.",
+      "safetyNote": "No apliques reglas simuladas a tarifas reales."
+    },
+    {
+      "id": "w04-l05",
+      "title": "Preguntas antes de informar una tarifa",
+      "estimatedMinutes": 16,
+      "objective": "Preparar una checklist de preguntas antes de explicar una tarifa.",
+      "explanation": "Antes de informar una tarifa, conviene confirmar ruta, fechas, flexibilidad necesaria, equipaje, presupuesto orientativo y restricciones importantes. En el entrenamiento, estas preguntas se aplican a casos ficticios. En casos reales, la información debe verificarse en sistemas y procedimientos autorizados.",
+      "examples": [
+        "Pregunta útil: ¿necesitas posibilidad de cambio?",
+        "Pregunta útil: ¿viajas con equipaje facturado?"
+      ],
+      "exercises": [
+        "Crea una checklist de cinco preguntas para una tarifa ficticia.",
+        "Elige qué pregunta harías primero a un viajero de negocios simulado."
+      ],
+      "quiz": [
+        {
+          "question": "¿Para qué sirve preguntar antes de informar?",
+          "options": [
+            "Para ajustar la opción a la necesidad",
+            "Para evitar leer condiciones",
+            "Para emitir sin revisión"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué debe verificarse en casos reales?",
+          "options": [
+            "La información en canales autorizados",
+            "Solo la memoria del consultor",
+            "El resultado de una práctica"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe incluir preguntas relevantes y recordar verificación autorizada.",
+      "summary": "Buenas preguntas evitan recomendaciones incompletas.",
+      "safetyNote": "No informes condiciones reales basándote únicamente en material de entrenamiento."
+    }
+  ]
 }
-

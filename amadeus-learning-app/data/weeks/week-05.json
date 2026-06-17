@@ -1,6 +1,197 @@
 {
   "week": 5,
-  "title": "Week 05",
-  "lessons": []
+  "title": "Servicio al cliente y calidad operativa",
+  "objective": "Practicar razonamiento profesional, comunicación clara y revisión de errores sin usar datos reales.",
+  "lessons": [
+    {
+      "id": "w05-l01",
+      "title": "Confirmar necesidades del viajero",
+      "estimatedMinutes": 15,
+      "objective": "Aprender a transformar una petición vaga en requisitos claros.",
+      "explanation": "Un buen consultor no empieza por la pantalla, empieza por la necesidad. Debe confirmar destino, fechas, horarios preferidos, equipaje, flexibilidad y prioridades. En esta app todas las personas son ficticias, pero la práctica de preguntar con claridad prepara para conversaciones profesionales.",
+      "examples": [
+        "Petición vaga: necesito ir a Ámsterdam pronto.",
+        "Petición clara: salida desde Madrid el lunes, regreso el jueves, preferencia de mañana."
+      ],
+      "exercises": [
+        "Convierte una petición vaga en cinco datos concretos.",
+        "Escribe tres preguntas abiertas para un viajero ficticio."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué debe hacer el consultor ante una petición incompleta?",
+          "options": [
+            "Preguntar y confirmar",
+            "Inventar los datos",
+            "Emitir una opción"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué prioridad puede cambiar la recomendación?",
+          "options": [
+            "Flexibilidad del viaje",
+            "Color favorito",
+            "Contraseña del pasajero"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe formular preguntas claras y extraer requisitos útiles.",
+      "summary": "Confirmar necesidades evita búsquedas mal orientadas.",
+      "safetyNote": "No uses necesidades reales de clientes para ejercicios sin autorización y anonimización."
+    },
+    {
+      "id": "w05-l02",
+      "title": "Explicar alternativas",
+      "estimatedMinutes": 16,
+      "objective": "Comunicar opciones de forma neutral y comprensible.",
+      "explanation": "Explicar alternativas implica presentar ventajas, límites y dudas pendientes sin presionar. Un principiante debe evitar frases absolutas cuando trabaja con información incompleta. En ejercicios simulados, se practica lenguaje claro: 'esta opción parece más flexible en el ejemplo' en lugar de promesas cerradas.",
+      "examples": [
+        "Opción A simulada: salida temprana y tarifa más restrictiva.",
+        "Opción B simulada: salida más tarde y mejores condiciones de cambio en el ejemplo."
+      ],
+      "exercises": [
+        "Redacta una comparación neutral entre dos opciones ficticias.",
+        "Sustituye una promesa arriesgada por una frase prudente."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué caracteriza una explicación neutral?",
+          "options": [
+            "Presenta ventajas y límites",
+            "Promete resultados no verificados",
+            "Oculta restricciones"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué frase es más prudente?",
+          "options": [
+            "En el ejemplo, esta opción parece más flexible",
+            "Seguro que podrás cambiar sin coste",
+            "No hace falta leer condiciones"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe usar lenguaje equilibrado y señalar dudas pendientes.",
+      "summary": "Una buena explicación ayuda a decidir sin crear falsas garantías.",
+      "safetyNote": "No prometas condiciones reales desde ejemplos simulados."
+    },
+    {
+      "id": "w05-l03",
+      "title": "Detectar inconsistencias",
+      "estimatedMinutes": 18,
+      "objective": "Encontrar errores habituales en itinerarios simulados.",
+      "explanation": "Las inconsistencias pueden aparecer en fechas, ciudades, número de pasajeros, horarios o condiciones. El consultor debe revisar con calma y preguntar antes de avanzar. En el simulador, detectar errores es una forma segura de entrenar criterio sin afectar a una reserva real.",
+      "examples": [
+        "La solicitud pide regreso el viernes, pero el itinerario vuelve el jueves.",
+        "El PNR ficticio muestra dos pasajeros y la solicitud menciona uno."
+      ],
+      "exercises": [
+        "Encuentra tres inconsistencias en un caso ficticio.",
+        "Escribe cómo pedirías aclaración sin culpar al viajero."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué dato puede revelar una inconsistencia?",
+          "options": [
+            "Fecha de regreso",
+            "Contraseña del sistema",
+            "Número de tarjeta"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué hacer al detectar una diferencia?",
+          "options": [
+            "Pedir aclaración antes de avanzar",
+            "Ignorarla",
+            "Cambiar una reserva real"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe detectar diferencias y proponer una aclaración profesional.",
+      "summary": "La revisión de inconsistencias protege la calidad de la respuesta.",
+      "safetyNote": "No corrijas reservas reales desde ejercicios de práctica."
+    },
+    {
+      "id": "w05-l04",
+      "title": "Evitar promesas indebidas",
+      "estimatedMinutes": 14,
+      "objective": "Reconocer frases que pueden crear expectativas incorrectas.",
+      "explanation": "En viajes, las palabras importan. Decir 'seguro', 'garantizado' o 'sin coste' sin verificar puede causar problemas. Esta lección entrena respuestas prudentes: explicar lo que se ve en el ejemplo, indicar lo pendiente de confirmar y separar la práctica de cualquier caso real.",
+      "examples": [
+        "Arriesgado: te devuelven todo sin problema.",
+        "Prudente: en este ejemplo no aparece reembolso; habría que verificar condiciones reales."
+      ],
+      "exercises": [
+        "Reescribe tres frases arriesgadas en lenguaje prudente.",
+        "Identifica qué información falta antes de prometer una condición."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué palabra suele ser arriesgada sin verificación?",
+          "options": [
+            "Garantizado",
+            "Podría",
+            "Pendiente"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué enfoque es más seguro?",
+          "options": [
+            "Indicar límites y verificar",
+            "Prometer para tranquilizar",
+            "Omitir restricciones"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe sustituir promesas por lenguaje condicionado y verificable.",
+      "summary": "La prudencia verbal evita malentendidos y protege al cliente.",
+      "safetyNote": "No prometas cambios, reembolsos, reemisiones, emisiones ni cancelaciones reales."
+    },
+    {
+      "id": "w05-l05",
+      "title": "Checklist de calidad",
+      "estimatedMinutes": 17,
+      "objective": "Crear una revisión final antes de cerrar una práctica.",
+      "explanation": "Una checklist ayuda a comprobar solicitud, itinerario, pasajeros ficticios, condiciones, dudas pendientes y lenguaje usado. No busca convertir la práctica en operación real, sino reforzar hábitos: revisar, explicar, preguntar y documentar de forma segura.",
+      "examples": [
+        "Checklist: ruta, fechas, segmentos, condiciones y seguridad de datos.",
+        "Punto pendiente: confirmar si el viajero ficticio necesita equipaje."
+      ],
+      "exercises": [
+        "Diseña una checklist de seis puntos para una práctica completa.",
+        "Aplica la checklist a un caso ficticio y marca pendientes."
+      ],
+      "quiz": [
+        {
+          "question": "¿Para qué sirve la checklist?",
+          "options": [
+            "Para revisar calidad antes de cerrar la práctica",
+            "Para saltarse reglas",
+            "Para operar pagos reales"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué debe incluir siempre?",
+          "options": [
+            "Revisión de datos ficticios y condiciones",
+            "Datos bancarios reales",
+            "Acceso a sistemas de producción"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe incluir puntos de revisión útiles y mantener seguridad de datos.",
+      "summary": "La calidad se construye con una revisión final sencilla y constante.",
+      "safetyNote": "La checklist es formativa y no sustituye procedimientos reales de agencia."
+    }
+  ]
 }
-

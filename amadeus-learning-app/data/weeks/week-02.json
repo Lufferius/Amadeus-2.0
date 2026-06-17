@@ -1,6 +1,197 @@
 {
   "week": 2,
-  "title": "Week 02",
-  "lessons": []
+  "title": "Disponibilidad y construcción de itinerarios",
+  "objective": "Aprender a interpretar disponibilidad simulada y construir itinerarios de práctica sin crear reservas reales.",
+  "lessons": [
+    {
+      "id": "w02-l01",
+      "title": "Origen, destino y fecha",
+      "estimatedMinutes": 14,
+      "objective": "Identificar los datos mínimos para una consulta de disponibilidad simulada.",
+      "explanation": "Toda búsqueda de disponibilidad parte de una ruta y una fecha. El origen y el destino suelen expresarse con códigos de aeropuerto o ciudad, pero en este curso se trabajan como etiquetas de entrenamiento. Antes de revisar opciones, el consultor debe confirmar qué quiere hacer el viajero ficticio, cuándo quiere salir y si necesita regreso.",
+      "examples": [
+        "MAD puede representar Madrid y AMS puede representar Ámsterdam en una práctica.",
+        "Una solicitud incompleta sería: 'quiero viajar a Ámsterdam', sin fecha ni origen."
+      ],
+      "exercises": [
+        "Completa una solicitud ficticia añadiendo origen, destino y fecha.",
+        "Detecta qué información falta en tres peticiones breves."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué dato es imprescindible para interpretar disponibilidad?",
+          "options": [
+            "La fecha del viaje",
+            "El número de tarjeta",
+            "La contraseña del pasajero"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué debe hacer el consultor si falta el destino?",
+          "options": [
+            "Inventarlo sin avisar",
+            "Preguntar y confirmar la necesidad",
+            "Crear una reserva de prueba"
+          ],
+          "correctOptionIndex": 1
+        }
+      ],
+      "correctionCriteria": "Debe identificar datos mínimos y proponer preguntas de aclaración antes de avanzar.",
+      "summary": "Origen, destino y fecha sostienen cualquier lectura de disponibilidad.",
+      "safetyNote": "Los códigos y fechas usados son ficticios y no consultan inventario real."
+    },
+    {
+      "id": "w02-l02",
+      "title": "Segmentos aéreos",
+      "estimatedMinutes": 16,
+      "objective": "Entender cómo se ordenan los segmentos en un itinerario.",
+      "explanation": "Un itinerario se compone de segmentos. Un viaje simple puede tener un segmento de ida y otro de vuelta. Un viaje con conexión puede tener varios segmentos en el mismo sentido. Para principiantes, la prioridad es comprobar que el orden sea lógico, que las ciudades encajen y que no haya saltos extraños en la historia del viaje.",
+      "examples": [
+        "MAD-AMS es un segmento directo simulado.",
+        "MAD-PAR y PAR-AMS podrían representar dos segmentos con conexión ficticia."
+      ],
+      "exercises": [
+        "Ordena tres segmentos simulados para formar un itinerario coherente.",
+        "Encuentra el error en un itinerario donde el segundo tramo sale de una ciudad distinta."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué es un segmento en un itinerario?",
+          "options": [
+            "Una parte del recorrido",
+            "Una forma de pago",
+            "Una contraseña temporal"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué conviene revisar en varios segmentos?",
+          "options": [
+            "Que el orden y las ciudades tengan sentido",
+            "Que incluyan datos reales del pasajero",
+            "Que se emitan automáticamente"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe ordenar tramos y detectar inconsistencias de continuidad.",
+      "summary": "Los segmentos cuentan la historia del viaje en orden.",
+      "safetyNote": "No crees ni modifiques segmentos reales; trabaja solo con ejemplos de entrenamiento."
+    },
+    {
+      "id": "w02-l03",
+      "title": "Clases de reserva como concepto",
+      "estimatedMinutes": 15,
+      "objective": "Comprender que una clase de reserva representa disponibilidad y condiciones en un contexto formativo.",
+      "explanation": "Las clases de reserva son códigos asociados a plazas, tarifas o condiciones, pero aquí se explican de forma conceptual. No hay que memorizar códigos reales ni interpretar disponibilidad real. Lo importante es saber que distintas opciones pueden tener condiciones diferentes y que el consultor debe leer antes de recomendar.",
+      "examples": [
+        "Una opción simulada puede aparecer como 'Básica' y otra como 'Flexible'.",
+        "Dos opciones con horario parecido pueden tener condiciones de cambio diferentes."
+      ],
+      "exercises": [
+        "Compara dos clases ficticias y escribe qué preguntarías antes de elegir.",
+        "Identifica por qué la opción más barata no siempre es la más adecuada."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué idea debe asociarse a una clase de reserva?",
+          "options": [
+            "Que puede implicar condiciones distintas",
+            "Que siempre permite cambios gratis",
+            "Que confirma una emisión real"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué no se busca en esta lección?",
+          "options": [
+            "Memorizar códigos reales de producción",
+            "Entender diferencias conceptuales",
+            "Practicar comparación segura"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe explicar diferencias conceptuales sin usar códigos operativos reales.",
+      "summary": "Las clases ayudan a comparar opciones, pero en el curso se tratan como conceptos de entrenamiento.",
+      "safetyNote": "No infieras condiciones reales a partir de clases ficticias del simulador."
+    },
+    {
+      "id": "w02-l04",
+      "title": "Escalas y conexiones",
+      "estimatedMinutes": 18,
+      "objective": "Reconocer conexiones y riesgos básicos en itinerarios simulados.",
+      "explanation": "Una conexión une dos segmentos. Para evaluarla de forma básica hay que mirar ciudad de conexión, tiempo entre llegada y salida, y coherencia general. No se enseñan reglas reales de mínimos de conexión; se entrena la prudencia: si algo parece ajustado o confuso, hay que señalarlo y pedir verificación profesional en un entorno real.",
+      "examples": [
+        "Llegar a las 10:00 y salir a las 10:20 puede parecer una conexión ajustada.",
+        "Cambiar de ciudad entre segmentos sin traslado explicado es una alerta conceptual."
+      ],
+      "exercises": [
+        "Marca qué conexión simulada parece más cómoda y explica por qué.",
+        "Escribe una advertencia neutral para una conexión ficticia ajustada."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué debes revisar en una conexión?",
+          "options": [
+            "Tiempo entre llegada y salida",
+            "Datos bancarios del viajero",
+            "Contraseña del sistema"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "Si una conexión real parece dudosa, ¿qué corresponde?",
+          "options": [
+            "Verificar con canales autorizados",
+            "Asumir que sirve porque el simulador lo muestra",
+            "Emitir sin revisar"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe identificar señales de riesgo y recomendar verificación autorizada para casos reales.",
+      "summary": "Las conexiones requieren atención al tiempo, lugar y continuidad del viaje.",
+      "safetyNote": "No uses estos ejemplos como reglas reales de conexión."
+    },
+    {
+      "id": "w02-l05",
+      "title": "Validación de itinerario simulado",
+      "estimatedMinutes": 17,
+      "objective": "Aplicar una revisión básica antes de dar por válido un itinerario de práctica.",
+      "explanation": "Validar un itinerario significa revisar que la ruta responde a la solicitud, que las fechas son coherentes, que los segmentos están ordenados y que las condiciones pendientes se han identificado. En entrenamiento no se confirma nada real; se practica la disciplina de revisar antes de comunicar.",
+      "examples": [
+        "La solicitud pide ida y vuelta, pero el itinerario solo incluye ida.",
+        "El viajero ficticio prefiere mañana y la opción simulada sale por la noche."
+      ],
+      "exercises": [
+        "Usa una checklist de cuatro puntos para revisar un itinerario ficticio.",
+        "Detecta dos diferencias entre solicitud e itinerario de muestra."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué significa validar en este curso?",
+          "options": [
+            "Revisar coherencia de un caso simulado",
+            "Confirmar una reserva real",
+            "Cobrar una emisión"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué debe hacerse antes de recomendar una opción?",
+          "options": [
+            "Compararla con la necesidad planteada",
+            "Ignorar restricciones",
+            "Introducir datos reales para probar"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe usar una checklist y detectar discrepancias relevantes.",
+      "summary": "Una revisión ordenada reduce errores incluso en prácticas sencillas.",
+      "safetyNote": "Validar aquí no equivale a confirmar disponibilidad o reserva real."
+    }
+  ]
 }
-

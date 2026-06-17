@@ -1,6 +1,197 @@
 {
   "week": 6,
-  "title": "Week 06",
-  "lessons": []
+  "title": "Práctica integrada y evaluación segura",
+  "objective": "Unir disponibilidad, PNR, SSR/OSI y tarifas en escenarios simulados de principio a fin.",
+  "lessons": [
+    {
+      "id": "w06-l01",
+      "title": "Caso guiado: solicitud ficticia",
+      "estimatedMinutes": 18,
+      "objective": "Interpretar una solicitud de viaje inventada antes de buscar opciones.",
+      "explanation": "El caso integrado empieza con una solicitud ficticia. El consultor debe extraer ruta, fechas, preferencias, restricciones y dudas. Esta lectura inicial evita avanzar con supuestos. Toda la práctica se mantiene en un entorno seguro y sin datos reales.",
+      "examples": [
+        "Solicitud: viaje de Madrid a Ámsterdam para una reunión ficticia.",
+        "Duda pendiente: si la persona necesita equipaje facturado."
+      ],
+      "exercises": [
+        "Extrae cinco requisitos de una solicitud ficticia.",
+        "Escribe tres preguntas de aclaración antes de continuar."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué se hace primero en un caso integrado?",
+          "options": [
+            "Interpretar la solicitud",
+            "Emitir un billete",
+            "Modificar un PNR real"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué tipo de datos se usan?",
+          "options": [
+            "Ficticios",
+            "Reales de clientes",
+            "Bancarios"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe extraer requisitos y formular preguntas sin usar datos reales.",
+      "summary": "Una buena lectura inicial guía todo el caso integrado.",
+      "safetyNote": "No copies solicitudes reales en el simulador."
+    },
+    {
+      "id": "w06-l02",
+      "title": "Caso guiado: disponibilidad simulada",
+      "estimatedMinutes": 20,
+      "objective": "Elegir una opción simulada razonable según una necesidad ficticia.",
+      "explanation": "Con la solicitud clara, se revisa disponibilidad simulada. El objetivo no es encontrar un vuelo real, sino justificar una elección: horario, conexión, condiciones visibles y dudas pendientes. Una recomendación segura explica por qué una opción encaja y qué falta verificar si fuera un caso real.",
+      "examples": [
+        "Opción 1 simulada: salida temprano y conexión corta.",
+        "Opción 2 simulada: salida media mañana y conexión más cómoda."
+      ],
+      "exercises": [
+        "Elige una opción simulada y justifica la elección.",
+        "Señala una duda que revisarías antes de informar en un caso real."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué se evalúa en una disponibilidad simulada?",
+          "options": [
+            "Encaje con la necesidad ficticia",
+            "Disponibilidad real garantizada",
+            "Autorización de pago"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué debe incluir la recomendación?",
+          "options": [
+            "Motivo de elección y dudas pendientes",
+            "Promesa de tarifa real",
+            "Confirmación de emisión"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe justificar una opción simulada y mencionar límites.",
+      "summary": "Elegir bien exige conectar disponibilidad con necesidades, no solo mirar horarios.",
+      "safetyNote": "No presentes disponibilidad simulada como inventario real."
+    },
+    {
+      "id": "w06-l03",
+      "title": "Caso guiado: revisar PNR de entrenamiento",
+      "estimatedMinutes": 20,
+      "objective": "Revisar un PNR ficticio dentro de un flujo completo.",
+      "explanation": "El PNR de entrenamiento permite comprobar que pasajeros, segmentos y notas coinciden con el caso. Esta revisión integra vocabulario de semanas anteriores. El foco está en detectar inconsistencias, no en modificar registros reales.",
+      "examples": [
+        "El pasajero ficticio coincide con la solicitud inicial.",
+        "La nota de entrenamiento recuerda revisar condiciones de equipaje."
+      ],
+      "exercises": [
+        "Marca qué datos del PNR ficticio coinciden con la solicitud.",
+        "Detecta una posible inconsistencia y formula una pregunta."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué se comprueba en el PNR de entrenamiento?",
+          "options": [
+            "Coherencia de datos ficticios",
+            "Saldo bancario",
+            "Cancelación real"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué no debe hacerse desde esta revisión?",
+          "options": [
+            "Modificar una reserva real",
+            "Leer datos de muestra",
+            "Anotar dudas"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe revisar coherencia y evitar cualquier acción real.",
+      "summary": "El PNR de muestra une datos del caso en una estructura revisable.",
+      "safetyNote": "No uses localizadores ni datos de reservas reales."
+    },
+    {
+      "id": "w06-l04",
+      "title": "Caso guiado: explicar regla de tarifa simulada",
+      "estimatedMinutes": 19,
+      "objective": "Comunicar una regla de tarifa ficticia de forma clara y prudente.",
+      "explanation": "En el caso integrado, la regla de tarifa simulada se resume para el viajero ficticio. El consultor debe separar lo incluido, lo restringido y lo pendiente de verificar. La explicación debe ser clara, breve y sin promesas sobre casos reales.",
+      "examples": [
+        "Incluido en el ejemplo: una pieza de equipaje de mano.",
+        "Pendiente en un caso real: verificar condiciones exactas de cambio."
+      ],
+      "exercises": [
+        "Resume una regla ficticia en tres frases.",
+        "Señala qué parte requiere verificación en un caso real."
+      ],
+      "quiz": [
+        {
+          "question": "¿Cómo debe explicarse una regla simulada?",
+          "options": [
+            "Con claridad, límites y prudencia",
+            "Como garantía real",
+            "Sin mencionar restricciones"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué debe quedar separado?",
+          "options": [
+            "Lo incluido, lo restringido y lo pendiente",
+            "Datos personales y pagos",
+            "Contraseñas y accesos"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe resumir condiciones ficticias sin trasladarlas a casos reales.",
+      "summary": "Explicar una regla exige claridad y límites explícitos.",
+      "safetyNote": "No uses reglas simuladas para asesorar tarifas reales."
+    },
+    {
+      "id": "w06-l05",
+      "title": "Evaluación final segura",
+      "estimatedMinutes": 25,
+      "objective": "Resolver un flujo completo de entrenamiento sin acciones reales.",
+      "explanation": "La evaluación final integra solicitud, disponibilidad, itinerario, PNR, SSR/OSI conceptual y tarifa simulada. El resultado esperado es una explicación razonada y segura, no una reserva. Un buen cierre menciona qué se sabe, qué se ha asumido y qué habría que verificar fuera del simulador.",
+      "examples": [
+        "Respuesta final: opción recomendada, motivo, condiciones simuladas y dudas pendientes.",
+        "Cierre seguro: esto es una práctica y no confirma disponibilidad ni precio real."
+      ],
+      "exercises": [
+        "Resuelve un caso completo ficticio usando una checklist.",
+        "Redacta un cierre seguro para el viajero ficticio."
+      ],
+      "quiz": [
+        {
+          "question": "¿Qué demuestra la evaluación final?",
+          "options": [
+            "Comprensión segura de un flujo simulado",
+            "Capacidad para emitir billetes reales",
+            "Acceso a sistemas corporativos"
+          ],
+          "correctOptionIndex": 0
+        },
+        {
+          "question": "¿Qué debe incluir el cierre?",
+          "options": [
+            "Límites, dudas y carácter simulado",
+            "Promesas de reembolso",
+            "Datos reales del cliente"
+          ],
+          "correctOptionIndex": 0
+        }
+      ],
+      "correctionCriteria": "Debe integrar conceptos, justificar decisiones y mantener un cierre seguro.",
+      "summary": "Completar el curso significa razonar con seguridad, no operar sistemas reales.",
+      "safetyNote": "La evaluación no autoriza reservas, pagos, emisiones, cambios, reembolsos, reemisiones ni cancelaciones reales."
+    }
+  ]
 }
-
