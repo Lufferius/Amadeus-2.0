@@ -51,6 +51,14 @@ function button(label, onClick, className = 'button') {
   return node;
 }
 
+function renderExerciseItem(item) {
+  if (item.type === 'terminal') {
+    return `<li class="terminal-exercise"><strong>${item.question}</strong><code>${item.command}</code><br><span>${item.expectedAnswer}</span></li>`;
+  }
+
+  return `<li><strong>${item.question}</strong><br><span>${item.expectedAnswer}</span></li>`;
+}
+
 function renderShell(content, activeView = 'dashboard') {
   app.innerHTML = '';
 
@@ -147,7 +155,7 @@ function renderLesson() {
     </section>
     <section class="lesson-columns">
       <div class="lesson-block"><h2>Ejemplos</h2><ul>${lesson.examples.map((item) => `<li><strong>${item.title}:</strong> ${item.content}</li>`).join('')}</ul></div>
-      <div class="lesson-block"><h2>Ejercicios</h2><ul>${lesson.exercises.map((item) => `<li><strong>${item.question}</strong><br><span>${item.expectedAnswer}</span></li>`).join('')}</ul></div>
+      <div class="lesson-block"><h2>Ejercicios</h2><ul>${lesson.exercises.map(renderExerciseItem).join('')}</ul></div>
     </section>
     <section class="lesson-block quiz"><h2>Quiz</h2></section>
     <section class="lesson-block safety"><h2>Resumen</h2><ul>${lesson.summary.map((item) => `<li>${item}</li>`).join('')}</ul><p><strong>Nota de seguridad:</strong> ${lesson.safetyNote}</p></section>

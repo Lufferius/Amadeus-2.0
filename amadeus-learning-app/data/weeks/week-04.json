@@ -47,6 +47,18 @@
           "correctionCriteria": [
             "Debe mencionar condiciones y evitar afirmaciones sobre precios reales."
           ]
+        },
+        {
+          "id": "term-0401",
+          "type": "terminal",
+          "command": "SHOW FARE_RULE BASIC",
+          "question": "Abre la pagina Terminal y ejecuta SHOW FARE_RULE BASIC. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Leer una regla de tarifa BASIC simulada y detectar restricciones. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
+          ]
         }
       ],
       "quiz": [
@@ -123,6 +135,18 @@
           "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
           "correctionCriteria": [
             "Debe comparar de forma prudente y no convertir ejemplos en garantías reales."
+          ]
+        },
+        {
+          "id": "term-0402",
+          "type": "terminal",
+          "command": "SHOW FARE_RULE FLEX",
+          "question": "Abre la pagina Terminal y ejecuta SHOW FARE_RULE FLEX. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Leer una regla de tarifa FLEX simulada y compararla con una opcion mas restrictiva. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
           ]
         }
       ],
@@ -201,6 +225,18 @@
           "correctionCriteria": [
             "Debe identificar condiciones y formular respuestas cautas."
           ]
+        },
+        {
+          "id": "term-0403",
+          "type": "terminal",
+          "command": "SHOW FARE_RULE BASIC",
+          "question": "Abre la pagina Terminal y ejecuta SHOW FARE_RULE BASIC. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Leer una regla de tarifa BASIC simulada y detectar restricciones. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
+          ]
         }
       ],
       "quiz": [
@@ -278,6 +314,18 @@
           "correctionCriteria": [
             "Debe extraer puntos clave y mantener el marco de simulación."
           ]
+        },
+        {
+          "id": "term-0404",
+          "type": "terminal",
+          "command": "SHOW FARE_RULE FLEX",
+          "question": "Abre la pagina Terminal y ejecuta SHOW FARE_RULE FLEX. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Leer una regla de tarifa FLEX simulada y compararla con una opcion mas restrictiva. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
+          ]
         }
       ],
       "quiz": [
@@ -354,6 +402,18 @@
           "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
           "correctionCriteria": [
             "Debe incluir preguntas relevantes y recordar verificación autorizada."
+          ]
+        },
+        {
+          "id": "term-0405",
+          "type": "terminal",
+          "command": "PRACTICE FARES",
+          "question": "Abre la pagina Terminal y ejecuta PRACTICE FARES. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Practicar una decision de tarifa basada en politica y riesgo ficticios. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
           ]
         }
       ],

@@ -51,6 +51,18 @@
           "correctionCriteria": [
             "Debe describir el PNR como estructura de lectura y no como operación real."
           ]
+        },
+        {
+          "id": "term-0301",
+          "type": "terminal",
+          "command": "SHOW SAMPLE_PNR",
+          "question": "Abre la pagina Terminal y ejecuta SHOW SAMPLE_PNR. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Leer un PNR ficticio y reconocer sus bloques sin modificar nada real. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
+          ]
         }
       ],
       "quiz": [
@@ -127,6 +139,18 @@
           "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
           "correctionCriteria": [
             "Debe proponer datos ficticios y rechazar información identificable."
+          ]
+        },
+        {
+          "id": "term-0302",
+          "type": "terminal",
+          "command": "GLOSSARY PNR",
+          "question": "Abre la pagina Terminal y ejecuta GLOSSARY PNR. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Repasar el concepto de PNR dentro del glosario del simulador. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
           ]
         }
       ],
@@ -205,6 +229,18 @@
           "correctionCriteria": [
             "Debe clasificar campos auxiliares y mantenerlos ficticios."
           ]
+        },
+        {
+          "id": "term-0303",
+          "type": "terminal",
+          "command": "SHOW SAMPLE_PNR",
+          "question": "Abre la pagina Terminal y ejecuta SHOW SAMPLE_PNR. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Leer un PNR ficticio y reconocer sus bloques sin modificar nada real. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
+          ]
         }
       ],
       "quiz": [
@@ -281,6 +317,18 @@
           "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
           "correctionCriteria": [
             "Debe distinguir SSR/OSI conceptuales y redactar sin datos reales."
+          ]
+        },
+        {
+          "id": "term-0304",
+          "type": "terminal",
+          "command": "PRACTICE SSR_OSI",
+          "question": "Abre la pagina Terminal y ejecuta PRACTICE SSR_OSI. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Practicar la diferencia conceptual entre SSR, OSI y otros registros. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
           ]
         }
       ],
@@ -362,6 +410,18 @@
           "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
           "correctionCriteria": [
             "Debe seguir checklist, detectar problemas y no proponer cambios reales."
+          ]
+        },
+        {
+          "id": "term-0305",
+          "type": "terminal",
+          "command": "PRACTICE SSR_OSI",
+          "question": "Abre la pagina Terminal y ejecuta PRACTICE SSR_OSI. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Practicar la diferencia conceptual entre SSR, OSI y otros registros. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
           ]
         }
       ],

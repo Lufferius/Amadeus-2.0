@@ -47,6 +47,18 @@
           "correctionCriteria": [
             "Debe formular preguntas claras y extraer requisitos útiles."
           ]
+        },
+        {
+          "id": "term-0501",
+          "type": "terminal",
+          "command": "SHOW AVAILABILITY MAD AMS",
+          "question": "Abre la pagina Terminal y ejecuta SHOW AVAILABILITY MAD AMS. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Interpretar disponibilidad ficticia entre MAD y AMS sin consultar inventario real. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
+          ]
         }
       ],
       "quiz": [
@@ -123,6 +135,18 @@
           "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
           "correctionCriteria": [
             "Debe usar lenguaje equilibrado y señalar dudas pendientes."
+          ]
+        },
+        {
+          "id": "term-0502",
+          "type": "terminal",
+          "command": "SHOW FARE_RULE BASIC",
+          "question": "Abre la pagina Terminal y ejecuta SHOW FARE_RULE BASIC. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Leer una regla de tarifa BASIC simulada y detectar restricciones. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
           ]
         }
       ],
@@ -201,6 +225,18 @@
           "correctionCriteria": [
             "Debe detectar diferencias y proponer una aclaración profesional."
           ]
+        },
+        {
+          "id": "term-0503",
+          "type": "terminal",
+          "command": "PRACTICE SEGMENTS",
+          "question": "Abre la pagina Terminal y ejecuta PRACTICE SEGMENTS. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Practicar el recuento de segmentos con correccion automatica. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
+          ]
         }
       ],
       "quiz": [
@@ -278,6 +314,18 @@
           "correctionCriteria": [
             "Debe sustituir promesas por lenguaje condicionado y verificable."
           ]
+        },
+        {
+          "id": "term-0504",
+          "type": "terminal",
+          "command": "PRACTICE FARES",
+          "question": "Abre la pagina Terminal y ejecuta PRACTICE FARES. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Practicar una decision de tarifa basada en politica y riesgo ficticios. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
+          ]
         }
       ],
       "quiz": [
@@ -354,6 +402,18 @@
           "expectedAnswer": "Respuesta orientativa: debe aplicar los conceptos de la lecci?n con datos ficticios y lenguaje prudente.",
           "correctionCriteria": [
             "Debe incluir puntos de revisión útiles y mantener seguridad de datos."
+          ]
+        },
+        {
+          "id": "term-0505",
+          "type": "terminal",
+          "command": "HELP",
+          "question": "Abre la pagina Terminal y ejecuta HELP. Anota que muestra y como se relaciona con esta leccion.",
+          "expectedAnswer": "Familiarizarte con la lista de comandos seguros del simulador. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "correctionCriteria": [
+            "Ejecuta exactamente el comando indicado en el terminal seguro.",
+            "Resume el resultado con sus propios terminos.",
+            "Indica que el dato es ficticio y no operativo."
           ]
         }
       ],

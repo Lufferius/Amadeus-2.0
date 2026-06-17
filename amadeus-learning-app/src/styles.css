@@ -212,6 +212,25 @@ button {
   gap: 18px;
 }
 
+.terminal-exercise {
+  background: #eef6ff;
+  border: 1px solid #c8def2;
+  border-radius: 8px;
+  list-style-position: inside;
+  margin-top: 12px;
+  padding: 12px;
+}
+
+.terminal-exercise code {
+  background: #10233f;
+  border-radius: 6px;
+  color: #f7fbff;
+  display: inline-block;
+  font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  margin: 8px 0;
+  padding: 6px 8px;
+}
+
 fieldset {
   border: 1px solid var(--line);
   border-radius: 8px;

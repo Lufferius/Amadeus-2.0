@@ -68,12 +68,23 @@ function assertLesson(lesson, expectedPrefix) {
   });
   assertArray(lesson.exercises, `${lesson.id}: exercises must be an array`);
   assert(lesson.exercises.length >= 2, `${lesson.id}: exercises must include at least 2 items`);
+  assert(
+    lesson.exercises.some((exercise) => exercise.type === 'terminal'),
+    `${lesson.id}: every lesson must include a safe terminal exercise`,
+  );
   lesson.exercises.forEach((exercise) => {
     assertText(exercise.id, `${lesson.id}: exercise id is required`);
-    assert(exercise.type === 'open', `${lesson.id}: exercise type must be open`);
+    assert(['open', 'terminal'].includes(exercise.type), `${lesson.id}: exercise type must be open or terminal`);
     assertText(exercise.question, `${lesson.id}: exercise question is required`);
     assertText(exercise.expectedAnswer, `${lesson.id}: exercise expectedAnswer is required`);
     assertArray(exercise.correctionCriteria, `${lesson.id}: exercise correctionCriteria must be an array`);
+    if (exercise.type === 'terminal') {
+      assertText(exercise.command, `${lesson.id}: terminal exercise command is required`);
+      assert(
+        /^(HELP|GLOSSARY\s+[A-Z_]+|SHOW\s+(SAMPLE_PNR|AVAILABILITY\s+[A-Z]{3}\s+[A-Z]{3}|FARE_RULE\s+(BASIC|FLEX))|PRACTICE\s+(SEGMENTS|SSR_OSI|FARES)|RESET)$/.test(exercise.command),
+        `${lesson.id}: terminal exercise command must be supported`,
+      );
+    }
   });
   assertQuiz(lesson.quiz, lesson.id);
   assertArray(lesson.summary, `${lesson.id}: summary must be an array`);
