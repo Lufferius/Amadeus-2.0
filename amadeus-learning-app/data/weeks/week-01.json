@@ -53,7 +53,7 @@
           "id": "term-0101",
           "type": "terminal",
           "command": "HELP",
-          "question": "Abre la pagina Terminal y ejecuta HELP. Anota que muestra y como se relaciona con esta leccion.",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta HELP. Anota que muestra y como se relaciona con el objetivo de la leccion.",
           "expectedAnswer": "Familiarizarte con la lista de comandos seguros del simulador. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
@@ -158,7 +158,7 @@
           "id": "term-0102",
           "type": "terminal",
           "command": "GLOSSARY GDS",
-          "question": "Abre la pagina Terminal y ejecuta GLOSSARY GDS. Anota que muestra y como se relaciona con esta leccion.",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta GLOSSARY GDS. Anota que muestra y como se relaciona con el objetivo de la leccion.",
           "expectedAnswer": "Repasar el concepto de GDS dentro del glosario del simulador. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
@@ -267,7 +267,7 @@
           "id": "term-0103",
           "type": "terminal",
           "command": "GLOSSARY PNR",
-          "question": "Abre la pagina Terminal y ejecuta GLOSSARY PNR. Anota que muestra y como se relaciona con esta leccion.",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta GLOSSARY PNR. Anota que muestra y como se relaciona con el objetivo de la leccion.",
           "expectedAnswer": "Repasar el concepto de PNR dentro del glosario del simulador. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
@@ -372,7 +372,7 @@
           "id": "term-0104",
           "type": "terminal",
           "command": "HELP",
-          "question": "Abre la pagina Terminal y ejecuta HELP. Anota que muestra y como se relaciona con esta leccion.",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta HELP. Anota que muestra y como se relaciona con el objetivo de la leccion.",
           "expectedAnswer": "Familiarizarte con la lista de comandos seguros del simulador. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
@@ -481,7 +481,7 @@
           "id": "term-0105",
           "type": "terminal",
           "command": "SHOW SAMPLE_PNR",
-          "question": "Abre la pagina Terminal y ejecuta SHOW SAMPLE_PNR. Anota que muestra y como se relaciona con esta leccion.",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW SAMPLE_PNR. Anota que muestra y como se relaciona con el objetivo de la leccion.",
           "expectedAnswer": "Leer un PNR ficticio y reconocer sus bloques sin modificar nada real. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",

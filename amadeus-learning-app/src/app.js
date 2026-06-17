@@ -53,7 +53,21 @@ function button(label, onClick, className = 'button') {
 
 function renderExerciseItem(item) {
   if (item.type === 'terminal') {
-    return `<li class="terminal-exercise"><strong>${item.question}</strong><code>${item.command}</code><br><span>${item.expectedAnswer}</span></li>`;
+    return `
+      <li class="terminal-exercise" data-terminal-command="${item.command}">
+        <strong>${item.question}</strong>
+        <span>${item.expectedAnswer}</span>
+        <div class="inline-terminal">
+          <div class="inline-terminal-banner">${DISCLAIMER}</div>
+          <div class="inline-terminal-output" aria-live="polite">Terminal listo. Ejecuta el comando sugerido o escribe otro comando seguro.</div>
+          <form class="inline-terminal-form">
+            <span aria-hidden="true">&gt;</span>
+            <input value="${item.command}" autocomplete="off" />
+            <button class="button secondary" type="submit">Ejecutar</button>
+          </form>
+        </div>
+      </li>
+    `;
   }
 
   return `<li><strong>${item.question}</strong><br><span>${item.expectedAnswer}</span></li>`;
@@ -188,6 +202,28 @@ function renderLesson() {
   quiz.append(result);
 
   renderShell(page, 'lesson');
+  attachInlineTerminals();
+}
+
+function attachInlineTerminals() {
+  document.querySelectorAll('.terminal-exercise').forEach((exercise) => {
+    const session = createTerminalSession();
+    const form = exercise.querySelector('.inline-terminal-form');
+    const input = exercise.querySelector('input');
+    const output = exercise.querySelector('.inline-terminal-output');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const result = runTerminalCommand(session, input.value);
+      output.innerHTML = `
+        <p class="terminal-command-line">&gt; ${result.input}</p>
+        <pre>${result.output.join('\n')}</pre>
+        <p>${result.explanation}</p>
+      `;
+      input.value = session.activePractice ? '' : exercise.dataset.terminalCommand;
+      input.focus();
+    });
+  });
 }
 
 function gradeLesson(lesson, page) {

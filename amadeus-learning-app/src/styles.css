@@ -231,6 +231,58 @@ button {
   padding: 6px 8px;
 }
 
+.inline-terminal {
+  background: #081525;
+  border-radius: 8px;
+  color: #e9f4ff;
+  font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.inline-terminal-banner {
+  background: #123a63;
+  color: #d8ecff;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  padding: 8px 10px;
+}
+
+.inline-terminal-output {
+  min-height: 126px;
+  padding: 12px;
+}
+
+.inline-terminal-output pre {
+  line-height: 1.5;
+  margin: 8px 0;
+  white-space: pre-wrap;
+}
+
+.inline-terminal-output p {
+  color: #b9cde3;
+  margin: 6px 0 0;
+}
+
+.inline-terminal-form {
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  padding: 10px;
+}
+
+.inline-terminal-form input {
+  background: #0f2035;
+  border: 1px solid #294663;
+  border-radius: 6px;
+  color: #f7fbff;
+  font: inherit;
+  min-width: 0;
+  padding: 9px 10px;
+}
+
 fieldset {
   border: 1px solid var(--line);
   border-radius: 8px;

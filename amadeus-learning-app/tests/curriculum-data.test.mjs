@@ -80,6 +80,8 @@ function assertLesson(lesson, expectedPrefix) {
     assertArray(exercise.correctionCriteria, `${lesson.id}: exercise correctionCriteria must be an array`);
     if (exercise.type === 'terminal') {
       assertText(exercise.command, `${lesson.id}: terminal exercise command is required`);
+      assert(!exercise.question.toLowerCase().includes('abre la pagina terminal'), `${lesson.id}: terminal exercise should be embedded, not point to another page`);
+      assert(!exercise.question.toLowerCase().includes('abre la página terminal'), `${lesson.id}: terminal exercise should be embedded, not point to another page`);
       assert(
         /^(HELP|GLOSSARY\s+[A-Z_]+|SHOW\s+(SAMPLE_PNR|AVAILABILITY\s+[A-Z]{3}\s+[A-Z]{3}|FARE_RULE\s+(BASIC|FLEX))|PRACTICE\s+(SEGMENTS|SSR_OSI|FARES)|RESET)$/.test(exercise.command),
         `${lesson.id}: terminal exercise command must be supported`,
