@@ -29,19 +29,18 @@
           "title": "Ejemplo 1",
           "content": "Un PNR ficticio puede incluir una pasajera llamada Laura Demo.",
           "simulatedTerminal": {
-            "command": "SHOW SAMPLE_PNR",
+            "command": "RT",
             "output": [
-              "> SHOW SAMPLE_PNR",
-              "PNR FICTICIO: DEMO42",
-              "Pasajera: Ana Demo",
-              "Cliente corporativo: DemoCorp",
-              "Segmentos: MAD-AMS 09:10-11:45 / AMS-MAD 18:20-20:55",
-              "Contacto: training@example.invalid",
-              "SSR ficticio: asistencia WCHR pendiente de confirmar en escenario",
-              "OSI ficticio: viaje de formacion interna",
-              "Ticketing deadline ficticio: 18:00 del dia de practica"
+              "> RT",
+              "RP/MADTRN000/MADTRN000            TRAIN1",
+              "1. GARCIA/ANA MS",
+              "1 IB310 Y 17JUN MADAMS HK1 0910 1145",
+              "AP MAD 600000000",
+              "TKOK",
+              "RF ANA",
+              "--- PNR FICTICIO DE ENTRENAMIENTO: SIN EMISION, SIN RESERVA REAL ---"
             ],
-            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
+            "explanation": "RT muestra el PNR local de entrenamiento. No existe localizador real ni reserva en ningun sistema."
           }
         },
         {
@@ -86,9 +85,9 @@
         {
           "id": "term-0301",
           "type": "terminal",
-          "command": "SHOW SAMPLE_PNR",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW SAMPLE_PNR. Anota que muestra y como se relaciona con el objetivo de la leccion.",
-          "expectedAnswer": "Leer un PNR ficticio y reconocer sus bloques sin modificar nada real. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "command": "RT",
+          "question": "Usa el terminal integrado y ejecuta RT. Observa el funcionamiento cr?ptico en modo entrenamiento y explica qu? parte del PNR o flujo simula.",
+          "expectedAnswer": "La respuesta debe describir el efecto del comando en el flujo ficticio y recordar que no hay conexi?n real ni operaci?n sobre inventario.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
@@ -164,19 +163,13 @@
           "title": "Ejemplo 1",
           "content": "Nombre válido de práctica: Alex Prueba.",
           "simulatedTerminal": {
-            "command": "SHOW SAMPLE_PNR",
+            "command": "NM1GARCIA/ANA MS",
             "output": [
-              "> SHOW SAMPLE_PNR",
-              "PNR FICTICIO: DEMO42",
-              "Pasajera: Ana Demo",
-              "Cliente corporativo: DemoCorp",
-              "Segmentos: MAD-AMS 09:10-11:45 / AMS-MAD 18:20-20:55",
-              "Contacto: training@example.invalid",
-              "SSR ficticio: asistencia WCHR pendiente de confirmar en escenario",
-              "OSI ficticio: viaje de formacion interna",
-              "Ticketing deadline ficticio: 18:00 del dia de practica"
+              "> NM1GARCIA/ANA MS",
+              "NM OK - 1 pasajero(s) añadido(s)",
+              "1. GARCIA/ANA MS"
             ],
-            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
+            "explanation": "Nombre añadido solo al PNR ficticio local. Usa datos inventados en practicas."
           }
         },
         {
@@ -221,9 +214,9 @@
         {
           "id": "term-0302",
           "type": "terminal",
-          "command": "GLOSSARY PNR",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta GLOSSARY PNR. Anota que muestra y como se relaciona con el objetivo de la leccion.",
-          "expectedAnswer": "Repasar el concepto de PNR dentro del glosario del simulador. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "command": "NM1GARCIA/ANA MS",
+          "question": "Usa el terminal integrado y ejecuta NM1GARCIA/ANA MS. Observa el funcionamiento cr?ptico en modo entrenamiento y explica qu? parte del PNR o flujo simula.",
+          "expectedAnswer": "La respuesta debe describir el efecto del comando en el flujo ficticio y recordar que no hay conexi?n real ni operaci?n sobre inventario.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
@@ -299,19 +292,12 @@
           "title": "Ejemplo 1",
           "content": "Contacto ficticio: agencia.demo@example.invalid.",
           "simulatedTerminal": {
-            "command": "SHOW SAMPLE_PNR",
+            "command": "AP MAD 600000000",
             "output": [
-              "> SHOW SAMPLE_PNR",
-              "PNR FICTICIO: DEMO42",
-              "Pasajera: Ana Demo",
-              "Cliente corporativo: DemoCorp",
-              "Segmentos: MAD-AMS 09:10-11:45 / AMS-MAD 18:20-20:55",
-              "Contacto: training@example.invalid",
-              "SSR ficticio: asistencia WCHR pendiente de confirmar en escenario",
-              "OSI ficticio: viaje de formacion interna",
-              "Ticketing deadline ficticio: 18:00 del dia de practica"
+              "> AP MAD 600000000",
+              "AP OK - MAD 600000000"
             ],
-            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
+            "explanation": "Contacto guardado en el PNR ficticio. No uses telefonos, emails ni datos reales de clientes."
           }
         },
         {
@@ -356,9 +342,9 @@
         {
           "id": "term-0303",
           "type": "terminal",
-          "command": "SHOW SAMPLE_PNR",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW SAMPLE_PNR. Anota que muestra y como se relaciona con el objetivo de la leccion.",
-          "expectedAnswer": "Leer un PNR ficticio y reconocer sus bloques sin modificar nada real. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "command": "AP MAD 600000000",
+          "question": "Usa el terminal integrado y ejecuta AP MAD 600000000. Observa el funcionamiento cr?ptico en modo entrenamiento y explica qu? parte del PNR o flujo simula.",
+          "expectedAnswer": "La respuesta debe describir el efecto del comando en el flujo ficticio y recordar que no hay conexi?n real ni operaci?n sobre inventario.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",

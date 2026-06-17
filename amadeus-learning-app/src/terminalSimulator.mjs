@@ -26,6 +26,13 @@ const supportedCommands = [
   'HOTEL HILTON',
   'SHOW HOTELS MAD',
   'SHOW TRAINS MAD BCN',
+  'AN17JUNMADAMS/IB',
+  'SS1Y1',
+  'NM1GARCIA/ANA MS',
+  'AP MAD 600000000',
+  'TKOK',
+  'RF ANA',
+  'RT',
   'PRACTICE SEGMENTS',
   'PRACTICE SSR_OSI',
   'PRACTICE FARES',
@@ -104,6 +111,15 @@ export function createTerminalSession() {
     activePractice: null,
     score: { correct: 0, total: 0 },
     mistakes: [],
+    pnr: {
+      recordLocator: 'TRAIN1',
+      names: [],
+      contacts: [],
+      segments: [],
+      ticketing: null,
+      receivedFrom: null,
+    },
+    lastAvailability: [],
   };
 }
 
@@ -191,6 +207,43 @@ export function parseTerminalCommand(input = '') {
     return { type: 'SHOW_TRAINS', safe: true, args: [trainsMatch[1], trainsMatch[2]] };
   }
 
+  const crypticAvailability = normalized.match(/^AN(\d{2}[A-Z]{3})([A-Z]{3})([A-Z]{3})(?:\/([A-Z0-9]{2}))?$/);
+  if (crypticAvailability) {
+    return {
+      type: 'CRYPTIC_AVAILABILITY',
+      safe: true,
+      args: [crypticAvailability[1], crypticAvailability[2], crypticAvailability[3], crypticAvailability[4]],
+    };
+  }
+
+  const crypticSell = normalized.match(/^SS(\d+)([A-Z])(\d+)$/);
+  if (crypticSell) {
+    return { type: 'CRYPTIC_SELL_SEGMENT', safe: true, args: [crypticSell[1], crypticSell[2], crypticSell[3]] };
+  }
+
+  const crypticName = normalized.match(/^NM(\d+)([A-Z]+\/[A-Z ]+(?:\s+(?:MR|MS|MRS|MSTR))?)$/);
+  if (crypticName) {
+    return { type: 'CRYPTIC_NAME', safe: true, args: [crypticName[1], crypticName[2]] };
+  }
+
+  const crypticContact = normalized.match(/^AP\s+(.+)$/);
+  if (crypticContact) {
+    return { type: 'CRYPTIC_CONTACT', safe: true, args: [crypticContact[1]] };
+  }
+
+  if (normalized === 'TKOK') {
+    return { type: 'CRYPTIC_TICKETING', safe: true, args: [] };
+  }
+
+  const crypticRf = normalized.match(/^RF\s+(.+)$/);
+  if (crypticRf) {
+    return { type: 'CRYPTIC_RECEIVED_FROM', safe: true, args: [crypticRf[1]] };
+  }
+
+  if (normalized === 'RT') {
+    return { type: 'CRYPTIC_RETRIEVE_PNR', safe: true, args: [] };
+  }
+
   return {
     type: 'UNKNOWN',
     safe: false,
@@ -230,6 +283,94 @@ function formatReference(kind, code, record) {
   }
 
   return Object.entries(record).map(([key, value]) => `${key}: ${value}`);
+}
+
+function buildSimulatedAvailability(origin, destination, airlineCode = 'XX', date = '17JUN') {
+  const prefix = airlineCode || 'XX';
+  return [
+    {
+      line: 1,
+      airline: prefix,
+      flight: `${prefix}310`,
+      date,
+      origin,
+      destination,
+      departure: '0910',
+      arrival: '1145',
+      classCode: 'Y',
+      seats: 7,
+      fareFamily: 'BASIC',
+    },
+    {
+      line: 2,
+      airline: prefix,
+      flight: `${prefix}642`,
+      date,
+      origin,
+      destination,
+      departure: '1030',
+      arrival: '1450',
+      classCode: 'Y',
+      seats: 4,
+      fareFamily: 'BASIC',
+      via: 'CDG',
+    },
+    {
+      line: 3,
+      airline: prefix,
+      flight: `${prefix}884`,
+      date,
+      origin,
+      destination,
+      departure: '1600',
+      arrival: '1835',
+      classCode: 'Y',
+      seats: 9,
+      fareFamily: 'FLEX',
+    },
+  ];
+}
+
+function formatAvailabilityLine(option) {
+  const via = option.via ? ` VIA ${option.via}` : ' NONSTOP';
+  return `${option.line} ${option.flight} ${option.classCode}${option.seats} ${option.date} ${option.origin}${option.destination} ${option.departure} ${option.arrival}${via} ${option.fareFamily}`;
+}
+
+function ensureTrainingPnr(session) {
+  if (!session.pnr) {
+    session.pnr = {
+      recordLocator: 'TRAIN1',
+      names: [],
+      contacts: [],
+      segments: [],
+      ticketing: null,
+      receivedFrom: null,
+    };
+  }
+
+  return session.pnr;
+}
+
+function formatTrainingPnr(session) {
+  const pnr = ensureTrainingPnr(session);
+  const lines = [`RP/MADTRN000/MADTRN000            ${pnr.recordLocator}`];
+  if (pnr.names.length === 0) {
+    lines.push('NO NAMES');
+  } else {
+    pnr.names.forEach((name, index) => lines.push(`${index + 1}. ${name}`));
+  }
+
+  if (pnr.segments.length === 0) {
+    lines.push('NO SEGMENTS');
+  } else {
+    pnr.segments.forEach((segment, index) => lines.push(`${index + 1} ${segment.flight} ${segment.classCode} ${segment.date} ${segment.origin}${segment.destination} HK${segment.quantity} ${segment.departure} ${segment.arrival}`));
+  }
+
+  pnr.contacts.forEach((contact) => lines.push(`AP ${contact}`));
+  if (pnr.ticketing) lines.push(pnr.ticketing);
+  if (pnr.receivedFrom) lines.push(`RF ${pnr.receivedFrom}`);
+  lines.push('--- PNR FICTICIO DE ENTRENAMIENTO: SIN EMISION, SIN RESERVA REAL ---');
+  return lines;
 }
 
 function runPracticeAnswer(session, input) {
@@ -285,6 +426,15 @@ export function runTerminalCommand(session, input) {
     session.activePractice = null;
     session.score = { correct: 0, total: 0 };
     session.mistakes = [];
+    session.lastAvailability = [];
+    session.pnr = {
+      recordLocator: 'TRAIN1',
+      names: [],
+      contacts: [],
+      segments: [],
+      ticketing: null,
+      receivedFrom: null,
+    };
     return baseResult('RESET', input, ['Sesion simulada reiniciada.'], 'RESET borra historial, puntuacion y errores de practica.');
   }
 
@@ -432,6 +582,95 @@ export function runTerminalCommand(session, input) {
       ],
       'Listado ferroviario simulado con marcas reales como referencia. No consulta horarios, plazas ni precios reales.',
       { contextualHelp: 'Usa TRAIN AVE, TRAIN IRYO o TRAIN OUIGO para ver referencias estaticas.' },
+    );
+  } else if (parsed.type === 'CRYPTIC_AVAILABILITY') {
+    const [date, origin, destination, airlineCode] = parsed.args;
+    const options = buildSimulatedAvailability(origin, destination, airlineCode ?? 'XX', date);
+    session.lastAvailability = options;
+    result = baseResult(
+      'CRYPTIC_AVAILABILITY',
+      input,
+      [
+        `AN ${date} ${origin}${destination}${airlineCode ? ` /${airlineCode}` : ''}`,
+        ...options.map(formatAvailabilityLine),
+      ],
+      'Formato críptico de entrenamiento inspirado en consulta de disponibilidad. Los vuelos y plazas son simulados.',
+      { contextualHelp: 'Usa SS1Y1 para vender de forma ficticia 1 plaza en clase Y de la linea 1.' },
+    );
+  } else if (parsed.type === 'CRYPTIC_SELL_SEGMENT') {
+    const [quantityText, classCode, lineText] = parsed.args;
+    const option = session.lastAvailability.find((candidate) => candidate.line === Number(lineText));
+    if (!option) {
+      result = baseResult(
+        'CRYPTIC_SELL_SEGMENT',
+        input,
+        ['NO AVAILABILITY LINE IN CONTEXT', 'Ejecuta primero una consulta tipo AN17JUNMADAMS/IB.'],
+        'No hay linea de disponibilidad simulada para vender. No se ha creado ningun segmento.',
+      );
+    } else {
+      const pnr = ensureTrainingPnr(session);
+      const segment = { ...option, classCode, quantity: Number(quantityText) };
+      pnr.segments.push(segment);
+      result = baseResult(
+        'CRYPTIC_SELL_SEGMENT',
+        input,
+        [`segmento ${lineText} vendido en PNR ficticio`, `${segment.flight} ${classCode} ${segment.date} ${segment.origin}${segment.destination} HK${segment.quantity} ${segment.departure} ${segment.arrival}`],
+        'Venta simulada: crea un segmento HK dentro del PNR local de entrenamiento, sin tocar inventario real.',
+        { contextualHelp: 'Añade nombre con NM1GARCIA/ANA MS y contacto con AP MAD 600000000.' },
+      );
+    }
+  } else if (parsed.type === 'CRYPTIC_NAME') {
+    const [countText, name] = parsed.args;
+    const pnr = ensureTrainingPnr(session);
+    for (let index = 0; index < Number(countText); index += 1) {
+      pnr.names.push(name);
+    }
+    result = baseResult(
+      'CRYPTIC_NAME',
+      input,
+      [`NM OK - ${countText} pasajero(s) añadido(s)`, ...pnr.names.map((item, index) => `${index + 1}. ${item}`)],
+      'Nombre añadido solo al PNR ficticio local. Usa datos inventados en practicas.',
+      { contextualHelp: 'Continua con AP MAD 600000000 para añadir contacto ficticio.' },
+    );
+  } else if (parsed.type === 'CRYPTIC_CONTACT') {
+    const [contact] = parsed.args;
+    const pnr = ensureTrainingPnr(session);
+    pnr.contacts.push(contact);
+    result = baseResult(
+      'CRYPTIC_CONTACT',
+      input,
+      [`AP OK - ${contact}`],
+      'Contacto guardado en el PNR ficticio. No uses telefonos, emails ni datos reales de clientes.',
+      { contextualHelp: 'Usa TKOK para marcar ticketing ficticio.' },
+    );
+  } else if (parsed.type === 'CRYPTIC_TICKETING') {
+    const pnr = ensureTrainingPnr(session);
+    pnr.ticketing = 'TKOK';
+    result = baseResult(
+      'CRYPTIC_TICKETING',
+      input,
+      ['TKOK OK - ticketing ficticio marcado'],
+      'TKOK queda registrado como marcador de entrenamiento. No emite billete ni crea documento real.',
+      { contextualHelp: 'Usa RF ANA para registrar recibido de forma ficticia.' },
+    );
+  } else if (parsed.type === 'CRYPTIC_RECEIVED_FROM') {
+    const [receivedFrom] = parsed.args;
+    const pnr = ensureTrainingPnr(session);
+    pnr.receivedFrom = receivedFrom;
+    result = baseResult(
+      'CRYPTIC_RECEIVED_FROM',
+      input,
+      [`RF OK - ${receivedFrom}`],
+      'Recibido de guardado en PNR ficticio. Sirve para practicar documentacion, no para cerrar transacciones reales.',
+      { contextualHelp: 'Usa RT para visualizar el PNR ficticio.' },
+    );
+  } else if (parsed.type === 'CRYPTIC_RETRIEVE_PNR') {
+    result = baseResult(
+      'CRYPTIC_RETRIEVE_PNR',
+      input,
+      formatTrainingPnr(session),
+      'RT muestra el PNR local de entrenamiento. No existe localizador real ni reserva en ningun sistema.',
+      { contextualHelp: 'Usa RESET para limpiar el PNR ficticio y empezar de nuevo.' },
     );
   } else if (parsed.type === 'EMPTY') {
     result = baseResult('EMPTY', input, [parsed.message], 'No se ha ejecutado ningun comando.');

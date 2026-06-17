@@ -26,6 +26,13 @@ export function testParserRecognisesSupportedCommands() {
     ['SHOW HOTELS MAD', 'SHOW_HOTELS'],
     ['SHOW TRAINS MAD BCN', 'SHOW_TRAINS'],
     ['SHOW AVAILABILITY MAD AMS IB', 'SHOW_AVAILABILITY'],
+    ['AN17JUNMADAMS/IB', 'CRYPTIC_AVAILABILITY'],
+    ['SS1Y1', 'CRYPTIC_SELL_SEGMENT'],
+    ['NM1GARCIA/ANA MS', 'CRYPTIC_NAME'],
+    ['AP MAD 600000000', 'CRYPTIC_CONTACT'],
+    ['TKOK', 'CRYPTIC_TICKETING'],
+    ['RF ANA', 'CRYPTIC_RECEIVED_FROM'],
+    ['RT', 'CRYPTIC_RETRIEVE_PNR'],
     ['PRACTICE SEGMENTS', 'PRACTICE'],
     ['PRACTICE SSR_OSI', 'PRACTICE'],
     ['PRACTICE FARES', 'PRACTICE'],
@@ -36,6 +43,28 @@ export function testParserRecognisesSupportedCommands() {
     const parsed = parseTerminalCommand(input);
     assert(parsed.type === expectedType, `${input}: expected ${expectedType}, got ${parsed.type}`);
   }
+}
+
+export function testCrypticTrainingFlowBuildsLocalFictionalPnr() {
+  const session = createTerminalSession();
+
+  const availability = runTerminalCommand(session, 'AN17JUNMADAMS/IB');
+  assert(availability.type === 'CRYPTIC_AVAILABILITY', 'Cryptic availability should be recognised');
+  assert(availability.output.some((line) => line.includes('IB310')), 'Cryptic availability should show realistic IB options');
+
+  const sell = runTerminalCommand(session, 'SS1Y1');
+  assert(sell.output.some((line) => line.includes('segmento 1')), 'Sell should add selected simulated segment');
+
+  runTerminalCommand(session, 'NM1GARCIA/ANA MS');
+  runTerminalCommand(session, 'AP MAD 600000000');
+  runTerminalCommand(session, 'TKOK');
+  runTerminalCommand(session, 'RF ANA');
+  const pnr = runTerminalCommand(session, 'RT');
+
+  assert(pnr.type === 'CRYPTIC_RETRIEVE_PNR', 'RT should retrieve the training PNR');
+  assert(pnr.output.some((line) => line.includes('GARCIA/ANA MS')), 'PNR should include passenger name');
+  assert(pnr.output.some((line) => line.includes('IB310')), 'PNR should include sold segment');
+  assert(pnr.output.some((line) => line.includes('TKOK')), 'PNR should include ticketing marker');
 }
 
 export function testParserRejectsUnsupportedOrUnsafeCommands() {

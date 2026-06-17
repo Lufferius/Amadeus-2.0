@@ -25,16 +25,15 @@
           "title": "Ejemplo 1",
           "content": "MAD puede representar Madrid y AMS puede representar Ámsterdam en una práctica.",
           "simulatedTerminal": {
-            "command": "SHOW AVAILABILITY MAD AMS IB",
+            "command": "AN17JUNMADAMS/IB",
             "output": [
-              "> SHOW AVAILABILITY MAD AMS IB",
-              "Disponibilidad simulada MAD-AMS (Madrid - Amsterdam)",
-              "Filtro transportista: Iberia",
-              "1. IB310 directo MAD-AMS 09:10-11:45 cabina Y tarifa BASIC restrictiva",
-              "2. IB642 conexion via CDG 10:30-14:50 cabina Y tarifa BASIC economica",
-              "3. IB884 directo MAD-AMS 16:00-18:35 cabina Y tarifa FLEX con cambios simulados"
+              "> AN17JUNMADAMS/IB",
+              "AN 17JUN MADAMS /IB",
+              "1 IB310 Y7 17JUN MADAMS 0910 1145 NONSTOP BASIC",
+              "2 IB642 Y4 17JUN MADAMS 1030 1450 VIA CDG BASIC",
+              "3 IB884 Y9 17JUN MADAMS 1600 1835 NONSTOP FLEX"
             ],
-            "explanation": "La disponibilidad es simulada. Los codigos pueden ser reales como referencia, pero no hay consulta de inventario real."
+            "explanation": "Formato críptico de entrenamiento inspirado en consulta de disponibilidad. Los vuelos y plazas son simulados."
           }
         },
         {
@@ -75,9 +74,9 @@
         {
           "id": "term-0201",
           "type": "terminal",
-          "command": "SHOW AVAILABILITY MAD AMS IB",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW AVAILABILITY MAD AMS IB. Observa como acepta codigos reales como referencia, pero mantiene resultados simulados.",
-          "expectedAnswer": "La respuesta debe identificar el codigo real usado y explicar que el resultado es una referencia o simulacion sin conexion real a Amadeus ni a proveedores.",
+          "command": "AN17JUNMADAMS/IB",
+          "question": "Usa el terminal integrado y ejecuta AN17JUNMADAMS/IB. Observa el funcionamiento cr?ptico en modo entrenamiento y explica qu? parte del PNR o flujo simula.",
+          "expectedAnswer": "La respuesta debe describir el efecto del comando en el flujo ficticio y recordar que no hay conexi?n real ni operaci?n sobre inventario.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
@@ -153,15 +152,13 @@
           "title": "Ejemplo 1",
           "content": "MAD-AMS es un segmento directo simulado.",
           "simulatedTerminal": {
-            "command": "SHOW AVAILABILITY MAD AMS",
+            "command": "SS1Y1",
             "output": [
-              "> SHOW AVAILABILITY MAD AMS",
-              "Disponibilidad ficticia MAD-AMS",
-              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
-              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
-              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
+              "> SS1Y1",
+              "segmento 1 vendido en PNR ficticio",
+              "IB310 Y 17JUN MADAMS HK1 0910 1145"
             ],
-            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad."
+            "explanation": "Venta simulada: crea un segmento HK dentro del PNR local de entrenamiento, sin tocar inventario real."
           }
         },
         {
@@ -202,9 +199,9 @@
         {
           "id": "term-0202",
           "type": "terminal",
-          "command": "PRACTICE SEGMENTS",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta PRACTICE SEGMENTS. Anota que muestra y como se relaciona con el objetivo de la leccion.",
-          "expectedAnswer": "Practicar el recuento de segmentos con correccion automatica. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "command": "SS1Y1",
+          "question": "Usa el terminal integrado y ejecuta SS1Y1. Observa el funcionamiento cr?ptico en modo entrenamiento y explica qu? parte del PNR o flujo simula.",
+          "expectedAnswer": "La respuesta debe describir el efecto del comando en el flujo ficticio y recordar que no hay conexi?n real ni operaci?n sobre inventario.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
