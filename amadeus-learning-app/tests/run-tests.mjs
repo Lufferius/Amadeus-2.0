@@ -3,8 +3,9 @@ import * as lessonLoader from './lesson-loader.test.mjs';
 import * as terminalParser from './terminal-parser.test.mjs';
 import * as terminalPnrFlow from './terminal-pnr-flow.test.mjs';
 import * as terminalFaresQueues from './terminal-fares-queues.test.mjs';
+import * as terminalScenarios from './terminal-scenarios.test.mjs';
 
-const suites = [curriculumData, lessonLoader, terminalParser, terminalPnrFlow, terminalFaresQueues];
+const suites = [curriculumData, lessonLoader, terminalParser, terminalPnrFlow, terminalFaresQueues, terminalScenarios];
 let passed = 0;
 let failed = 0;
 
