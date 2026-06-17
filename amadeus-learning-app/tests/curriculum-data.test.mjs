@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseCommand } from '../src/terminal/commandParser.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const weeksDir = join(root, 'data', 'weeks');
@@ -21,6 +22,15 @@ function assertArray(value, message) {
 
 function assertText(value, message) {
   assert(typeof value === 'string' && value.trim().length > 0, message);
+}
+
+function validateTrainingCommand(command, context) {
+  const parsed = parseCommand(command);
+  assert(
+    parsed.safe === true && !['UNKNOWN', 'PROHIBITED', 'EMPTY'].includes(parsed.type),
+    `${context}: command ${command} must be supported and safe`,
+  );
+  return parsed;
 }
 
 function assertQuiz(quiz, lessonId) {
@@ -72,10 +82,7 @@ function assertLesson(lesson, expectedPrefix) {
     assert(example.simulatedTerminal.output[0] === `> ${example.simulatedTerminal.command}`, `${lesson.id}: example output must start with the exact command`);
     assert(!example.simulatedTerminal.output.join('\n').includes('Training simulator only'), `${lesson.id}: example output should not include the generic terminal disclaimer`);
     assertText(example.simulatedTerminal.explanation, `${lesson.id}: example simulated terminal explanation is required`);
-    assert(
-      /^(HELP|GLOSSARY\s+[A-Z_]+|AIRLINE\s+[A-Z0-9]{2}|AIRPORT\s+[A-Z]{3}|TRAIN\s+[A-Z0-9_]+|HOTEL\s+[A-Z0-9_]+|SHOW\s+(SAMPLE_PNR|AVAILABILITY\s+[A-Z]{3}\s+[A-Z]{3}(?:\s+[A-Z0-9]{2})?|FARE_RULE\s+(BASIC|FLEX)|HOTELS\s+[A-Z]{3}|TRAINS\s+[A-Z]{3}\s+[A-Z]{3})|AN\d{2}[A-Z]{3}[A-Z]{3}[A-Z]{3}(?:\/[A-Z0-9]{2})?|SS\d+[A-Z]\d+|NM\d+[A-Z]+\/[A-Z ]+(?:\s+(?:MR|MS|MRS|MSTR))?|AP\s+.+|TKOK|RF\s+.+|RT|PRACTICE\s+(SEGMENTS|SSR_OSI|FARES))$/.test(example.simulatedTerminal.command),
-      `${lesson.id}: example simulated terminal command must be supported and safe`,
-    );
+    validateTrainingCommand(example.simulatedTerminal.command, `${lesson.id}: example`);
     const exampleText = `${lesson.title} ${example.title} ${example.content}`.toLowerCase();
     if (exampleText.includes('disponibilidad') || exampleText.includes('madrid') || exampleText.includes('ámsterdam') || exampleText.includes('amsterdam')) {
       assert(
@@ -112,10 +119,7 @@ function assertLesson(lesson, expectedPrefix) {
       assertText(exercise.command, `${lesson.id}: terminal exercise command is required`);
       assert(!exercise.question.toLowerCase().includes('abre la pagina terminal'), `${lesson.id}: terminal exercise should be embedded, not point to another page`);
       assert(!exercise.question.toLowerCase().includes('abre la página terminal'), `${lesson.id}: terminal exercise should be embedded, not point to another page`);
-      assert(
-        /^(HELP|GLOSSARY\s+[A-Z_]+|AIRLINE\s+[A-Z0-9]{2}|AIRPORT\s+[A-Z]{3}|TRAIN\s+[A-Z0-9_]+|HOTEL\s+[A-Z0-9_]+|SHOW\s+(SAMPLE_PNR|AVAILABILITY\s+[A-Z]{3}\s+[A-Z]{3}(?:\s+[A-Z0-9]{2})?|FARE_RULE\s+(BASIC|FLEX)|HOTELS\s+[A-Z]{3}|TRAINS\s+[A-Z]{3}\s+[A-Z]{3})|AN\d{2}[A-Z]{3}[A-Z]{3}[A-Z]{3}(?:\/[A-Z0-9]{2})?|SS\d+[A-Z]\d+|NM\d+[A-Z]+\/[A-Z ]+(?:\s+(?:MR|MS|MRS|MSTR))?|AP\s+.+|TKOK|RF\s+.+|RT|PRACTICE\s+(SEGMENTS|SSR_OSI|FARES)|RESET)$/.test(exercise.command),
-        `${lesson.id}: terminal exercise command must be supported`,
-      );
+      validateTrainingCommand(exercise.command, `${lesson.id}: terminal exercise`);
     }
   });
   assertQuiz(lesson.quiz, lesson.id);
@@ -146,4 +150,18 @@ export function testCurriculumWeeksAreStructured() {
       assert(lesson.day === lessonIndex + 1, `${lesson.id}: lesson day must match position`);
     });
   });
+}
+
+export function testCurriculumCommandValidatorRejectsUnsafeAndUnknownOperations() {
+  for (const command of ['TTP', 'TRF 123-4567890123', 'UNSUPPORTED LIVE COMMAND']) {
+    let rejected = false;
+    try {
+      validateTrainingCommand(command, 'synthetic-test');
+    } catch {
+      rejected = true;
+    }
+    assert(rejected, `${command}: curriculum validator should reject unsafe or unknown commands`);
+  }
+  validateTrainingCommand('AN17JUNMADAMS/IB', 'synthetic-test');
+  validateTrainingCommand('FXP', 'synthetic-test');
 }

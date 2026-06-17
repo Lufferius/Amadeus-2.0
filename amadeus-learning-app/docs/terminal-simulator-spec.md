@@ -1,107 +1,115 @@
-# Terminal simulator spec
+# Especificación del terminal de entrenamiento
 
-## Purpose
+## Propósito
 
-Create a safe Amadeus-like training terminal for beginners.
+El terminal permite aprender la lógica de trabajo de vuelos y PNR mediante una simulación local inspirada en un entorno críptico. Enseña secuencias, dependencias, lectura de respuestas, control de calidad y recuperación de errores.
 
-The terminal teaches concepts and simulated workflows.
+No es un terminal oficial de Amadeus y no sustituye la formación autorizada ni los procedimientos internos de una empresa.
 
-It must never connect to real Amadeus or any real booking system.
+## Límite técnico
 
-## Disclaimer
+- No se conecta a Amadeus, aerolíneas, hoteles, trenes, pagos ni sistemas corporativos.
+- No consulta inventario, tarifas, perfiles ni colas reales.
+- No crea, modifica o cancela reservas reales.
+- No emite, reemite, anula o reembolsa billetes.
+- Todo el estado se guarda localmente en el navegador.
+- Los localizadores empiezan por `TRN` y todos los datos operativos son ficticios.
 
-Every terminal screen should show:
+Cada pantalla muestra permanentemente:
 
-"Training simulator only. Not connected to Amadeus or any real booking system."
+> Training simulator only. Not connected to Amadeus or any real booking system.
 
-## Supported fake commands for MVP
+## Modos
 
-### HELP
+### Guiado
 
-Shows available simulator commands.
+Presenta un objetivo profesional, pasos evaluables y la siguiente orientación. El progreso se calcula a partir del estado conseguido, no de una única cadena exacta.
 
-### GLOSSARY <TERM>
+Escenarios iniciales:
 
-Example:
-GLOSSARY PNR
+1. PNR básico de ida.
+2. Calidad SSR y OSI.
+3. Comparación de pricing informativo y almacenado.
 
-Returns a beginner-friendly definition.
+### Libre
 
-### SHOW SAMPLE_PNR
+Permite utilizar todo el catálogo admitido sin una secuencia obligatoria. Conserva ayuda, historial, persistencia y límites de seguridad.
 
-Displays a fictional PNR-like record with:
-- fictional passenger
-- fictional flights
-- fictional contact
-- fictional remarks
-- fictional SSR
-- fictional OSI
-- fictional ticketing deadline
+## Estado local del PNR
 
-### SHOW AVAILABILITY <ORIGIN> <DESTINATION>
+- `EMPTY`: área de trabajo vacía.
+- `WORKING`: PNR nuevo con cambios pendientes.
+- `COMMITTED`: PNR ficticio guardado localmente.
+- `RETRIEVED`: copia local recuperada para revisión o edición.
 
-Example:
-SHOW AVAILABILITY MAD AMS
+Para finalizar se requieren nombre, segmento, contacto, ticketing y recibido de. Los errores identifican el primer elemento ausente.
 
-Returns fictional availability with several options:
-- direct flight
-- connecting flight
-- cheaper restrictive fare
-- more flexible fare
+## Catálogo de fase 1
 
-### SHOW FARE_RULE <TYPE>
+### Disponibilidad
 
-Examples:
-SHOW FARE_RULE BASIC
-SHOW FARE_RULE FLEX
+- `AN17JUNMADAMS`
+- `AN17JUNMADAMS/IB`
+- `MD`, `MU`, `MB`, `MT`
+- `DO1`
 
-Returns simplified fare rules.
+La respuesta contiene diez opciones deterministas, seis por página, con clases, horarios, escalas y equipo ficticios. Los códigos públicos pueden ser reales como referencia; el inventario nunca lo es.
 
-### PRACTICE SEGMENTS
+### Construcción y revisión del PNR
 
-Shows itineraries and asks the learner to count segments.
+- `SS1Y1`
+- `XE1`
+- `NM1GARCIA/ANA MS`
+- `AP MAD 600000000`
+- `TKOK`
+- `RF ANA`
+- `SR WCHR/P1`
+- `OS IB TRAINING PASSENGER`
+- `RM TRAINING ONLY`
+- `RT`, `RT TRN001`
+- `ER`, `ET`, `IG`
 
-### PRACTICE SSR_OSI
+`ER` valida, guarda y vuelve a mostrar. `ET` valida, guarda y cierra el área de trabajo. `IG` restaura la última copia guardada o limpia un PNR nuevo sin guardar.
 
-Shows requests and asks the learner to classify as SSR, OSI, remark, or policy issue.
+### Tarifas
 
-### PRACTICE FARES
+- `FXX`: cotización ficticia informativa, sin almacenar.
+- `FXP`: almacena una tarifa ficticia en el PNR local.
+- `FQN1`: reglas simplificadas de entrenamiento.
+- `TQT`: muestra la tarifa almacenada.
 
-Shows fare options and asks the learner to choose based on policy and risk.
+El total, las tasas, el fare basis y las reglas se generan desde fixtures locales. Ningún comando emite un billete.
 
-### RESET
+### Colas, perfiles y ayuda
 
-Clears the simulated terminal session.
+- `QT`, `QS8`, `QN`
+- `PDN/DEMO CORP`
+- `HE`, `HE NM`, `HE SR`, `HE FXP`
 
-## Important
+Las colas contienen únicamente localizadores `TRN`. El perfil `DEMO CORP` es ficticio y no representa políticas de AMEX GBT ni de un cliente real.
 
-Do not implement real Amadeus cryptic commands in the MVP.
+## Operaciones prohibidas
 
-The goal is conceptual learning first.
+Los formatos de emisión, reembolso, reemisión, void, pago o tarjeta se clasifican como `PROHIBITED` y responden:
 
-Later, a separate mode can introduce real-looking command patterns only if clearly labelled as non-authoritative simulation and verified against official training materials.
+`OPERATION NOT AVAILABLE IN TRAINING`
 
-## Fake sample data
+La sesión no se modifica. Esta prohibición incluye, entre otros, `TTP`, `TRF`, `FXQ`, `TRDC`, datos de tarjeta y formatos de pago.
 
-Use fictional passenger names:
-- Ana Demo
-- Carlos Example
-- Maria Training
-- John Sample
+## Persistencia
 
-Use fictional corporate clients:
-- ACME Travel Training
-- DemoCorp
+Se guarda bajo `amadeus-learning-coach-terminal-v2`:
 
-Do not use real customer data.
+- modo seleccionado;
+- escenario seleccionado;
+- progreso;
+- historial y respuestas;
+- disponibilidad activa;
+- PNR y registros ficticios;
+- cola local.
 
-## Feedback style
+El esquema tiene versión y validación. Los datos corruptos o incompatibles generan una sesión nueva y segura.
 
-When the learner makes a mistake:
-1. Say clearly what is wrong.
-2. Explain why it matters.
-3. Give the better answer.
-4. Mention risk if relevant.
+## Respuestas y feedback
 
-Example:
-"Incorrect. This is not OSI; it is likely SSR because the airline may need to process or confirm the request. Treating it only as information could mean the passenger does not receive the service."
+Cada ejecución devuelve tipo, entrada, salida, explicación, estado, aviso de simulación y, cuando procede, código de error y ayuda contextual. La salida críptica y la explicación pedagógica se muestran separadas.

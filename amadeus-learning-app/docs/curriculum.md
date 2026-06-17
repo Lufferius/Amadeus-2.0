@@ -75,3 +75,21 @@ Lecciones:
 3. Caso guiado: revisar PNR de entrenamiento.
 4. Caso guiado: explicar regla de tarifa simulada.
 5. Evaluación final segura.
+
+## Orientación profesional
+
+Las seis semanas actuales forman el núcleo inicial. El itinerario completo continúa según `docs/professional-training-roadmap.md` con tarifas, servicing, colas, viaje corporativo, simulaciones integrales y evaluación por competencias.
+
+La meta es preparar habilidades transferibles al trabajo de Travel Consultant: precisión, secuencia, lectura de respuestas, control de calidad, comunicación y criterio de escalado. No se presentan como procedimientos internos de AMEX GBT.
+
+## Puertas de competencia
+
+Para superar una fase, la alumna debe:
+
+- obtener al menos un 85 % en conocimientos;
+- completar los escenarios obligatorios;
+- no cometer fallos críticos de privacidad o seguridad;
+- corregir errores recuperables de forma autónoma;
+- explicar el motivo de las acciones relevantes.
+
+Ver una lección no basta para demostrar competencia. El progreso debe combinar quiz, ejercicios de terminal y escenarios prácticos.
