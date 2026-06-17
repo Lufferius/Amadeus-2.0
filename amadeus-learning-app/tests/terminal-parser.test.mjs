@@ -19,6 +19,13 @@ export function testParserRecognisesSupportedCommands() {
     ['SHOW AVAILABILITY MAD AMS', 'SHOW_AVAILABILITY'],
     ['SHOW FARE_RULE BASIC', 'SHOW_FARE_RULE'],
     ['SHOW FARE_RULE FLEX', 'SHOW_FARE_RULE'],
+    ['AIRLINE IB', 'REFERENCE_AIRLINE'],
+    ['AIRPORT MAD', 'REFERENCE_AIRPORT'],
+    ['TRAIN AVE', 'REFERENCE_TRAIN'],
+    ['HOTEL MELIA', 'REFERENCE_HOTEL'],
+    ['SHOW HOTELS MAD', 'SHOW_HOTELS'],
+    ['SHOW TRAINS MAD BCN', 'SHOW_TRAINS'],
+    ['SHOW AVAILABILITY MAD AMS IB', 'SHOW_AVAILABILITY'],
     ['PRACTICE SEGMENTS', 'PRACTICE'],
     ['PRACTICE SSR_OSI', 'PRACTICE'],
     ['PRACTICE FARES', 'PRACTICE'],
@@ -44,6 +51,33 @@ export function testAutocompleteReturnsCommandSuggestions() {
 
   assert(suggestions.includes('SHOW FARE_RULE BASIC'), 'Autocomplete should suggest BASIC fare rule');
   assert(suggestions.includes('SHOW FARE_RULE FLEX'), 'Autocomplete should suggest FLEX fare rule');
+
+  const referenceSuggestions = getAutocompleteSuggestions('AIR');
+  assert(referenceSuggestions.includes('AIRLINE IB'), 'Autocomplete should suggest real airline code references');
+}
+
+export function testReferenceCommandsReturnStaticRealCodesWithoutExternalConnection() {
+  const session = createTerminalSession();
+
+  const airline = runTerminalCommand(session, 'AIRLINE IB');
+  assert(airline.output.some((line) => line.includes('Iberia')), 'AIRLINE IB should identify Iberia');
+  assert(airline.explanation.includes('referencia estatica'), 'Reference command should disclose static data');
+
+  const airport = runTerminalCommand(session, 'AIRPORT MAD');
+  assert(airport.output.some((line) => line.includes('Madrid')), 'AIRPORT MAD should identify Madrid');
+
+  const hotel = runTerminalCommand(session, 'SHOW HOTELS MAD');
+  assert(hotel.output.some((line) => line.includes('Melia')), 'SHOW HOTELS MAD should include realistic hotel chain examples');
+  assert(hotel.output.every((line) => !line.includes('confirmada')), 'Hotel output should not imply real confirmed inventory');
+}
+
+export function testAvailabilityAcceptsOptionalRealAirlineCode() {
+  const session = createTerminalSession();
+  const result = runTerminalCommand(session, 'SHOW AVAILABILITY MAD AMS IB');
+
+  assert(result.type === 'SHOW_AVAILABILITY', 'Availability with airline code should be supported');
+  assert(result.output.some((line) => line.includes('IB')), 'Availability output should include the airline code');
+  assert(result.explanation.includes('simulada'), 'Availability must remain simulated');
 }
 
 export function testPracticeScoringAndMistakeLog() {

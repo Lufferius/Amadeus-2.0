@@ -73,12 +73,12 @@ function assertLesson(lesson, expectedPrefix) {
     assert(!example.simulatedTerminal.output.join('\n').includes('Training simulator only'), `${lesson.id}: example output should not include the generic terminal disclaimer`);
     assertText(example.simulatedTerminal.explanation, `${lesson.id}: example simulated terminal explanation is required`);
     assert(
-      /^(HELP|GLOSSARY\s+[A-Z_]+|SHOW\s+(SAMPLE_PNR|AVAILABILITY\s+[A-Z]{3}\s+[A-Z]{3}|FARE_RULE\s+(BASIC|FLEX))|PRACTICE\s+(SEGMENTS|SSR_OSI|FARES))$/.test(example.simulatedTerminal.command),
+      /^(HELP|GLOSSARY\s+[A-Z_]+|AIRLINE\s+[A-Z0-9]{2}|AIRPORT\s+[A-Z]{3}|TRAIN\s+[A-Z0-9_]+|HOTEL\s+[A-Z0-9_]+|SHOW\s+(SAMPLE_PNR|AVAILABILITY\s+[A-Z]{3}\s+[A-Z]{3}(?:\s+[A-Z0-9]{2})?|FARE_RULE\s+(BASIC|FLEX)|HOTELS\s+[A-Z]{3}|TRAINS\s+[A-Z]{3}\s+[A-Z]{3})|PRACTICE\s+(SEGMENTS|SSR_OSI|FARES))$/.test(example.simulatedTerminal.command),
       `${lesson.id}: example simulated terminal command must be supported and safe`,
     );
     const exampleText = `${lesson.title} ${example.title} ${example.content}`.toLowerCase();
     if (exampleText.includes('disponibilidad') || exampleText.includes('madrid') || exampleText.includes('ámsterdam') || exampleText.includes('amsterdam')) {
-      assert(example.simulatedTerminal.command === 'SHOW AVAILABILITY MAD AMS', `${lesson.id}: availability examples must show availability output`);
+      assert(example.simulatedTerminal.command.startsWith('SHOW AVAILABILITY'), `${lesson.id}: availability examples must show availability output`);
     }
     if (exampleText.includes('pnr')) {
       assert(example.simulatedTerminal.command === 'SHOW SAMPLE_PNR', `${lesson.id}: PNR examples must show sample PNR output`);
@@ -104,7 +104,7 @@ function assertLesson(lesson, expectedPrefix) {
       assert(!exercise.question.toLowerCase().includes('abre la pagina terminal'), `${lesson.id}: terminal exercise should be embedded, not point to another page`);
       assert(!exercise.question.toLowerCase().includes('abre la página terminal'), `${lesson.id}: terminal exercise should be embedded, not point to another page`);
       assert(
-        /^(HELP|GLOSSARY\s+[A-Z_]+|SHOW\s+(SAMPLE_PNR|AVAILABILITY\s+[A-Z]{3}\s+[A-Z]{3}|FARE_RULE\s+(BASIC|FLEX))|PRACTICE\s+(SEGMENTS|SSR_OSI|FARES)|RESET)$/.test(exercise.command),
+        /^(HELP|GLOSSARY\s+[A-Z_]+|AIRLINE\s+[A-Z0-9]{2}|AIRPORT\s+[A-Z]{3}|TRAIN\s+[A-Z0-9_]+|HOTEL\s+[A-Z0-9_]+|SHOW\s+(SAMPLE_PNR|AVAILABILITY\s+[A-Z]{3}\s+[A-Z]{3}(?:\s+[A-Z0-9]{2})?|FARE_RULE\s+(BASIC|FLEX)|HOTELS\s+[A-Z]{3}|TRAINS\s+[A-Z]{3}\s+[A-Z]{3})|PRACTICE\s+(SEGMENTS|SSR_OSI|FARES)|RESET)$/.test(exercise.command),
         `${lesson.id}: terminal exercise command must be supported`,
       );
     }

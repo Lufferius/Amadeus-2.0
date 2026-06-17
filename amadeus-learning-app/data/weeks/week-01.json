@@ -149,15 +149,15 @@
           "title": "Ejemplo 1",
           "content": "Un viajero ficticio pide viajar de MAD a AMS por trabajo.",
           "simulatedTerminal": {
-            "command": "SHOW AVAILABILITY MAD AMS",
+            "command": "AIRLINE IB",
             "output": [
-              "> SHOW AVAILABILITY MAD AMS",
-              "Disponibilidad ficticia MAD-AMS",
-              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
-              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
-              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
+              "> AIRLINE IB",
+              "AIRLINE IB",
+              "name: Iberia",
+              "country: España",
+              "alliance: oneworld"
             ],
-            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad."
+            "explanation": "referencia estatica de codigo real. No consulta disponibilidad, tarifas ni sistemas de aerolinea."
           }
         },
         {
@@ -195,9 +195,9 @@
         {
           "id": "term-0102",
           "type": "terminal",
-          "command": "GLOSSARY GDS",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta GLOSSARY GDS. Anota que muestra y como se relaciona con el objetivo de la leccion.",
-          "expectedAnswer": "Repasar el concepto de GDS dentro del glosario del simulador. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "command": "AIRLINE IB",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta AIRLINE IB. Observa como acepta codigos reales como referencia, pero mantiene resultados simulados.",
+          "expectedAnswer": "La respuesta debe identificar el codigo real usado y explicar que el resultado es una referencia o simulacion sin conexion real a Amadeus ni a proveedores.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
@@ -277,15 +277,15 @@
           "title": "Ejemplo 1",
           "content": "MAD-AMS en una fecha ficticia puede verse como un segmento.",
           "simulatedTerminal": {
-            "command": "SHOW AVAILABILITY MAD AMS",
+            "command": "AIRPORT MAD",
             "output": [
-              "> SHOW AVAILABILITY MAD AMS",
-              "Disponibilidad ficticia MAD-AMS",
-              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
-              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
-              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
+              "> AIRPORT MAD",
+              "AIRPORT MAD",
+              "name: Adolfo Suarez Madrid-Barajas",
+              "city: Madrid",
+              "country: España"
             ],
-            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad."
+            "explanation": "referencia estatica de aeropuerto. No consulta operaciones, horarios reales ni sistemas aeroportuarios."
           }
         },
         {
@@ -323,9 +323,9 @@
         {
           "id": "term-0103",
           "type": "terminal",
-          "command": "GLOSSARY PNR",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta GLOSSARY PNR. Anota que muestra y como se relaciona con el objetivo de la leccion.",
-          "expectedAnswer": "Repasar el concepto de PNR dentro del glosario del simulador. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "command": "AIRPORT MAD",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta AIRPORT MAD. Observa como acepta codigos reales como referencia, pero mantiene resultados simulados.",
+          "expectedAnswer": "La respuesta debe identificar el codigo real usado y explicar que el resultado es una referencia o simulacion sin conexion real a Amadeus ni a proveedores.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",

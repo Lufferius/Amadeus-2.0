@@ -152,13 +152,13 @@
           "title": "Ejemplo 1",
           "content": "Básica simulada: menor precio y más restricciones.",
           "simulatedTerminal": {
-            "command": "SHOW FARE_RULE BASIC",
+            "command": "SHOW FARE_RULE FLEX",
             "output": [
-              "> SHOW FARE_RULE BASIC",
-              "BASIC ficticia: menor precio inicial.",
-              "Cambios: no permitidos en el ejemplo.",
-              "Reembolso: no contemplado en el ejemplo.",
-              "Riesgo: alta restriccion si el plan cambia."
+              "> SHOW FARE_RULE FLEX",
+              "FLEX ficticia: precio inicial mayor.",
+              "Cambios: permitidos con condiciones simuladas.",
+              "Reembolso: parcial segun escenario ficticio.",
+              "Riesgo: menor si el viajero necesita flexibilidad."
             ],
             "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
@@ -202,8 +202,8 @@
           "id": "term-0402",
           "type": "terminal",
           "command": "SHOW FARE_RULE FLEX",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW FARE_RULE FLEX. Anota que muestra y como se relaciona con el objetivo de la leccion.",
-          "expectedAnswer": "Leer una regla de tarifa FLEX simulada y compararla con una opcion mas restrictiva. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta HOTEL MELIA. Observa como acepta codigos reales como referencia, pero mantiene resultados simulados.",
+          "expectedAnswer": "La respuesta debe identificar el codigo real usado y explicar que el resultado es una referencia o simulacion sin conexion real a Amadeus ni a proveedores.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",

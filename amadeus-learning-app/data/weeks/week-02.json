@@ -25,15 +25,16 @@
           "title": "Ejemplo 1",
           "content": "MAD puede representar Madrid y AMS puede representar Ámsterdam en una práctica.",
           "simulatedTerminal": {
-            "command": "SHOW AVAILABILITY MAD AMS",
+            "command": "SHOW AVAILABILITY MAD AMS IB",
             "output": [
-              "> SHOW AVAILABILITY MAD AMS",
-              "Disponibilidad ficticia MAD-AMS",
-              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
-              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
-              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
+              "> SHOW AVAILABILITY MAD AMS IB",
+              "Disponibilidad simulada MAD-AMS (Madrid - Amsterdam)",
+              "Filtro transportista: Iberia",
+              "1. IB310 directo MAD-AMS 09:10-11:45 cabina Y tarifa BASIC restrictiva",
+              "2. IB642 conexion via CDG 10:30-14:50 cabina Y tarifa BASIC economica",
+              "3. IB884 directo MAD-AMS 16:00-18:35 cabina Y tarifa FLEX con cambios simulados"
             ],
-            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad."
+            "explanation": "La disponibilidad es simulada. Los codigos pueden ser reales como referencia, pero no hay consulta de inventario real."
           }
         },
         {
@@ -74,9 +75,9 @@
         {
           "id": "term-0201",
           "type": "terminal",
-          "command": "SHOW AVAILABILITY MAD AMS",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW AVAILABILITY MAD AMS. Anota que muestra y como se relaciona con el objetivo de la leccion.",
-          "expectedAnswer": "Interpretar disponibilidad ficticia entre MAD y AMS sin consultar inventario real. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "command": "SHOW AVAILABILITY MAD AMS IB",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW AVAILABILITY MAD AMS IB. Observa como acepta codigos reales como referencia, pero mantiene resultados simulados.",
+          "expectedAnswer": "La respuesta debe identificar el codigo real usado y explicar que el resultado es una referencia o simulacion sin conexion real a Amadeus ni a proveedores.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
@@ -406,12 +407,15 @@
           "title": "Ejemplo 1",
           "content": "Llegar a las 10:00 y salir a las 10:20 puede parecer una conexión ajustada.",
           "simulatedTerminal": {
-            "command": "PRACTICE SEGMENTS",
+            "command": "SHOW TRAINS MAD BCN",
             "output": [
-              "> PRACTICE SEGMENTS",
-              "Practica: MAD-AMS, AMS-LHR, LHR-MAD. Cuantos segmentos hay?"
+              "> SHOW TRAINS MAD BCN",
+              "Trenes simulados MAD-BCN",
+              "1. AVE 03112 09:00-11:45 tarifa Basica simulada",
+              "2. iryo 06120 12:15-14:55 tarifa Flexible simulada",
+              "3. OUIGO 09722 17:30-20:10 tarifa Esencial simulada"
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta."
+            "explanation": "Listado ferroviario simulado con marcas reales como referencia. No consulta horarios, plazas ni precios reales."
           }
         },
         {
@@ -449,9 +453,9 @@
         {
           "id": "term-0204",
           "type": "terminal",
-          "command": "SHOW AVAILABILITY MAD AMS",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW AVAILABILITY MAD AMS. Anota que muestra y como se relaciona con el objetivo de la leccion.",
-          "expectedAnswer": "Interpretar disponibilidad ficticia entre MAD y AMS sin consultar inventario real. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "command": "SHOW TRAINS MAD BCN",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW TRAINS MAD BCN. Observa como acepta codigos reales como referencia, pero mantiene resultados simulados.",
+          "expectedAnswer": "La respuesta debe identificar el codigo real usado y explicar que el resultado es una referencia o simulacion sin conexion real a Amadeus ni a proveedores.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",

@@ -11,6 +11,21 @@ const supportedCommands = [
   'SHOW AVAILABILITY MAD AMS',
   'SHOW FARE_RULE BASIC',
   'SHOW FARE_RULE FLEX',
+  'AIRLINE IB',
+  'AIRLINE AF',
+  'AIRLINE KL',
+  'AIRLINE LH',
+  'AIRPORT MAD',
+  'AIRPORT AMS',
+  'AIRPORT BCN',
+  'TRAIN AVE',
+  'TRAIN OUIGO',
+  'TRAIN IRYO',
+  'HOTEL MELIA',
+  'HOTEL NH',
+  'HOTEL HILTON',
+  'SHOW HOTELS MAD',
+  'SHOW TRAINS MAD BCN',
   'PRACTICE SEGMENTS',
   'PRACTICE SSR_OSI',
   'PRACTICE FARES',
@@ -23,6 +38,38 @@ const glossary = {
   SSR: 'Special Service Request. En practica, representa una solicitud especial que puede requerir accion o confirmacion.',
   OSI: 'Other Service Information. En practica, representa informacion adicional normalmente informativa.',
   FARE_RULE: 'Regla de tarifa simplificada. Describe condiciones simuladas como cambios, reembolsos o restricciones.',
+};
+
+const referenceData = {
+  airlines: {
+    IB: { name: 'Iberia', country: 'España', alliance: 'oneworld' },
+    AF: { name: 'Air France', country: 'Francia', alliance: 'SkyTeam' },
+    KL: { name: 'KLM Royal Dutch Airlines', country: 'Paises Bajos', alliance: 'SkyTeam' },
+    LH: { name: 'Lufthansa', country: 'Alemania', alliance: 'Star Alliance' },
+    VY: { name: 'Vueling', country: 'España', alliance: 'Sin alianza global principal' },
+    UX: { name: 'Air Europa', country: 'España', alliance: 'SkyTeam' },
+  },
+  airports: {
+    MAD: { name: 'Adolfo Suarez Madrid-Barajas', city: 'Madrid', country: 'España' },
+    AMS: { name: 'Amsterdam Airport Schiphol', city: 'Amsterdam', country: 'Paises Bajos' },
+    BCN: { name: 'Barcelona-El Prat', city: 'Barcelona', country: 'España' },
+    CDG: { name: 'Paris Charles de Gaulle', city: 'Paris', country: 'Francia' },
+    LHR: { name: 'London Heathrow', city: 'Londres', country: 'Reino Unido' },
+    FRA: { name: 'Frankfurt Airport', city: 'Frankfurt', country: 'Alemania' },
+  },
+  trains: {
+    AVE: { name: 'AVE', operator: 'Renfe', market: 'Alta velocidad España' },
+    OUIGO: { name: 'OUIGO España', operator: 'SNCF Voyageurs', market: 'Alta velocidad España' },
+    IRYO: { name: 'iryo', operator: 'Ilsa', market: 'Alta velocidad España' },
+    EUROSTAR: { name: 'Eurostar', operator: 'Eurostar', market: 'Alta velocidad internacional' },
+  },
+  hotels: {
+    MELIA: { name: 'Melia Hotels International', type: 'Cadena hotelera', origin: 'España' },
+    NH: { name: 'NH Hotels', type: 'Cadena hotelera', origin: 'España' },
+    HILTON: { name: 'Hilton', type: 'Cadena hotelera', origin: 'Estados Unidos' },
+    MARRIOTT: { name: 'Marriott', type: 'Cadena hotelera', origin: 'Estados Unidos' },
+    ACCOR: { name: 'Accor', type: 'Grupo hotelero', origin: 'Francia' },
+  },
 };
 
 const practicePrompts = {
@@ -99,9 +146,9 @@ export function parseTerminalCommand(input = '') {
     return { type: 'SHOW_SAMPLE_PNR', safe: true, args: [] };
   }
 
-  const availabilityMatch = normalized.match(/^SHOW\s+AVAILABILITY\s+([A-Z]{3})\s+([A-Z]{3})$/);
+  const availabilityMatch = normalized.match(/^SHOW\s+AVAILABILITY\s+([A-Z]{3})\s+([A-Z]{3})(?:\s+([A-Z0-9]{2}))?$/);
   if (availabilityMatch) {
-    return { type: 'SHOW_AVAILABILITY', safe: true, args: [availabilityMatch[1], availabilityMatch[2]] };
+    return { type: 'SHOW_AVAILABILITY', safe: true, args: [availabilityMatch[1], availabilityMatch[2], availabilityMatch[3]] };
   }
 
   const fareRuleMatch = normalized.match(/^SHOW\s+FARE_RULE\s+(BASIC|FLEX)$/);
@@ -112,6 +159,36 @@ export function parseTerminalCommand(input = '') {
   const practiceMatch = normalized.match(/^PRACTICE\s+(SEGMENTS|SSR_OSI|FARES)$/);
   if (practiceMatch) {
     return { type: 'PRACTICE', safe: true, args: [practiceMatch[1]] };
+  }
+
+  const airlineMatch = normalized.match(/^AIRLINE\s+([A-Z0-9]{2})$/);
+  if (airlineMatch) {
+    return { type: 'REFERENCE_AIRLINE', safe: true, args: [airlineMatch[1]] };
+  }
+
+  const airportMatch = normalized.match(/^AIRPORT\s+([A-Z]{3})$/);
+  if (airportMatch) {
+    return { type: 'REFERENCE_AIRPORT', safe: true, args: [airportMatch[1]] };
+  }
+
+  const trainMatch = normalized.match(/^TRAIN\s+([A-Z0-9_]+)$/);
+  if (trainMatch) {
+    return { type: 'REFERENCE_TRAIN', safe: true, args: [trainMatch[1]] };
+  }
+
+  const hotelMatch = normalized.match(/^HOTEL\s+([A-Z0-9_]+)$/);
+  if (hotelMatch) {
+    return { type: 'REFERENCE_HOTEL', safe: true, args: [hotelMatch[1]] };
+  }
+
+  const hotelsMatch = normalized.match(/^SHOW\s+HOTELS\s+([A-Z]{3})$/);
+  if (hotelsMatch) {
+    return { type: 'SHOW_HOTELS', safe: true, args: [hotelsMatch[1]] };
+  }
+
+  const trainsMatch = normalized.match(/^SHOW\s+TRAINS\s+([A-Z]{3})\s+([A-Z]{3})$/);
+  if (trainsMatch) {
+    return { type: 'SHOW_TRAINS', safe: true, args: [trainsMatch[1], trainsMatch[2]] };
   }
 
   return {
@@ -145,6 +222,14 @@ function buildHelp(input) {
     'HELP muestra solo comandos ficticios admitidos por el entorno de entrenamiento.',
     { contextualHelp: 'Prueba SHOW SAMPLE_PNR para ver un expediente ficticio o PRACTICE SEGMENTS para practicar.' },
   );
+}
+
+function formatReference(kind, code, record) {
+  if (!record) {
+    return [`${kind} ${code}: no esta en el catalogo estatico de entrenamiento.`];
+  }
+
+  return Object.entries(record).map(([key, value]) => `${key}: ${value}`);
 }
 
 function runPracticeAnswer(session, input) {
@@ -238,17 +323,22 @@ export function runTerminalCommand(session, input) {
       { contextualHelp: 'Despues puedes practicar con PRACTICE SSR_OSI para clasificar solicitudes.' },
     );
   } else if (parsed.type === 'SHOW_AVAILABILITY') {
-    const [origin, destination] = parsed.args;
+    const [origin, destination, airlineCode] = parsed.args;
+    const originName = referenceData.airports[origin]?.city ?? origin;
+    const destinationName = referenceData.airports[destination]?.city ?? destination;
+    const airline = airlineCode ? (referenceData.airlines[airlineCode]?.name ?? `codigo ${airlineCode}`) : 'varias aerolineas';
+    const prefix = airlineCode ?? 'XX';
     result = baseResult(
       'SHOW_AVAILABILITY',
       input,
       [
-        `Disponibilidad ficticia ${origin}-${destination}`,
-        '1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva',
-        '2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica',
-        '3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados',
+        `Disponibilidad simulada ${origin}-${destination} (${originName} - ${destinationName})`,
+        `Filtro transportista: ${airline}`,
+        `1. ${prefix}310 directo ${origin}-${destination} 09:10-11:45 cabina Y tarifa BASIC restrictiva`,
+        `2. ${prefix}642 conexion via CDG 10:30-14:50 cabina Y tarifa BASIC economica`,
+        `3. ${prefix}884 directo ${origin}-${destination} 16:00-18:35 cabina Y tarifa FLEX con cambios simulados`,
       ],
-      'La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad.',
+      'La disponibilidad es simulada. Los codigos pueden ser reales como referencia, pero no hay consulta de inventario real.',
       { contextualHelp: 'Usa SHOW FARE_RULE BASIC o SHOW FARE_RULE FLEX para revisar condiciones simuladas.' },
     );
   } else if (parsed.type === 'SHOW_FARE_RULE') {
@@ -277,6 +367,71 @@ export function runTerminalCommand(session, input) {
         score: { ...session.score },
         contextualHelp: 'Si te equivocas, el error se guardara en el registro de errores con una explicacion.',
       },
+    );
+  } else if (parsed.type === 'REFERENCE_AIRLINE') {
+    const [code] = parsed.args;
+    result = baseResult(
+      'REFERENCE_AIRLINE',
+      input,
+      [`AIRLINE ${code}`, ...formatReference('Aerolinea', code, referenceData.airlines[code])],
+      'referencia estatica de codigo real. No consulta disponibilidad, tarifas ni sistemas de aerolinea.',
+      { contextualHelp: 'Prueba SHOW AVAILABILITY MAD AMS IB para ver una disponibilidad simulada filtrada por aerolinea.' },
+    );
+  } else if (parsed.type === 'REFERENCE_AIRPORT') {
+    const [code] = parsed.args;
+    result = baseResult(
+      'REFERENCE_AIRPORT',
+      input,
+      [`AIRPORT ${code}`, ...formatReference('Aeropuerto', code, referenceData.airports[code])],
+      'referencia estatica de aeropuerto. No consulta operaciones, horarios reales ni sistemas aeroportuarios.',
+      { contextualHelp: 'Prueba AIRLINE IB o SHOW AVAILABILITY MAD AMS.' },
+    );
+  } else if (parsed.type === 'REFERENCE_TRAIN') {
+    const [code] = parsed.args;
+    result = baseResult(
+      'REFERENCE_TRAIN',
+      input,
+      [`TRAIN ${code}`, ...formatReference('Tren', code, referenceData.trains[code])],
+      'referencia estatica de tren u operador. No consulta plazas, horarios reales ni inventario ferroviario.',
+      { contextualHelp: 'Prueba SHOW TRAINS MAD BCN para ver opciones ferroviarias simuladas.' },
+    );
+  } else if (parsed.type === 'REFERENCE_HOTEL') {
+    const [code] = parsed.args;
+    result = baseResult(
+      'REFERENCE_HOTEL',
+      input,
+      [`HOTEL ${code}`, ...formatReference('Hotel', code, referenceData.hotels[code])],
+      'referencia estatica de cadena hotelera. No consulta disponibilidad, precios ni reservas reales.',
+      { contextualHelp: 'Prueba SHOW HOTELS MAD para ver hoteles simulados.' },
+    );
+  } else if (parsed.type === 'SHOW_HOTELS') {
+    const [cityCode] = parsed.args;
+    const city = referenceData.airports[cityCode]?.city ?? cityCode;
+    result = baseResult(
+      'SHOW_HOTELS',
+      input,
+      [
+        `Hoteles simulados ${cityCode} (${city})`,
+        '1. Melia Demo Centro 4* tarifa corporativa simulada desayuno opcional',
+        '2. NH Training Prado 4* cancelacion simulada hasta 18:00',
+        '3. Hilton Sample Airport 4* tarifa flexible simulada',
+      ],
+      'Listado hotelero simulado con cadenas reales como referencia. No hay precios, cupos ni reserva real.',
+      { contextualHelp: 'Usa HOTEL MELIA o HOTEL NH para ver referencia estatica de cadena.' },
+    );
+  } else if (parsed.type === 'SHOW_TRAINS') {
+    const [origin, destination] = parsed.args;
+    result = baseResult(
+      'SHOW_TRAINS',
+      input,
+      [
+        `Trenes simulados ${origin}-${destination}`,
+        '1. AVE 03112 09:00-11:45 tarifa Basica simulada',
+        '2. iryo 06120 12:15-14:55 tarifa Flexible simulada',
+        '3. OUIGO 09722 17:30-20:10 tarifa Esencial simulada',
+      ],
+      'Listado ferroviario simulado con marcas reales como referencia. No consulta horarios, plazas ni precios reales.',
+      { contextualHelp: 'Usa TRAIN AVE, TRAIN IRYO o TRAIN OUIGO para ver referencias estaticas.' },
     );
   } else if (parsed.type === 'EMPTY') {
     result = baseResult('EMPTY', input, [parsed.message], 'No se ha ejecutado ningun comando.');

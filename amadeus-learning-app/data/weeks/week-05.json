@@ -25,15 +25,16 @@
           "title": "Ejemplo 1",
           "content": "Petición vaga: necesito ir a Ámsterdam pronto.",
           "simulatedTerminal": {
-            "command": "SHOW AVAILABILITY MAD AMS",
+            "command": "SHOW AVAILABILITY MAD AMS IB",
             "output": [
-              "> SHOW AVAILABILITY MAD AMS",
-              "Disponibilidad ficticia MAD-AMS",
-              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
-              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
-              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
+              "> SHOW AVAILABILITY MAD AMS IB",
+              "Disponibilidad simulada MAD-AMS (Madrid - Amsterdam)",
+              "Filtro transportista: Iberia",
+              "1. IB310 directo MAD-AMS 09:10-11:45 cabina Y tarifa BASIC restrictiva",
+              "2. IB642 conexion via CDG 10:30-14:50 cabina Y tarifa BASIC economica",
+              "3. IB884 directo MAD-AMS 16:00-18:35 cabina Y tarifa FLEX con cambios simulados"
             ],
-            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad."
+            "explanation": "La disponibilidad es simulada. Los codigos pueden ser reales como referencia, pero no hay consulta de inventario real."
           }
         },
         {
@@ -74,9 +75,9 @@
         {
           "id": "term-0501",
           "type": "terminal",
-          "command": "SHOW AVAILABILITY MAD AMS",
-          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW AVAILABILITY MAD AMS. Anota que muestra y como se relaciona con el objetivo de la leccion.",
-          "expectedAnswer": "Interpretar disponibilidad ficticia entre MAD y AMS sin consultar inventario real. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
+          "command": "SHOW AVAILABILITY MAD AMS IB",
+          "question": "Usa el terminal seguro integrado en esta leccion y ejecuta SHOW HOTELS MAD. Observa como acepta codigos reales como referencia, pero mantiene resultados simulados.",
+          "expectedAnswer": "La respuesta debe identificar el codigo real usado y explicar que el resultado es una referencia o simulacion sin conexion real a Amadeus ni a proveedores.",
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
@@ -531,12 +532,15 @@
           "title": "Ejemplo 1",
           "content": "Checklist: ruta, fechas, segmentos, condiciones y seguridad de datos.",
           "simulatedTerminal": {
-            "command": "PRACTICE SEGMENTS",
+            "command": "SHOW HOTELS MAD",
             "output": [
-              "> PRACTICE SEGMENTS",
-              "Practica: MAD-AMS, AMS-LHR, LHR-MAD. Cuantos segmentos hay?"
+              "> SHOW HOTELS MAD",
+              "Hoteles simulados MAD (Madrid)",
+              "1. Melia Demo Centro 4* tarifa corporativa simulada desayuno opcional",
+              "2. NH Training Prado 4* cancelacion simulada hasta 18:00",
+              "3. Hilton Sample Airport 4* tarifa flexible simulada"
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta."
+            "explanation": "Listado hotelero simulado con cadenas reales como referencia. No hay precios, cupos ni reserva real."
           }
         },
         {
@@ -577,7 +581,7 @@
         {
           "id": "term-0505",
           "type": "terminal",
-          "command": "HELP",
+          "command": "SHOW HOTELS MAD",
           "question": "Usa el terminal seguro integrado en esta leccion y ejecuta HELP. Anota que muestra y como se relaciona con el objetivo de la leccion.",
           "expectedAnswer": "Familiarizarte con la lista de comandos seguros del simulador. La respuesta debe mencionar que el resultado es ficticio y que el terminal no esta conectado a Amadeus ni a ningun sistema real.",
           "correctionCriteria": [
