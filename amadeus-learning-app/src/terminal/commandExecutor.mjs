@@ -2,6 +2,14 @@ import { normalizeCommand, parseCommand } from './commandParser.mjs';
 import { generateAvailabilityRows } from './fixtures.mjs';
 import { formatAvailabilityDetail, formatAvailabilityPage, formatPnr } from './formatters.mjs';
 import { commitPnr, ignorePnr, retrievePnr, touchPnr } from './sessionState.mjs';
+import {
+  getHelpTopic,
+  getQueue,
+  getQueueTotals,
+  getTrainingFare,
+  getTrainingProfile,
+  listHelpTopics,
+} from './trainingCatalog.mjs';
 
 const DISCLAIMER = 'TRAINING SIMULATION ONLY - NO LIVE INVENTORY OR TRANSACTIONS';
 
@@ -48,9 +56,38 @@ function mutatePnr(session, command, input, mutation, output, explanation) {
   return result(command.type, input, 'OK', output, { explanation });
 }
 
+function money(cents) {
+  return (cents / 100).toFixed(2);
+}
+
+function formatFare(fare, stored) {
+  return [
+    stored ? 'TST 1 - FARE STORED IN TRAINING PNR' : 'INFORMATIVE PRICING - NOT STORED',
+    `FARE BASIS ${fare.fareBasis}`,
+    `BASE ${fare.currency} ${money(fare.baseCents)}`,
+    `TAX ${fare.currency} ${money(fare.taxCents)}`,
+    `TOTAL ${fare.currency} ${money(fare.totalCents)}`,
+    'FICTIONAL FARE - NO TICKET ISSUED',
+  ].join('\n');
+}
+
+function formatQueueItem(item, position, total) {
+  return [
+    `QUEUE ITEM ${position}/${total}`,
+    `LOCATOR ${item.locator}`,
+    `REASON ${item.reason}`,
+    `PRIORITY ${item.priority}`,
+    'TRAINING QUEUE ITEM - NO LIVE PNR',
+  ].join('\n');
+}
+
 export function executeProfessionalCommand(session, input) {
   const normalizedInput = normalizeCommand(input);
   const command = parseCommand(input);
+
+  if (command.type === 'PROHIBITED') {
+    return errorResult(command.type, normalizedInput, 'OPERATION_PROHIBITED', 'OPERATION NOT AVAILABLE IN TRAINING', 'Issuance, refunds, reissues, payments, and live transactions are disabled.', 'Practise pricing and PNR review without executing financial or supplier actions.');
+  }
 
   if (command.type === 'CRYPTIC_AVAILABILITY') {
     const [date, origin, destination, airlineCode] = command.args;
@@ -213,6 +250,112 @@ export function executeProfessionalCommand(session, input) {
     }
     return result(command.type, normalizedInput, 'OK', formatPnr(retrieved.record), {
       explanation: 'Retrieved a deep copy of a local fictional PNR.',
+    });
+  }
+
+  if (command.type === 'FARE_PRICE_INFORMATIVE' || command.type === 'FARE_PRICE_STORE') {
+    if (session.pnr.segments.length === 0) {
+      return errorResult(command.type, normalizedInput, 'NO_ITINERARY', 'NO ITINERARY', 'Pricing requires at least one local training segment.', 'Display availability and add a simulated segment first.');
+    }
+    const fare = getTrainingFare();
+    const store = command.type === 'FARE_PRICE_STORE';
+    if (store) {
+      session.pnr.storedFare = fare;
+      touchPnr(session.pnr);
+    }
+    return result(command.type, normalizedInput, 'OK', formatFare(fare, store), {
+      explanation: store
+        ? 'Stored a deterministic fictional fare in the local PNR. No ticket was issued.'
+        : 'Displayed deterministic fictional pricing without changing the PNR.',
+    });
+  }
+
+  if (command.type === 'FARE_DISPLAY_STORED') {
+    if (!session.pnr.storedFare) {
+      return errorResult(command.type, normalizedInput, 'NO_STORED_FARE', 'NO STORED FARE', 'The active training PNR has no stored fare.', 'Use FXP after adding an itinerary.');
+    }
+    return result(command.type, normalizedInput, 'OK', formatFare(session.pnr.storedFare, true), {
+      explanation: 'Displayed the fictional stored fare from the local PNR.',
+    });
+  }
+
+  if (command.type === 'FARE_RULE_DETAIL') {
+    if (Number(command.args[0]) !== 1) {
+      return errorResult(command.type, normalizedInput, 'CHECK_RULE_NUMBER', 'CHECK RULE NUMBER', 'Only rule category 1 exists in this training fixture.', 'Use FQN1.');
+    }
+    return result(command.type, normalizedInput, 'OK', [
+      'TRAINING RULES - FICTIONAL CONDITIONS',
+      'CHANGES: PERMITTED WITH EUR 60.00 TRAINING PENALTY',
+      'CANCELLATIONS: NON-REFUNDABLE IN THIS EXAMPLE',
+      'NO-SHOW: ADDITIONAL RESTRICTIONS APPLY IN THE SCENARIO',
+      'VERIFY ALL REAL RULES IN AUTHORISED SYSTEMS',
+    ].join('\n'), { explanation: 'Displayed simplified fictional fare rules for learning.' });
+  }
+
+  if (command.type === 'QUEUE_TOTALS') {
+    const lines = ['QUEUE TOTALS - TRAINING QUEUES ONLY'];
+    getQueueTotals().forEach((entry) => lines.push(`QUEUE ${entry.number} ITEMS ${entry.count}`));
+    return result(command.type, normalizedInput, 'OK', lines.join('\n'), {
+      explanation: 'Displayed local demonstration queue totals.',
+    });
+  }
+
+  if (command.type === 'QUEUE_START') {
+    const number = Number(command.args[0]);
+    const items = getQueue(number);
+    if (!items) {
+      return errorResult(command.type, normalizedInput, 'QUEUE_NOT_FOUND', 'QUEUE NOT FOUND - TRAINING ONLY', 'That queue is not defined in the local training catalog.', 'Use QT to see available training queues.');
+    }
+    session.queue = { activeNumber: number, items, currentIndex: 0 };
+    return result(command.type, normalizedInput, 'OK', formatQueueItem(items[0], 1, items.length), {
+      explanation: 'Entered a local demonstration queue.',
+    });
+  }
+
+  if (command.type === 'QUEUE_NEXT') {
+    if (session.queue.activeNumber === null || session.queue.currentIndex < 0) {
+      return errorResult(command.type, normalizedInput, 'NO_ACTIVE_QUEUE', 'NO ACTIVE QUEUE', 'There is no active local training queue.', 'Use QT and QS8 to start queue practice.');
+    }
+    const nextIndex = session.queue.currentIndex + 1;
+    if (nextIndex >= session.queue.items.length) {
+      session.queue = { activeNumber: null, items: [], currentIndex: -1 };
+      return result(command.type, normalizedInput, 'OK', 'QUEUE COMPLETE - TRAINING ONLY', {
+        explanation: 'Finished all local demonstration queue items.',
+      });
+    }
+    session.queue.currentIndex = nextIndex;
+    return result(command.type, normalizedInput, 'OK', formatQueueItem(session.queue.items[nextIndex], nextIndex + 1, session.queue.items.length), {
+      explanation: 'Moved to the next local demonstration queue item.',
+    });
+  }
+
+  if (command.type === 'PROFILE_DISPLAY') {
+    const profile = getTrainingProfile(command.args[0]);
+    if (!profile) {
+      return errorResult(command.type, normalizedInput, 'PROFILE_NOT_FOUND', 'PROFILE NOT FOUND - TRAINING DATA ONLY', 'The requested profile is not in the fictional catalog.', 'Use PDN/DEMO CORP.');
+    }
+    return result(command.type, normalizedInput, 'OK', [
+      `FICTIONAL CORPORATE PROFILE: ${profile.name}`,
+      `POLICY: ${profile.policy}`,
+      `PREFERRED: ${profile.preferred}`,
+      `CONTACT: ${profile.contact}`,
+      'LOCAL TRAINING PROFILE - NO CORPORATE SYSTEM CONNECTION',
+    ].join('\n'), { explanation: 'Displayed a fictional company profile for policy practice.' });
+  }
+
+  if (command.type === 'HELP_TOPIC') {
+    const topic = command.args[0];
+    if (!topic) {
+      return result(command.type, normalizedInput, 'OK', `HELP TOPICS: ${listHelpTopics().join(', ')}\nLOCAL TRAINING HELP ONLY`, {
+        explanation: 'Listed contextual help topics supported by this simulator.',
+      });
+    }
+    const helpText = getHelpTopic(topic);
+    if (!helpText) {
+      return errorResult(command.type, normalizedInput, 'HELP_TOPIC_NOT_FOUND', 'HELP TOPIC NOT FOUND', 'That topic is not in local training help.', `Available topics: ${listHelpTopics().join(', ')}.`);
+    }
+    return result(command.type, normalizedInput, 'OK', `HE ${topic}\n${helpText}`, {
+      explanation: 'Displayed local contextual help.',
     });
   }
 
