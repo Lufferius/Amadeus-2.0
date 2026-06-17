@@ -83,6 +83,14 @@ export function testExpandedCrypticCommandsHaveStableTypesAndArguments() {
   }
 }
 
+export function testParserAcceptsTrainingLocatorRetrievalOnly() {
+  const parsed = parseCommand('rt trn001');
+  assert(parsed.type === 'CRYPTIC_RETRIEVE_PNR', 'RT training locator should be recognised');
+  assert(JSON.stringify(parsed.args) === JSON.stringify(['TRN001']), 'RT should preserve the normalized training locator');
+  assert(parseCommand('RT ABC123').type === 'UNKNOWN', 'Non-training locator should stay unsupported');
+  assert(parseCommand('RT TRN01').type === 'UNKNOWN', 'Malformed training locator should stay unsupported');
+}
+
 export function testCommandNormalizationAndSimulatorFacade() {
   assert(normalizeCommand('  os   ib training note  ') === 'OS IB TRAINING NOTE', 'Commands should be trimmed, collapsed, and uppercased');
 

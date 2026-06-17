@@ -91,6 +91,7 @@ export function parseCommand(input = '') {
     [/^NM(\d+)([A-Z]+\/[A-Z ]+(?:\s+(?:MR|MS|MRS|MSTR))?)$/, 'CRYPTIC_NAME', (match) => [match[1], match[2]]],
     [/^AP\s+(.+)$/, 'CRYPTIC_CONTACT', (match) => [match[1]]],
     [/^RF\s+(.+)$/, 'CRYPTIC_RECEIVED_FROM', (match) => [match[1]]],
+    [/^RT\s+(TRN\d{3})$/, 'CRYPTIC_RETRIEVE_PNR', (match) => [match[1]]],
     [/^DO(\d+)$/, 'AVAILABILITY_DETAIL', (match) => [match[1]]],
     [/^XE(\d+)$/, 'PNR_CANCEL_ELEMENT', (match) => [match[1]]],
     [/^SR\s+(.+)$/, 'PNR_SSR', (match) => [match[1]]],

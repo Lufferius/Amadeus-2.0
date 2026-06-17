@@ -9,6 +9,7 @@ import {
 } from '../src/terminal/sessionState.mjs';
 import { executeProfessionalCommand } from '../src/terminal/commandExecutor.mjs';
 import * as availabilityFixtures from '../src/terminal/fixtures.mjs';
+import { formatPnr } from '../src/terminal/formatters.mjs';
 
 function assert(condition, message) {
   if (!condition) {
@@ -395,4 +396,123 @@ export function testProfessionalCommandResultSchemaHasNoUndefinedOutputLines() {
   assert(success.status === 'OK', 'Availability should exercise the success schema');
   assert(error.status === 'ERROR' && typeof error.errorCode === 'string', 'Missing detail should exercise the error schema');
   assert(notImplemented.status === 'NOT_IMPLEMENTED', 'Unhandled parsed commands should exercise the not-implemented schema');
+}
+
+function buildCompleteProfessionalPnr(session) {
+  executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
+  executeProfessionalCommand(session, 'SS1Y1');
+  executeProfessionalCommand(session, 'NM1GARCIA/ANA MS');
+  executeProfessionalCommand(session, 'AP MAD 600000000');
+  executeProfessionalCommand(session, 'TKOK');
+  executeProfessionalCommand(session, 'RF ANA');
+}
+
+export function testProfessionalSellRequiresValidAvailabilityLineClassAndQuantity() {
+  const noContext = createProfessionalTerminalSession();
+  const noAvailability = executeProfessionalCommand(noContext, 'SS1Y1');
+  assert(noAvailability.errorCode === 'NO_AVAILABILITY_ACTIVE', 'Sell should require active availability');
+
+  const session = createProfessionalTerminalSession();
+  executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
+  const availabilityBefore = JSON.stringify(session.availability);
+  const sold = executeProfessionalCommand(session, 'SS1Y1');
+  assert(sold.status === 'OK', 'Valid sell should succeed');
+  assert(session.pnr.segments.length === 1, 'Valid sell should add one segment');
+  assert(session.pnr.segments[0].classCode === 'Y', 'Sold segment should retain booking class');
+  assert(session.pnr.segments[0].quantity === 1 && session.pnr.segments[0].status === 'HK', 'Sold segment should have quantity and HK status');
+  assert(session.pnr.status === 'WORKING' && session.pnr.dirty, 'Sell should touch the PNR');
+  assert(JSON.stringify(session.availability) === availabilityBefore, 'Training sell must not reduce availability inventory');
+
+  assert(executeProfessionalCommand(session, 'SS1Y99').errorCode === 'CHECK_LINE_NUMBER', 'Unknown line should be rejected');
+  assert(executeProfessionalCommand(session, 'SS1Z1').errorCode === 'CLASS_NOT_AVAILABLE', 'Unknown class should be rejected');
+  assert(executeProfessionalCommand(session, 'SS9D1').errorCode === 'CLASS_NOT_AVAILABLE', 'Quantity above displayed seats should be rejected');
+}
+
+export function testProfessionalPnrElementsAreStoredAndRendered() {
+  const session = createProfessionalTerminalSession();
+  executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
+  executeProfessionalCommand(session, 'SS1Y1');
+  executeProfessionalCommand(session, 'SS1B2');
+  executeProfessionalCommand(session, 'NM1GARCIA/ANA MS');
+  executeProfessionalCommand(session, 'AP MAD 600000000');
+  executeProfessionalCommand(session, 'TKOK');
+  executeProfessionalCommand(session, 'RF ANA');
+  executeProfessionalCommand(session, 'SR WCHR/P1');
+  executeProfessionalCommand(session, 'OS IB TRAINING PASSENGER');
+  executeProfessionalCommand(session, 'RM TRAINING ONLY');
+
+  assertDeepEqual(session.pnr.names, ['GARCIA/ANA MS'], 'Name should be stored');
+  assertDeepEqual(session.pnr.contacts, ['MAD 600000000'], 'Contact should be stored');
+  assert(session.pnr.ticketing === 'TKOK' && session.pnr.receivedFrom === 'ANA', 'Ticketing and received-from should be stored');
+  assertDeepEqual(session.pnr.ssrs, ['WCHR/P1'], 'SSR should preserve full descriptor');
+  assertDeepEqual(session.pnr.osis, [{ carrier: 'IB', text: 'TRAINING PASSENGER' }], 'OSI should preserve carrier and text');
+  assertDeepEqual(session.pnr.remarks, ['TRAINING ONLY'], 'Remark should be stored');
+
+  const display = formatPnr(session.pnr);
+  for (const expected of ['ACTIVE TRAINING PNR', 'GARCIA/ANA MS', 'IB', 'AP MAD 600000000', 'TK TKOK', 'SR WCHR/P1', 'OS IB TRAINING PASSENGER', 'RM TRAINING ONLY', 'RF ANA', 'TRAINING RECORD - NO REAL BOOKING OR TICKET']) {
+    assert(display.includes(expected), `PNR display should include ${expected}`);
+  }
+  assert(!display.includes('undefined'), 'PNR display must never include undefined');
+
+  const cancelled = executeProfessionalCommand(session, 'XE1');
+  assert(cancelled.status === 'OK' && session.pnr.segments.length === 1, 'XE1 should cancel the first itinerary segment');
+  assert(formatPnr(session.pnr).includes(' 1 '), 'Remaining itinerary should be renumbered to one');
+  assert(executeProfessionalCommand(session, 'XE9').errorCode === 'CHECK_ELEMENT_NUMBER', 'Unknown itinerary element should be rejected');
+}
+
+export function testProfessionalEndReportsMissingElementsInOrderThenCommits() {
+  const session = createProfessionalTerminalSession();
+  const expected = [
+    ['ER', 'NEED_NAME', 'NEED NAME'],
+  ];
+  for (const [input, code, output] of expected) {
+    const result = executeProfessionalCommand(session, input);
+    assert(result.errorCode === code && result.output === output, `${input} should report ${output}`);
+  }
+
+  executeProfessionalCommand(session, 'NM1GARCIA/ANA MS');
+  assert(executeProfessionalCommand(session, 'ER').errorCode === 'NEED_ITINERARY', 'Segment should be required second');
+  executeProfessionalCommand(session, 'AN17JUNMADAMS/IB');
+  executeProfessionalCommand(session, 'SS1Y1');
+  assert(executeProfessionalCommand(session, 'ER').errorCode === 'NEED_CONTACT_ELEMENT', 'Contact should be required third');
+  executeProfessionalCommand(session, 'AP MAD 600000000');
+  assert(executeProfessionalCommand(session, 'ER').errorCode === 'NEED_TICKETING_ARRANGEMENT', 'Ticketing should be required fourth');
+  executeProfessionalCommand(session, 'TKOK');
+  assert(executeProfessionalCommand(session, 'ER').errorCode === 'NEED_RECEIVED_FROM', 'Received from should be required last');
+  assertDeepEqual(session.records, {}, 'Incomplete PNR must not be committed');
+
+  executeProfessionalCommand(session, 'RF ANA');
+  const committed = executeProfessionalCommand(session, 'ER');
+  assert(committed.status === 'OK' && committed.output.includes('TRN001'), 'ER should commit and display TRN001');
+  assert(session.pnr.status === 'COMMITTED' && !session.pnr.dirty, 'ER should retain a clean committed PNR');
+  assert(Boolean(session.records.TRN001), 'ER should store the training record');
+}
+
+export function testProfessionalRetrieveIgnoreAndEndTransactionLifecycle() {
+  const session = createProfessionalTerminalSession();
+  assert(executeProfessionalCommand(session, 'RT').errorCode === 'NO_ACTIVE_PNR', 'RT without active PNR should fail clearly');
+  buildCompleteProfessionalPnr(session);
+  const ended = executeProfessionalCommand(session, 'ET');
+  assert(ended.status === 'OK' && ended.output.includes('END OF TRANSACTION'), 'ET should confirm end of transaction');
+  assertDeepEqual(session.pnr, createPnrWorkArea(), 'ET should clear the active work area');
+  assert(Boolean(session.records.TRN001), 'ET should retain committed record');
+
+  const beforeMissing = JSON.stringify(session.pnr);
+  const missing = executeProfessionalCommand(session, 'RT TRN999');
+  assert(missing.errorCode === 'RECORD_LOCATOR_NOT_FOUND', 'Unknown locator should use stable error');
+  assert(JSON.stringify(session.pnr) === beforeMissing, 'Unknown retrieval should not mutate active PNR');
+
+  const retrieved = executeProfessionalCommand(session, 'RT TRN001');
+  assert(retrieved.status === 'OK' && session.pnr.status === 'RETRIEVED', 'Known locator should be retrieved');
+  executeProfessionalCommand(session, 'RM UNSAVED CHANGE');
+  assert(session.pnr.dirty, 'Edit to retrieved PNR should be dirty');
+  const ignored = executeProfessionalCommand(session, 'IG');
+  assert(ignored.output.includes('WORK AREA RESTORED'), 'IG should restore a saved record');
+  assert(!session.pnr.remarks.includes('UNSAVED CHANGE') && !session.pnr.dirty, 'IG should discard unsaved retrieved edit');
+
+  session.pnr = createPnrWorkArea();
+  executeProfessionalCommand(session, 'NM1UNSAVED/DEMO MS');
+  const cleared = executeProfessionalCommand(session, 'IG');
+  assert(cleared.output === 'IGNORED - WORK AREA CLEARED', 'IG should clear a new unsaved work area');
+  assertDeepEqual(session.pnr, createPnrWorkArea(), 'New work area should return to exact empty state');
 }

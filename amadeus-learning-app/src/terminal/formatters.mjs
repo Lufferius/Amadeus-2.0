@@ -34,3 +34,32 @@ export function formatAvailabilityDetail(row) {
     'TRAINING / SIMULATED - NO LIVE INVENTORY',
   ].join('\n');
 }
+
+export function formatPnr(pnr) {
+  const header = pnr.locator
+    ? `RP/TRAINING ${pnr.locator} STATUS ${pnr.status}`
+    : `ACTIVE TRAINING PNR STATUS ${pnr.status}`;
+  const lines = [header];
+
+  if (pnr.names.length === 0) lines.push('NO NAMES');
+  else pnr.names.forEach((name, index) => lines.push(`NM ${index + 1}. ${name}`));
+
+  if (pnr.segments.length === 0) lines.push('NO SEGMENTS');
+  else {
+    pnr.segments.forEach((segment, index) => {
+      lines.push(
+        ` ${index + 1} ${segment.flight} ${segment.classCode} ${segment.date} ${segment.origin}${segment.destination} ${segment.status}${segment.quantity} ${segment.departure} ${segment.arrival}`,
+      );
+    });
+  }
+
+  pnr.contacts.forEach((contact) => lines.push(`AP ${contact}`));
+  if (pnr.ticketing) lines.push(`TK ${pnr.ticketing}`);
+  pnr.ssrs.forEach((ssr) => lines.push(`SR ${ssr}`));
+  pnr.osis.forEach((osi) => lines.push(`OS ${osi.carrier} ${osi.text}`));
+  pnr.remarks.forEach((remark) => lines.push(`RM ${remark}`));
+  if (pnr.receivedFrom) lines.push(`RF ${pnr.receivedFrom}`);
+  if (pnr.storedFare) lines.push(`FARE ${pnr.storedFare.reference ?? 'STORED TRAINING FARE'}`);
+  lines.push('TRAINING RECORD - NO REAL BOOKING OR TICKET');
+  return lines.join('\n');
+}
