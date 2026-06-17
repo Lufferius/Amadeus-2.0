@@ -11,7 +11,8 @@
       "estimatedMinutes": 30,
       "objective": "Comprender la tarifa como combinación de precio, disponibilidad y condiciones.",
       "explanation": [
-        "Una tarifa no es solo una cifra. También puede estar asociada a condiciones de cambios, cancelaciones, equipaje o estancia. En esta formación las tarifas son ejemplos inventados. El objetivo es aprender a preguntar y leer con cuidado, no calcular precios reales."
+        "Una tarifa no es solo una cifra. También puede estar asociada a condiciones de cambios, cancelaciones, equipaje o estancia. En esta formación las tarifas son ejemplos inventados. El objetivo es aprender a preguntar y leer con cuidado, no calcular precios reales.",
+        "Las tarifas tienen impacto economico y operativo. Usa el terminal seguro para comparar reglas simplificadas, detectar restricciones y entrenar lenguaje prudente antes de informar cualquier condicion en un entorno real."
       ],
       "keyConcepts": [
         {
@@ -57,7 +58,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -85,10 +87,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-040103",
+          "type": "multiple-choice",
+          "question": "?Qu? actitud exige una regla de tarifa simulada?",
+          "options": [
+            "Leer condiciones y mantener prudencia",
+            "Prometer cambios sin coste",
+            "Aplicarla a una tarifa real",
+            "Omitir restricciones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Las reglas simuladas ayudan a entrenar lectura, pero no sustituyen verificaciones reales."
         }
       ],
       "summary": [
-        "Una tarifa debe entenderse junto con sus condiciones."
+        "Una tarifa debe entenderse junto con sus condiciones.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No uses ejemplos de tarifa como presupuesto real para un cliente."
     },
@@ -100,7 +116,8 @@
       "estimatedMinutes": 30,
       "objective": "Interpretar familias tarifarias de forma conceptual.",
       "explanation": [
-        "Las familias tarifarias agrupan opciones con características parecidas, como básica, estándar o flexible en escenarios simulados. Estos nombres ayudan a comparar, pero no sustituyen la lectura de reglas. El consultor debe evitar prometer beneficios sin confirmar condiciones en canales autorizados cuando el caso sea real."
+        "Las familias tarifarias agrupan opciones con características parecidas, como básica, estándar o flexible en escenarios simulados. Estos nombres ayudan a comparar, pero no sustituyen la lectura de reglas. El consultor debe evitar prometer beneficios sin confirmar condiciones en canales autorizados cuando el caso sea real.",
+        "Las tarifas tienen impacto economico y operativo. Usa el terminal seguro para comparar reglas simplificadas, detectar restricciones y entrenar lenguaje prudente antes de informar cualquier condicion en un entorno real."
       ],
       "keyConcepts": [
         {
@@ -146,7 +163,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -174,10 +192,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-040203",
+          "type": "multiple-choice",
+          "question": "?Qu? actitud exige una regla de tarifa simulada?",
+          "options": [
+            "Leer condiciones y mantener prudencia",
+            "Prometer cambios sin coste",
+            "Aplicarla a una tarifa real",
+            "Omitir restricciones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Las reglas simuladas ayudan a entrenar lectura, pero no sustituyen verificaciones reales."
         }
       ],
       "summary": [
-        "Las familias tarifarias orientan, pero las condiciones deben leerse."
+        "Las familias tarifarias orientan, pero las condiciones deben leerse.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No garantices beneficios reales desde una familia ficticia."
     },
@@ -189,7 +221,8 @@
       "estimatedMinutes": 30,
       "objective": "Reconocer condiciones habituales sin operar cambios reales.",
       "explanation": [
-        "Equipaje, cambios y cancelaciones son temas sensibles porque afectan expectativas y costes. En esta app se tratan como categorías de lectura. El consultor principiante aprende a no prometer, a distinguir lo incluido de lo condicionado y a derivar casos reales a procedimientos autorizados."
+        "Equipaje, cambios y cancelaciones son temas sensibles porque afectan expectativas y costes. En esta app se tratan como categorías de lectura. El consultor principiante aprende a no prometer, a distinguir lo incluido de lo condicionado y a derivar casos reales a procedimientos autorizados.",
+        "Las tarifas tienen impacto economico y operativo. Usa el terminal seguro para comparar reglas simplificadas, detectar restricciones y entrenar lenguaje prudente antes de informar cualquier condicion en un entorno real."
       ],
       "keyConcepts": [
         {
@@ -235,7 +268,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -263,10 +297,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-040303",
+          "type": "multiple-choice",
+          "question": "?Qu? actitud exige una regla de tarifa simulada?",
+          "options": [
+            "Leer condiciones y mantener prudencia",
+            "Prometer cambios sin coste",
+            "Aplicarla a una tarifa real",
+            "Omitir restricciones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Las reglas simuladas ayudan a entrenar lectura, pero no sustituyen verificaciones reales."
         }
       ],
       "summary": [
-        "Las condiciones sensibles se explican con claridad y sin promesas indebidas."
+        "Las condiciones sensibles se explican con claridad y sin promesas indebidas.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No hagas cambios, reembolsos, reemisiones ni cancelaciones reales desde el entrenamiento."
     },
@@ -278,7 +326,8 @@
       "estimatedMinutes": 30,
       "objective": "Leer una regla de tarifa simulada y extraer puntos clave.",
       "explanation": [
-        "Una regla de tarifa puede parecer densa. La práctica consiste en buscar preguntas concretas: qué incluye, qué restringe, qué falta y qué habría que verificar en un caso real. La regla de esta lección es simulada y simplificada para aprender a leer sin usar contenido operativo real."
+        "Una regla de tarifa puede parecer densa. La práctica consiste en buscar preguntas concretas: qué incluye, qué restringe, qué falta y qué habría que verificar en un caso real. La regla de esta lección es simulada y simplificada para aprender a leer sin usar contenido operativo real.",
+        "Las tarifas tienen impacto economico y operativo. Usa el terminal seguro para comparar reglas simplificadas, detectar restricciones y entrenar lenguaje prudente antes de informar cualquier condicion en un entorno real."
       ],
       "keyConcepts": [
         {
@@ -324,7 +373,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -352,10 +402,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-040403",
+          "type": "multiple-choice",
+          "question": "?Qu? actitud exige una regla de tarifa simulada?",
+          "options": [
+            "Leer condiciones y mantener prudencia",
+            "Prometer cambios sin coste",
+            "Aplicarla a una tarifa real",
+            "Omitir restricciones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Las reglas simuladas ayudan a entrenar lectura, pero no sustituyen verificaciones reales."
         }
       ],
       "summary": [
-        "Leer reglas exige foco, cautela y separación entre práctica y realidad."
+        "Leer reglas exige foco, cautela y separación entre práctica y realidad.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No apliques reglas simuladas a tarifas reales."
     },
@@ -367,7 +431,8 @@
       "estimatedMinutes": 30,
       "objective": "Preparar una checklist de preguntas antes de explicar una tarifa.",
       "explanation": [
-        "Antes de informar una tarifa, conviene confirmar ruta, fechas, flexibilidad necesaria, equipaje, presupuesto orientativo y restricciones importantes. En el entrenamiento, estas preguntas se aplican a casos ficticios. En casos reales, la información debe verificarse en sistemas y procedimientos autorizados."
+        "Antes de informar una tarifa, conviene confirmar ruta, fechas, flexibilidad necesaria, equipaje, presupuesto orientativo y restricciones importantes. En el entrenamiento, estas preguntas se aplican a casos ficticios. En casos reales, la información debe verificarse en sistemas y procedimientos autorizados.",
+        "Las tarifas tienen impacto economico y operativo. Usa el terminal seguro para comparar reglas simplificadas, detectar restricciones y entrenar lenguaje prudente antes de informar cualquier condicion en un entorno real."
       ],
       "keyConcepts": [
         {
@@ -413,7 +478,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -441,10 +507,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-040503",
+          "type": "multiple-choice",
+          "question": "?Qu? actitud exige una regla de tarifa simulada?",
+          "options": [
+            "Leer condiciones y mantener prudencia",
+            "Prometer cambios sin coste",
+            "Aplicarla a una tarifa real",
+            "Omitir restricciones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Las reglas simuladas ayudan a entrenar lectura, pero no sustituyen verificaciones reales."
         }
       ],
       "summary": [
-        "Buenas preguntas evitan recomendaciones incompletas."
+        "Buenas preguntas evitan recomendaciones incompletas.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No informes condiciones reales basándote únicamente en material de entrenamiento."
     }

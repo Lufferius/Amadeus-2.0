@@ -11,7 +11,8 @@
       "estimatedMinutes": 30,
       "objective": "Interpretar una solicitud de viaje inventada antes de buscar opciones.",
       "explanation": [
-        "El caso integrado empieza con una solicitud ficticia. El consultor debe extraer ruta, fechas, preferencias, restricciones y dudas. Esta lectura inicial evita avanzar con supuestos. Toda la práctica se mantiene en un entorno seguro y sin datos reales."
+        "El caso integrado empieza con una solicitud ficticia. El consultor debe extraer ruta, fechas, preferencias, restricciones y dudas. Esta lectura inicial evita avanzar con supuestos. Toda la práctica se mantiene en un entorno seguro y sin datos reales.",
+        "En las simulaciones integradas, el objetivo es unir piezas del sistema: solicitud, disponibilidad, PNR, servicios y tarifa. Cada comando del terminal debe leerse como evidencia ficticia que exige criterio, no como confirmacion real."
       ],
       "keyConcepts": [
         {
@@ -57,7 +58,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -85,10 +87,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-060103",
+          "type": "multiple-choice",
+          "question": "?Qu? debe integrar el alumno en una simulaci?n final?",
+          "options": [
+            "Datos ficticios, criterio y limites de seguridad",
+            "Comandos reales de produccion",
+            "Pagos y emisiones reales",
+            "Promesas comerciales no verificadas"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La evaluacion final mide razonamiento seguro con evidencias ficticias."
         }
       ],
       "summary": [
-        "Una buena lectura inicial guía todo el caso integrado."
+        "Una buena lectura inicial guía todo el caso integrado.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No copies solicitudes reales en el simulador."
     },
@@ -100,7 +116,8 @@
       "estimatedMinutes": 30,
       "objective": "Elegir una opción simulada razonable según una necesidad ficticia.",
       "explanation": [
-        "Con la solicitud clara, se revisa disponibilidad simulada. El objetivo no es encontrar un vuelo real, sino justificar una elección: horario, conexión, condiciones visibles y dudas pendientes. Una recomendación segura explica por qué una opción encaja y qué falta verificar si fuera un caso real."
+        "Con la solicitud clara, se revisa disponibilidad simulada. El objetivo no es encontrar un vuelo real, sino justificar una elección: horario, conexión, condiciones visibles y dudas pendientes. Una recomendación segura explica por qué una opción encaja y qué falta verificar si fuera un caso real.",
+        "En las simulaciones integradas, el objetivo es unir piezas del sistema: solicitud, disponibilidad, PNR, servicios y tarifa. Cada comando del terminal debe leerse como evidencia ficticia que exige criterio, no como confirmacion real."
       ],
       "keyConcepts": [
         {
@@ -146,7 +163,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -174,10 +192,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-060203",
+          "type": "multiple-choice",
+          "question": "?Qu? debe integrar el alumno en una simulaci?n final?",
+          "options": [
+            "Datos ficticios, criterio y limites de seguridad",
+            "Comandos reales de produccion",
+            "Pagos y emisiones reales",
+            "Promesas comerciales no verificadas"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La evaluacion final mide razonamiento seguro con evidencias ficticias."
         }
       ],
       "summary": [
-        "Elegir bien exige conectar disponibilidad con necesidades, no solo mirar horarios."
+        "Elegir bien exige conectar disponibilidad con necesidades, no solo mirar horarios.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No presentes disponibilidad simulada como inventario real."
     },
@@ -189,7 +221,8 @@
       "estimatedMinutes": 30,
       "objective": "Revisar un PNR ficticio dentro de un flujo completo.",
       "explanation": [
-        "El PNR de entrenamiento permite comprobar que pasajeros, segmentos y notas coinciden con el caso. Esta revisión integra vocabulario de semanas anteriores. El foco está en detectar inconsistencias, no en modificar registros reales."
+        "El PNR de entrenamiento permite comprobar que pasajeros, segmentos y notas coinciden con el caso. Esta revisión integra vocabulario de semanas anteriores. El foco está en detectar inconsistencias, no en modificar registros reales.",
+        "En las simulaciones integradas, el objetivo es unir piezas del sistema: solicitud, disponibilidad, PNR, servicios y tarifa. Cada comando del terminal debe leerse como evidencia ficticia que exige criterio, no como confirmacion real."
       ],
       "keyConcepts": [
         {
@@ -239,7 +272,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -267,10 +301,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-060303",
+          "type": "multiple-choice",
+          "question": "?Qu? debe integrar el alumno en una simulaci?n final?",
+          "options": [
+            "Datos ficticios, criterio y limites de seguridad",
+            "Comandos reales de produccion",
+            "Pagos y emisiones reales",
+            "Promesas comerciales no verificadas"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La evaluacion final mide razonamiento seguro con evidencias ficticias."
         }
       ],
       "summary": [
-        "El PNR de muestra une datos del caso en una estructura revisable."
+        "El PNR de muestra une datos del caso en una estructura revisable.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No uses localizadores ni datos de reservas reales."
     },
@@ -282,7 +330,8 @@
       "estimatedMinutes": 30,
       "objective": "Comunicar una regla de tarifa ficticia de forma clara y prudente.",
       "explanation": [
-        "En el caso integrado, la regla de tarifa simulada se resume para el viajero ficticio. El consultor debe separar lo incluido, lo restringido y lo pendiente de verificar. La explicación debe ser clara, breve y sin promesas sobre casos reales."
+        "En el caso integrado, la regla de tarifa simulada se resume para el viajero ficticio. El consultor debe separar lo incluido, lo restringido y lo pendiente de verificar. La explicación debe ser clara, breve y sin promesas sobre casos reales.",
+        "En las simulaciones integradas, el objetivo es unir piezas del sistema: solicitud, disponibilidad, PNR, servicios y tarifa. Cada comando del terminal debe leerse como evidencia ficticia que exige criterio, no como confirmacion real."
       ],
       "keyConcepts": [
         {
@@ -328,7 +377,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -356,10 +406,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-060403",
+          "type": "multiple-choice",
+          "question": "?Qu? debe integrar el alumno en una simulaci?n final?",
+          "options": [
+            "Datos ficticios, criterio y limites de seguridad",
+            "Comandos reales de produccion",
+            "Pagos y emisiones reales",
+            "Promesas comerciales no verificadas"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La evaluacion final mide razonamiento seguro con evidencias ficticias."
         }
       ],
       "summary": [
-        "Explicar una regla exige claridad y límites explícitos."
+        "Explicar una regla exige claridad y límites explícitos.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No uses reglas simuladas para asesorar tarifas reales."
     },
@@ -371,7 +435,8 @@
       "estimatedMinutes": 30,
       "objective": "Resolver un flujo completo de entrenamiento sin acciones reales.",
       "explanation": [
-        "La evaluación final integra solicitud, disponibilidad, itinerario, PNR, SSR/OSI conceptual y tarifa simulada. El resultado esperado es una explicación razonada y segura, no una reserva. Un buen cierre menciona qué se sabe, qué se ha asumido y qué habría que verificar fuera del simulador."
+        "La evaluación final integra solicitud, disponibilidad, itinerario, PNR, SSR/OSI conceptual y tarifa simulada. El resultado esperado es una explicación razonada y segura, no una reserva. Un buen cierre menciona qué se sabe, qué se ha asumido y qué habría que verificar fuera del simulador.",
+        "En las simulaciones integradas, el objetivo es unir piezas del sistema: solicitud, disponibilidad, PNR, servicios y tarifa. Cada comando del terminal debe leerse como evidencia ficticia que exige criterio, no como confirmacion real."
       ],
       "keyConcepts": [
         {
@@ -421,7 +486,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -449,10 +515,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-060503",
+          "type": "multiple-choice",
+          "question": "?Qu? debe integrar el alumno en una simulaci?n final?",
+          "options": [
+            "Datos ficticios, criterio y limites de seguridad",
+            "Comandos reales de produccion",
+            "Pagos y emisiones reales",
+            "Promesas comerciales no verificadas"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La evaluacion final mide razonamiento seguro con evidencias ficticias."
         }
       ],
       "summary": [
-        "Completar el curso significa razonar con seguridad, no operar sistemas reales."
+        "Completar el curso significa razonar con seguridad, no operar sistemas reales.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "La evaluación no autoriza reservas, pagos, emisiones, cambios, reembolsos, reemisiones ni cancelaciones reales."
     }

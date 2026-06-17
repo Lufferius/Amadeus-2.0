@@ -25,7 +25,7 @@ function assertText(value, message) {
 
 function assertQuiz(quiz, lessonId) {
   assertArray(quiz, `${lessonId}: quiz must be an array`);
-  assert(quiz.length >= 2, `${lessonId}: quiz must include at least 2 questions`);
+  assert(quiz.length >= 3, `${lessonId}: quiz must include at least 3 questions`);
 
   for (const question of quiz) {
     assertText(question.id, `${lessonId}: quiz id is required`);
@@ -52,7 +52,7 @@ function assertLesson(lesson, expectedPrefix) {
   assert(lesson.estimatedMinutes >= 30 && lesson.estimatedMinutes <= 45, `${lesson.id}: estimatedMinutes should follow the lesson format`);
   assertText(lesson.objective, `${lesson.id}: objective is required`);
   assertArray(lesson.explanation, `${lesson.id}: explanation must be an array`);
-  assert(lesson.explanation.length >= 1, `${lesson.id}: explanation must include at least 1 paragraph`);
+  assert(lesson.explanation.length >= 2, `${lesson.id}: explanation must include at least 2 paragraphs`);
   lesson.explanation.forEach((paragraph) => assertText(paragraph, `${lesson.id}: explanation paragraph is required`));
   assertArray(lesson.keyConcepts, `${lesson.id}: keyConcepts must be an array`);
   assert(lesson.keyConcepts.length >= 1, `${lesson.id}: keyConcepts must include at least 1 item`);
@@ -88,7 +88,7 @@ function assertLesson(lesson, expectedPrefix) {
   });
   assertQuiz(lesson.quiz, lesson.id);
   assertArray(lesson.summary, `${lesson.id}: summary must be an array`);
-  assert(lesson.summary.length >= 1, `${lesson.id}: summary must include at least 1 item`);
+  assert(lesson.summary.length >= 2, `${lesson.id}: summary must include at least 2 items`);
   lesson.summary.forEach((item) => assertText(item, `${lesson.id}: summary item is required`));
   assertText(lesson.safetyNote, `${lesson.id}: safetyNote is required`);
   const lessonText = JSON.stringify(lesson).toLowerCase();

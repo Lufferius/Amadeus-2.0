@@ -11,7 +11,8 @@
       "estimatedMinutes": 30,
       "objective": "Identificar los datos mínimos para una consulta de disponibilidad simulada.",
       "explanation": [
-        "Toda búsqueda de disponibilidad parte de una ruta y una fecha. El origen y el destino suelen expresarse con códigos de aeropuerto o ciudad, pero en este curso se trabajan como etiquetas de entrenamiento. Antes de revisar opciones, el consultor debe confirmar qué quiere hacer el viajero ficticio, cuándo quiere salir y si necesita regreso."
+        "Toda búsqueda de disponibilidad parte de una ruta y una fecha. El origen y el destino suelen expresarse con códigos de aeropuerto o ciudad, pero en este curso se trabajan como etiquetas de entrenamiento. Antes de revisar opciones, el consultor debe confirmar qué quiere hacer el viajero ficticio, cuándo quiere salir y si necesita regreso.",
+        "En disponibilidad e itinerarios, el valor esta en relacionar datos: origen, destino, fecha, horario, conexion, clase conceptual y condicion. El terminal seguro permite practicar esa lectura sin crear segmentos ni tocar inventario real."
       ],
       "keyConcepts": [
         {
@@ -57,7 +58,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -85,10 +87,24 @@
           ],
           "correctAnswer": 1,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-020103",
+          "type": "multiple-choice",
+          "question": "?Qu? debe hacer el alumno al ver disponibilidad ficticia en el terminal?",
+          "options": [
+            "Comparar la salida con la necesidad del caso",
+            "Asumir que hay plazas reales",
+            "Copiarla como confirmaci?n para un cliente",
+            "Ignorar horarios y conexiones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La disponibilidad ficticia sirve para practicar comparacion y criterio, nunca para confirmar inventario real."
         }
       ],
       "summary": [
-        "Origen, destino y fecha sostienen cualquier lectura de disponibilidad."
+        "Origen, destino y fecha sostienen cualquier lectura de disponibilidad.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "Los códigos y fechas usados son ficticios y no consultan inventario real."
     },
@@ -100,7 +116,8 @@
       "estimatedMinutes": 30,
       "objective": "Entender cómo se ordenan los segmentos en un itinerario.",
       "explanation": [
-        "Un itinerario se compone de segmentos. Un viaje simple puede tener un segmento de ida y otro de vuelta. Un viaje con conexión puede tener varios segmentos en el mismo sentido. Para principiantes, la prioridad es comprobar que el orden sea lógico, que las ciudades encajen y que no haya saltos extraños en la historia del viaje."
+        "Un itinerario se compone de segmentos. Un viaje simple puede tener un segmento de ida y otro de vuelta. Un viaje con conexión puede tener varios segmentos en el mismo sentido. Para principiantes, la prioridad es comprobar que el orden sea lógico, que las ciudades encajen y que no haya saltos extraños en la historia del viaje.",
+        "En disponibilidad e itinerarios, el valor esta en relacionar datos: origen, destino, fecha, horario, conexion, clase conceptual y condicion. El terminal seguro permite practicar esa lectura sin crear segmentos ni tocar inventario real."
       ],
       "keyConcepts": [
         {
@@ -146,7 +163,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -174,10 +192,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-020203",
+          "type": "multiple-choice",
+          "question": "?Qu? debe hacer el alumno al ver disponibilidad ficticia en el terminal?",
+          "options": [
+            "Comparar la salida con la necesidad del caso",
+            "Asumir que hay plazas reales",
+            "Copiarla como confirmaci?n para un cliente",
+            "Ignorar horarios y conexiones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La disponibilidad ficticia sirve para practicar comparacion y criterio, nunca para confirmar inventario real."
         }
       ],
       "summary": [
-        "Los segmentos cuentan la historia del viaje en orden."
+        "Los segmentos cuentan la historia del viaje en orden.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No crees ni modifiques segmentos reales; trabaja solo con ejemplos de entrenamiento."
     },
@@ -189,7 +221,8 @@
       "estimatedMinutes": 30,
       "objective": "Comprender que una clase de reserva representa disponibilidad y condiciones en un contexto formativo.",
       "explanation": [
-        "Las clases de reserva son códigos asociados a plazas, tarifas o condiciones, pero aquí se explican de forma conceptual. No hay que memorizar códigos reales ni interpretar disponibilidad real. Lo importante es saber que distintas opciones pueden tener condiciones diferentes y que el consultor debe leer antes de recomendar."
+        "Las clases de reserva son códigos asociados a plazas, tarifas o condiciones, pero aquí se explican de forma conceptual. No hay que memorizar códigos reales ni interpretar disponibilidad real. Lo importante es saber que distintas opciones pueden tener condiciones diferentes y que el consultor debe leer antes de recomendar.",
+        "En disponibilidad e itinerarios, el valor esta en relacionar datos: origen, destino, fecha, horario, conexion, clase conceptual y condicion. El terminal seguro permite practicar esa lectura sin crear segmentos ni tocar inventario real."
       ],
       "keyConcepts": [
         {
@@ -235,7 +268,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -263,10 +297,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-020303",
+          "type": "multiple-choice",
+          "question": "?Qu? debe hacer el alumno al ver disponibilidad ficticia en el terminal?",
+          "options": [
+            "Comparar la salida con la necesidad del caso",
+            "Asumir que hay plazas reales",
+            "Copiarla como confirmaci?n para un cliente",
+            "Ignorar horarios y conexiones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La disponibilidad ficticia sirve para practicar comparacion y criterio, nunca para confirmar inventario real."
         }
       ],
       "summary": [
-        "Las clases ayudan a comparar opciones, pero en el curso se tratan como conceptos de entrenamiento."
+        "Las clases ayudan a comparar opciones, pero en el curso se tratan como conceptos de entrenamiento.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No infieras condiciones reales a partir de clases ficticias del simulador."
     },
@@ -278,7 +326,8 @@
       "estimatedMinutes": 30,
       "objective": "Reconocer conexiones y riesgos básicos en itinerarios simulados.",
       "explanation": [
-        "Una conexión une dos segmentos. Para evaluarla de forma básica hay que mirar ciudad de conexión, tiempo entre llegada y salida, y coherencia general. No se enseñan reglas reales de mínimos de conexión; se entrena la prudencia: si algo parece ajustado o confuso, hay que señalarlo y pedir verificación profesional en un entorno real."
+        "Una conexión une dos segmentos. Para evaluarla de forma básica hay que mirar ciudad de conexión, tiempo entre llegada y salida, y coherencia general. No se enseñan reglas reales de mínimos de conexión; se entrena la prudencia: si algo parece ajustado o confuso, hay que señalarlo y pedir verificación profesional en un entorno real.",
+        "En disponibilidad e itinerarios, el valor esta en relacionar datos: origen, destino, fecha, horario, conexion, clase conceptual y condicion. El terminal seguro permite practicar esa lectura sin crear segmentos ni tocar inventario real."
       ],
       "keyConcepts": [
         {
@@ -324,7 +373,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -352,10 +402,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-020403",
+          "type": "multiple-choice",
+          "question": "?Qu? debe hacer el alumno al ver disponibilidad ficticia en el terminal?",
+          "options": [
+            "Comparar la salida con la necesidad del caso",
+            "Asumir que hay plazas reales",
+            "Copiarla como confirmaci?n para un cliente",
+            "Ignorar horarios y conexiones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La disponibilidad ficticia sirve para practicar comparacion y criterio, nunca para confirmar inventario real."
         }
       ],
       "summary": [
-        "Las conexiones requieren atención al tiempo, lugar y continuidad del viaje."
+        "Las conexiones requieren atención al tiempo, lugar y continuidad del viaje.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No uses estos ejemplos como reglas reales de conexión."
     },
@@ -367,7 +431,8 @@
       "estimatedMinutes": 30,
       "objective": "Aplicar una revisión básica antes de dar por válido un itinerario de práctica.",
       "explanation": [
-        "Validar un itinerario significa revisar que la ruta responde a la solicitud, que las fechas son coherentes, que los segmentos están ordenados y que las condiciones pendientes se han identificado. En entrenamiento no se confirma nada real; se practica la disciplina de revisar antes de comunicar."
+        "Validar un itinerario significa revisar que la ruta responde a la solicitud, que las fechas son coherentes, que los segmentos están ordenados y que las condiciones pendientes se han identificado. En entrenamiento no se confirma nada real; se practica la disciplina de revisar antes de comunicar.",
+        "En disponibilidad e itinerarios, el valor esta en relacionar datos: origen, destino, fecha, horario, conexion, clase conceptual y condicion. El terminal seguro permite practicar esa lectura sin crear segmentos ni tocar inventario real."
       ],
       "keyConcepts": [
         {
@@ -413,7 +478,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -441,10 +507,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-020503",
+          "type": "multiple-choice",
+          "question": "?Qu? debe hacer el alumno al ver disponibilidad ficticia en el terminal?",
+          "options": [
+            "Comparar la salida con la necesidad del caso",
+            "Asumir que hay plazas reales",
+            "Copiarla como confirmaci?n para un cliente",
+            "Ignorar horarios y conexiones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La disponibilidad ficticia sirve para practicar comparacion y criterio, nunca para confirmar inventario real."
         }
       ],
       "summary": [
-        "Una revisión ordenada reduce errores incluso en prácticas sencillas."
+        "Una revisión ordenada reduce errores incluso en prácticas sencillas.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "Validar aquí no equivale a confirmar disponibilidad o reserva real."
     }

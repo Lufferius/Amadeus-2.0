@@ -11,7 +11,8 @@
       "estimatedMinutes": 30,
       "objective": "Comprender la función de un GDS en la distribución de viajes.",
       "explanation": [
-        "Un GDS es una plataforma que ayuda a consultar información de viajes, comparar opciones y organizar datos de una reserva. Para empezar, lo importante no es memorizar pantallas, sino entender el flujo: una persona solicita un viaje, el consultor interpreta la necesidad, revisa opciones y comunica alternativas de forma clara. En esta app todo se practica con datos inventados y sin conexión a sistemas reales."
+        "Un GDS es una plataforma que ayuda a consultar información de viajes, comparar opciones y organizar datos de una reserva. Para empezar, lo importante no es memorizar pantallas, sino entender el flujo: una persona solicita un viaje, el consultor interpreta la necesidad, revisa opciones y comunica alternativas de forma clara. En esta app todo se practica con datos inventados y sin conexión a sistemas reales.",
+        "Piensa en el sistema como una cadena de informacion: solicitud, busqueda simulada, interpretacion y comunicacion. Aunque el terminal de esta app es ficticio, acostumbrarte a leer sus salidas desde el primer dia ayuda a desarrollar orden mental antes de ver entornos profesionales."
       ],
       "keyConcepts": [
         {
@@ -57,7 +58,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -85,10 +87,24 @@
           ],
           "correctAnswer": 1,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-010103",
+          "type": "multiple-choice",
+          "question": "?Para qu? sirve usar el terminal seguro desde esta lecci?n?",
+          "options": [
+            "Para crear h?bitos de lectura sin operar sistemas reales",
+            "Para emitir billetes de entrenamiento",
+            "Para sustituir formaci?n autorizada",
+            "Para consultar disponibilidad real"
+          ],
+          "correctAnswer": 0,
+          "explanation": "El terminal seguro crea familiaridad con lectura y vocabulario, pero no opera ni consulta sistemas reales."
         }
       ],
       "summary": [
-        "Un GDS organiza información de viaje, pero en este curso se trabaja solo con simulaciones seguras."
+        "Un GDS organiza información de viaje, pero en este curso se trabaja solo con simulaciones seguras.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No introduzcas datos reales de clientes ni interpretes el simulador como una herramienta operativa."
     },
@@ -100,7 +116,8 @@
       "estimatedMinutes": 30,
       "objective": "Identificar los roles que intervienen en una solicitud de viaje.",
       "explanation": [
-        "El Travel Consultant escucha la necesidad del viajero, revisa opciones y explica alternativas. El pasajero es la persona que viaja, el proveedor ofrece el servicio y el sistema organiza información. En entrenamiento conviene hablar de roles para no confundir una pantalla simulada con una acción real. La responsabilidad del consultor incluye preguntar, verificar y comunicar límites."
+        "El Travel Consultant escucha la necesidad del viajero, revisa opciones y explica alternativas. El pasajero es la persona que viaja, el proveedor ofrece el servicio y el sistema organiza información. En entrenamiento conviene hablar de roles para no confundir una pantalla simulada con una acción real. La responsabilidad del consultor incluye preguntar, verificar y comunicar límites.",
+        "Piensa en el sistema como una cadena de informacion: solicitud, busqueda simulada, interpretacion y comunicacion. Aunque el terminal de esta app es ficticio, acostumbrarte a leer sus salidas desde el primer dia ayuda a desarrollar orden mental antes de ver entornos profesionales."
       ],
       "keyConcepts": [
         {
@@ -146,7 +163,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -174,10 +192,24 @@
           ],
           "correctAnswer": 1,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-010203",
+          "type": "multiple-choice",
+          "question": "?Para qu? sirve usar el terminal seguro desde esta lecci?n?",
+          "options": [
+            "Para crear h?bitos de lectura sin operar sistemas reales",
+            "Para emitir billetes de entrenamiento",
+            "Para sustituir formaci?n autorizada",
+            "Para consultar disponibilidad real"
+          ],
+          "correctAnswer": 0,
+          "explanation": "El terminal seguro crea familiaridad con lectura y vocabulario, pero no opera ni consulta sistemas reales."
         }
       ],
       "summary": [
-        "Los roles ayudan a ordenar la conversación y a practicar con seguridad."
+        "Los roles ayudan a ordenar la conversación y a practicar con seguridad.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "Usa siempre nombres inventados y evita cualquier dato identificable."
     },
@@ -189,7 +221,8 @@
       "estimatedMinutes": 30,
       "objective": "Reconocer disponibilidad, segmento, tarifa, PNR y SSR/OSI como conceptos base.",
       "explanation": [
-        "La disponibilidad indica opciones posibles en una ruta y fecha simuladas. Un segmento representa una parte del viaje, por ejemplo un vuelo de ida. Una tarifa describe precio y condiciones de forma conceptual. Un PNR de entrenamiento agrupa datos ficticios de una reserva simulada. SSR y OSI son formas estructuradas de comunicar información especial o comentarios en un contexto controlado."
+        "La disponibilidad indica opciones posibles en una ruta y fecha simuladas. Un segmento representa una parte del viaje, por ejemplo un vuelo de ida. Una tarifa describe precio y condiciones de forma conceptual. Un PNR de entrenamiento agrupa datos ficticios de una reserva simulada. SSR y OSI son formas estructuradas de comunicar información especial o comentarios en un contexto controlado.",
+        "Piensa en el sistema como una cadena de informacion: solicitud, busqueda simulada, interpretacion y comunicacion. Aunque el terminal de esta app es ficticio, acostumbrarte a leer sus salidas desde el primer dia ayuda a desarrollar orden mental antes de ver entornos profesionales."
       ],
       "keyConcepts": [
         {
@@ -239,7 +272,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -267,10 +301,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-010303",
+          "type": "multiple-choice",
+          "question": "?Para qu? sirve usar el terminal seguro desde esta lecci?n?",
+          "options": [
+            "Para crear h?bitos de lectura sin operar sistemas reales",
+            "Para emitir billetes de entrenamiento",
+            "Para sustituir formaci?n autorizada",
+            "Para consultar disponibilidad real"
+          ],
+          "correctAnswer": 0,
+          "explanation": "El terminal seguro crea familiaridad con lectura y vocabulario, pero no opera ni consulta sistemas reales."
         }
       ],
       "summary": [
-        "Estos conceptos forman el vocabulario mínimo para entender las siguientes semanas."
+        "Estos conceptos forman el vocabulario mínimo para entender las siguientes semanas.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "Las explicaciones son conceptuales y no autorizan crear, modificar o cancelar reservas reales."
     },
@@ -282,7 +330,8 @@
       "estimatedMinutes": 30,
       "objective": "Aplicar límites claros para practicar sin riesgo.",
       "explanation": [
-        "Una práctica segura usa escenarios inventados, rutas de ejemplo y resultados simulados. No se deben introducir nombres, teléfonos, correos, documentos ni necesidades reales de clientes. Tampoco se deben tomar decisiones comerciales reales a partir de una pantalla de entrenamiento. Si una duda afecta a una reserva real, debe resolverse fuera del simulador y con supervisión autorizada."
+        "Una práctica segura usa escenarios inventados, rutas de ejemplo y resultados simulados. No se deben introducir nombres, teléfonos, correos, documentos ni necesidades reales de clientes. Tampoco se deben tomar decisiones comerciales reales a partir de una pantalla de entrenamiento. Si una duda afecta a una reserva real, debe resolverse fuera del simulador y con supervisión autorizada.",
+        "Piensa en el sistema como una cadena de informacion: solicitud, busqueda simulada, interpretacion y comunicacion. Aunque el terminal de esta app es ficticio, acostumbrarte a leer sus salidas desde el primer dia ayuda a desarrollar orden mental antes de ver entornos profesionales."
       ],
       "keyConcepts": [
         {
@@ -328,7 +377,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -356,10 +406,24 @@
           ],
           "correctAnswer": 1,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-010403",
+          "type": "multiple-choice",
+          "question": "?Para qu? sirve usar el terminal seguro desde esta lecci?n?",
+          "options": [
+            "Para crear h?bitos de lectura sin operar sistemas reales",
+            "Para emitir billetes de entrenamiento",
+            "Para sustituir formaci?n autorizada",
+            "Para consultar disponibilidad real"
+          ],
+          "correctAnswer": 0,
+          "explanation": "El terminal seguro crea familiaridad con lectura y vocabulario, pero no opera ni consulta sistemas reales."
         }
       ],
       "summary": [
-        "La seguridad consiste en practicar con límites claros y escenarios inventados."
+        "La seguridad consiste en practicar con límites claros y escenarios inventados.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No uses este entorno para validar decisiones sobre clientes, reservas o pagos reales."
     },
@@ -371,7 +435,8 @@
       "estimatedMinutes": 30,
       "objective": "Leer resultados simulados sin asumir que proceden de un sistema real.",
       "explanation": [
-        "Las pantallas simuladas sirven para entrenar la atención: identificar rutas, horarios, segmentos, condiciones y notas. El objetivo es aprender a observar antes de actuar. En la vida profesional, una pantalla real puede tener consecuencias; aquí, en cambio, cada resultado está diseñado para practicar razonamiento y vocabulario."
+        "Las pantallas simuladas sirven para entrenar la atención: identificar rutas, horarios, segmentos, condiciones y notas. El objetivo es aprender a observar antes de actuar. En la vida profesional, una pantalla real puede tener consecuencias; aquí, en cambio, cada resultado está diseñado para practicar razonamiento y vocabulario.",
+        "Piensa en el sistema como una cadena de informacion: solicitud, busqueda simulada, interpretacion y comunicacion. Aunque el terminal de esta app es ficticio, acostumbrarte a leer sus salidas desde el primer dia ayuda a desarrollar orden mental antes de ver entornos profesionales."
       ],
       "keyConcepts": [
         {
@@ -421,7 +486,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -449,10 +515,24 @@
           ],
           "correctAnswer": 1,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-010503",
+          "type": "multiple-choice",
+          "question": "?Para qu? sirve usar el terminal seguro desde esta lecci?n?",
+          "options": [
+            "Para crear h?bitos de lectura sin operar sistemas reales",
+            "Para emitir billetes de entrenamiento",
+            "Para sustituir formaci?n autorizada",
+            "Para consultar disponibilidad real"
+          ],
+          "correctAnswer": 0,
+          "explanation": "El terminal seguro crea familiaridad con lectura y vocabulario, pero no opera ni consulta sistemas reales."
         }
       ],
       "summary": [
-        "Leer bien una pantalla simulada prepara para preguntar mejor y cometer menos errores conceptuales."
+        "Leer bien una pantalla simulada prepara para preguntar mejor y cometer menos errores conceptuales.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "Nunca presentes resultados simulados como confirmaciones reales de disponibilidad o tarifa."
     }

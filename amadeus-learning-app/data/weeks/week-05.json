@@ -11,7 +11,8 @@
       "estimatedMinutes": 30,
       "objective": "Aprender a transformar una petición vaga en requisitos claros.",
       "explanation": [
-        "Un buen consultor no empieza por la pantalla, empieza por la necesidad. Debe confirmar destino, fechas, horarios preferidos, equipaje, flexibilidad y prioridades. En esta app todas las personas son ficticias, pero la práctica de preguntar con claridad prepara para conversaciones profesionales."
+        "Un buen consultor no empieza por la pantalla, empieza por la necesidad. Debe confirmar destino, fechas, horarios preferidos, equipaje, flexibilidad y prioridades. En esta app todas las personas son ficticias, pero la práctica de preguntar con claridad prepara para conversaciones profesionales.",
+        "La calidad operativa depende de revisar, preguntar y documentar. El terminal seguro te ayuda a practicar decisiones con informacion incompleta sin exponer clientes ni producir cambios reales."
       ],
       "keyConcepts": [
         {
@@ -57,7 +58,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -85,10 +87,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-050103",
+          "type": "multiple-choice",
+          "question": "?Qu? aporta el terminal seguro a la calidad operativa?",
+          "options": [
+            "Permite practicar revisiones y decisiones sin riesgo real",
+            "Elimina la necesidad de preguntar al viajero",
+            "Autoriza reembolsos de prueba",
+            "Convierte supuestos en confirmaciones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La practica segura refuerza revision y comunicacion sin acciones reales."
         }
       ],
       "summary": [
-        "Confirmar necesidades evita búsquedas mal orientadas."
+        "Confirmar necesidades evita búsquedas mal orientadas.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No uses necesidades reales de clientes para ejercicios sin autorización y anonimización."
     },
@@ -100,7 +116,8 @@
       "estimatedMinutes": 30,
       "objective": "Comunicar opciones de forma neutral y comprensible.",
       "explanation": [
-        "Explicar alternativas implica presentar ventajas, límites y dudas pendientes sin presionar. Un principiante debe evitar frases absolutas cuando trabaja con información incompleta. En ejercicios simulados, se practica lenguaje claro: 'esta opción parece más flexible en el ejemplo' en lugar de promesas cerradas."
+        "Explicar alternativas implica presentar ventajas, límites y dudas pendientes sin presionar. Un principiante debe evitar frases absolutas cuando trabaja con información incompleta. En ejercicios simulados, se practica lenguaje claro: 'esta opción parece más flexible en el ejemplo' en lugar de promesas cerradas.",
+        "La calidad operativa depende de revisar, preguntar y documentar. El terminal seguro te ayuda a practicar decisiones con informacion incompleta sin exponer clientes ni producir cambios reales."
       ],
       "keyConcepts": [
         {
@@ -146,7 +163,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -174,10 +192,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-050203",
+          "type": "multiple-choice",
+          "question": "?Qu? aporta el terminal seguro a la calidad operativa?",
+          "options": [
+            "Permite practicar revisiones y decisiones sin riesgo real",
+            "Elimina la necesidad de preguntar al viajero",
+            "Autoriza reembolsos de prueba",
+            "Convierte supuestos en confirmaciones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La practica segura refuerza revision y comunicacion sin acciones reales."
         }
       ],
       "summary": [
-        "Una buena explicación ayuda a decidir sin crear falsas garantías."
+        "Una buena explicación ayuda a decidir sin crear falsas garantías.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No prometas condiciones reales desde ejemplos simulados."
     },
@@ -189,7 +221,8 @@
       "estimatedMinutes": 30,
       "objective": "Encontrar errores habituales en itinerarios simulados.",
       "explanation": [
-        "Las inconsistencias pueden aparecer en fechas, ciudades, número de pasajeros, horarios o condiciones. El consultor debe revisar con calma y preguntar antes de avanzar. En el simulador, detectar errores es una forma segura de entrenar criterio sin afectar a una reserva real."
+        "Las inconsistencias pueden aparecer en fechas, ciudades, número de pasajeros, horarios o condiciones. El consultor debe revisar con calma y preguntar antes de avanzar. En el simulador, detectar errores es una forma segura de entrenar criterio sin afectar a una reserva real.",
+        "La calidad operativa depende de revisar, preguntar y documentar. El terminal seguro te ayuda a practicar decisiones con informacion incompleta sin exponer clientes ni producir cambios reales."
       ],
       "keyConcepts": [
         {
@@ -235,7 +268,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -263,10 +297,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-050303",
+          "type": "multiple-choice",
+          "question": "?Qu? aporta el terminal seguro a la calidad operativa?",
+          "options": [
+            "Permite practicar revisiones y decisiones sin riesgo real",
+            "Elimina la necesidad de preguntar al viajero",
+            "Autoriza reembolsos de prueba",
+            "Convierte supuestos en confirmaciones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La practica segura refuerza revision y comunicacion sin acciones reales."
         }
       ],
       "summary": [
-        "La revisión de inconsistencias protege la calidad de la respuesta."
+        "La revisión de inconsistencias protege la calidad de la respuesta.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No corrijas reservas reales desde ejercicios de práctica."
     },
@@ -278,7 +326,8 @@
       "estimatedMinutes": 30,
       "objective": "Reconocer frases que pueden crear expectativas incorrectas.",
       "explanation": [
-        "En viajes, las palabras importan. Decir 'seguro', 'garantizado' o 'sin coste' sin verificar puede causar problemas. Esta lección entrena respuestas prudentes: explicar lo que se ve en el ejemplo, indicar lo pendiente de confirmar y separar la práctica de cualquier caso real."
+        "En viajes, las palabras importan. Decir 'seguro', 'garantizado' o 'sin coste' sin verificar puede causar problemas. Esta lección entrena respuestas prudentes: explicar lo que se ve en el ejemplo, indicar lo pendiente de confirmar y separar la práctica de cualquier caso real.",
+        "La calidad operativa depende de revisar, preguntar y documentar. El terminal seguro te ayuda a practicar decisiones con informacion incompleta sin exponer clientes ni producir cambios reales."
       ],
       "keyConcepts": [
         {
@@ -324,7 +373,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -352,10 +402,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-050403",
+          "type": "multiple-choice",
+          "question": "?Qu? aporta el terminal seguro a la calidad operativa?",
+          "options": [
+            "Permite practicar revisiones y decisiones sin riesgo real",
+            "Elimina la necesidad de preguntar al viajero",
+            "Autoriza reembolsos de prueba",
+            "Convierte supuestos en confirmaciones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La practica segura refuerza revision y comunicacion sin acciones reales."
         }
       ],
       "summary": [
-        "La prudencia verbal evita malentendidos y protege al cliente."
+        "La prudencia verbal evita malentendidos y protege al cliente.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No prometas cambios, reembolsos, reemisiones, emisiones ni cancelaciones reales."
     },
@@ -367,7 +431,8 @@
       "estimatedMinutes": 30,
       "objective": "Crear una revisión final antes de cerrar una práctica.",
       "explanation": [
-        "Una checklist ayuda a comprobar solicitud, itinerario, pasajeros ficticios, condiciones, dudas pendientes y lenguaje usado. No busca convertir la práctica en operación real, sino reforzar hábitos: revisar, explicar, preguntar y documentar de forma segura."
+        "Una checklist ayuda a comprobar solicitud, itinerario, pasajeros ficticios, condiciones, dudas pendientes y lenguaje usado. No busca convertir la práctica en operación real, sino reforzar hábitos: revisar, explicar, preguntar y documentar de forma segura.",
+        "La calidad operativa depende de revisar, preguntar y documentar. El terminal seguro te ayuda a practicar decisiones con informacion incompleta sin exponer clientes ni producir cambios reales."
       ],
       "keyConcepts": [
         {
@@ -413,7 +478,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -441,10 +507,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-050503",
+          "type": "multiple-choice",
+          "question": "?Qu? aporta el terminal seguro a la calidad operativa?",
+          "options": [
+            "Permite practicar revisiones y decisiones sin riesgo real",
+            "Elimina la necesidad de preguntar al viajero",
+            "Autoriza reembolsos de prueba",
+            "Convierte supuestos en confirmaciones"
+          ],
+          "correctAnswer": 0,
+          "explanation": "La practica segura refuerza revision y comunicacion sin acciones reales."
         }
       ],
       "summary": [
-        "La calidad se construye con una revisión final sencilla y constante."
+        "La calidad se construye con una revisión final sencilla y constante.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "La checklist es formativa y no sustituye procedimientos reales de agencia."
     }

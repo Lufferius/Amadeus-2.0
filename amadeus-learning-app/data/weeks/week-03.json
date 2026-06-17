@@ -11,7 +11,8 @@
       "estimatedMinutes": 30,
       "objective": "Entender el PNR como agrupación de información de una reserva simulada.",
       "explanation": [
-        "Un PNR de entrenamiento reúne datos ficticios de pasajero, itinerario, contacto y observaciones. Para un principiante, sirve como mapa de una reserva: muestra qué información existe y cómo se relaciona. En esta app no se crea ni se modifica ningún PNR real; solo se leen ejemplos preparados."
+        "Un PNR de entrenamiento reúne datos ficticios de pasajero, itinerario, contacto y observaciones. Para un principiante, sirve como mapa de una reserva: muestra qué información existe y cómo se relaciona. En esta app no se crea ni se modifica ningún PNR real; solo se leen ejemplos preparados.",
+        "Un PNR debe entenderse como una estructura, no como una pantalla aislada. Al usar el terminal seguro para ver muestras ficticias, aprende a localizar pasajeros, segmentos, contactos y notas antes de sacar conclusiones."
       ],
       "keyConcepts": [
         {
@@ -61,7 +62,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -89,10 +91,24 @@
           ],
           "correctAnswer": 1,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-030103",
+          "type": "multiple-choice",
+          "question": "?C?mo debe leerse un PNR de muestra del terminal?",
+          "options": [
+            "Como estructura ficticia para localizar informacion",
+            "Como localizador real",
+            "Como permiso para modificar una reserva",
+            "Como documento de pago"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Un PNR de muestra entrena lectura estructurada con datos inventados."
         }
       ],
       "summary": [
-        "El PNR de entrenamiento ayuda a entender cómo se agrupa la información de viaje."
+        "El PNR de entrenamiento ayuda a entender cómo se agrupa la información de viaje.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No uses localizadores, nombres ni contactos reales dentro de prácticas."
     },
@@ -104,7 +120,8 @@
       "estimatedMinutes": 30,
       "objective": "Distinguir datos de pasajero ficticios de datos personales reales.",
       "explanation": [
-        "Los datos de pasajero en entrenamiento deben ser inventados, claros y no identificables. Un buen ejemplo permite practicar lectura sin exponer privacidad. No se necesitan documentos reales, teléfonos reales ni correos reales para aprender la estructura de un caso."
+        "Los datos de pasajero en entrenamiento deben ser inventados, claros y no identificables. Un buen ejemplo permite practicar lectura sin exponer privacidad. No se necesitan documentos reales, teléfonos reales ni correos reales para aprender la estructura de un caso.",
+        "Un PNR debe entenderse como una estructura, no como una pantalla aislada. Al usar el terminal seguro para ver muestras ficticias, aprende a localizar pasajeros, segmentos, contactos y notas antes de sacar conclusiones."
       ],
       "keyConcepts": [
         {
@@ -150,7 +167,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -178,10 +196,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-030203",
+          "type": "multiple-choice",
+          "question": "?C?mo debe leerse un PNR de muestra del terminal?",
+          "options": [
+            "Como estructura ficticia para localizar informacion",
+            "Como localizador real",
+            "Como permiso para modificar una reserva",
+            "Como documento de pago"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Un PNR de muestra entrena lectura estructurada con datos inventados."
         }
       ],
       "summary": [
-        "Un caso seguro usa pasajeros inventados y datos sin valor real."
+        "Un caso seguro usa pasajeros inventados y datos sin valor real.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No introduzcas documentos, contactos o preferencias reales de clientes."
     },
@@ -193,7 +225,8 @@
       "estimatedMinutes": 30,
       "objective": "Reconocer información auxiliar en un PNR ficticio.",
       "explanation": [
-        "Además del itinerario, un PNR de muestra puede incluir contacto ficticio, referencia de agencia y observaciones de entrenamiento. Estos campos ayudan a practicar lectura ordenada. En un contexto real tendrían implicaciones, por eso aquí se usan valores neutros y simulados."
+        "Además del itinerario, un PNR de muestra puede incluir contacto ficticio, referencia de agencia y observaciones de entrenamiento. Estos campos ayudan a practicar lectura ordenada. En un contexto real tendrían implicaciones, por eso aquí se usan valores neutros y simulados.",
+        "Un PNR debe entenderse como una estructura, no como una pantalla aislada. Al usar el terminal seguro para ver muestras ficticias, aprende a localizar pasajeros, segmentos, contactos y notas antes de sacar conclusiones."
       ],
       "keyConcepts": [
         {
@@ -239,7 +272,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -267,10 +301,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-030303",
+          "type": "multiple-choice",
+          "question": "?C?mo debe leerse un PNR de muestra del terminal?",
+          "options": [
+            "Como estructura ficticia para localizar informacion",
+            "Como localizador real",
+            "Como permiso para modificar una reserva",
+            "Como documento de pago"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Un PNR de muestra entrena lectura estructurada con datos inventados."
         }
       ],
       "summary": [
-        "Los datos auxiliares completan el contexto, pero deben ser seguros y de entrenamiento."
+        "Los datos auxiliares completan el contexto, pero deben ser seguros y de entrenamiento.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No guardes información real de contacto en escenarios formativos."
     },
@@ -282,7 +330,8 @@
       "estimatedMinutes": 30,
       "objective": "Comprender SSR y OSI como comunicaciones estructuradas de práctica.",
       "explanation": [
-        "SSR y OSI representan formas de comunicar información especial u observaciones. En esta app se estudian como conceptos, no como instrucciones para enviar mensajes a proveedores. El foco está en redactar información clara, prudente y ficticia, entendiendo que en un entorno real se aplican reglas y supervisión."
+        "SSR y OSI representan formas de comunicar información especial u observaciones. En esta app se estudian como conceptos, no como instrucciones para enviar mensajes a proveedores. El foco está en redactar información clara, prudente y ficticia, entendiendo que en un entorno real se aplican reglas y supervisión.",
+        "Un PNR debe entenderse como una estructura, no como una pantalla aislada. Al usar el terminal seguro para ver muestras ficticias, aprende a localizar pasajeros, segmentos, contactos y notas antes de sacar conclusiones."
       ],
       "keyConcepts": [
         {
@@ -328,7 +377,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -356,10 +406,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-030403",
+          "type": "multiple-choice",
+          "question": "?C?mo debe leerse un PNR de muestra del terminal?",
+          "options": [
+            "Como estructura ficticia para localizar informacion",
+            "Como localizador real",
+            "Como permiso para modificar una reserva",
+            "Como documento de pago"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Un PNR de muestra entrena lectura estructurada con datos inventados."
         }
       ],
       "summary": [
-        "SSR y OSI se aprenden como categorías de comunicación, siempre en modo simulado."
+        "SSR y OSI se aprenden como categorías de comunicación, siempre en modo simulado.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "No uses el simulador para comunicar necesidades reales a proveedores."
     },
@@ -371,7 +435,8 @@
       "estimatedMinutes": 30,
       "objective": "Aplicar una checklist de lectura a un PNR ficticio.",
       "explanation": [
-        "Revisar un PNR de muestra consiste en leer pasajeros, segmentos, contactos y notas, y comprobar que todo encaja con la solicitud ficticia. Una revisión segura no modifica nada. El aprendizaje está en detectar incoherencias y formular preguntas antes de avanzar."
+        "Revisar un PNR de muestra consiste en leer pasajeros, segmentos, contactos y notas, y comprobar que todo encaja con la solicitud ficticia. Una revisión segura no modifica nada. El aprendizaje está en detectar incoherencias y formular preguntas antes de avanzar.",
+        "Un PNR debe entenderse como una estructura, no como una pantalla aislada. Al usar el terminal seguro para ver muestras ficticias, aprende a localizar pasajeros, segmentos, contactos y notas antes de sacar conclusiones."
       ],
       "keyConcepts": [
         {
@@ -421,7 +486,8 @@
           "correctionCriteria": [
             "Ejecuta exactamente el comando indicado en el terminal seguro.",
             "Resume el resultado con sus propios terminos.",
-            "Indica que el dato es ficticio y no operativo."
+            "Indica que el dato es ficticio y no operativo.",
+            "Relaciona el resultado del terminal con el objetivo de la leccion."
           ]
         }
       ],
@@ -449,10 +515,24 @@
           ],
           "correctAnswer": 0,
           "explanation": "Revisa la explicaci?n de la lecci?n y recuerda que el contenido es solo formativo."
+        },
+        {
+          "id": "q-030503",
+          "type": "multiple-choice",
+          "question": "?C?mo debe leerse un PNR de muestra del terminal?",
+          "options": [
+            "Como estructura ficticia para localizar informacion",
+            "Como localizador real",
+            "Como permiso para modificar una reserva",
+            "Como documento de pago"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Un PNR de muestra entrena lectura estructurada con datos inventados."
         }
       ],
       "summary": [
-        "La revisión segura mejora criterio sin tocar sistemas de producción."
+        "La revisión segura mejora criterio sin tocar sistemas de producción.",
+        "Practica esta leccion tambien en el terminal seguro: el objetivo es ganar soltura leyendo salidas ficticias, no ejecutar comandos reales."
       ],
       "safetyNote": "Nunca apliques cambios reales a partir de una práctica."
     }
