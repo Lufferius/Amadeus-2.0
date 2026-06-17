@@ -559,8 +559,24 @@ export function runTerminalCommand(session, input) {
       'RT muestra el PNR local de entrenamiento. No existe localizador real ni reserva en ningun sistema.',
       { contextualHelp: 'Usa RESET para limpiar el PNR ficticio y empezar de nuevo.' },
     );
+  } else if (parsed.type === 'PROHIBITED') {
+    result = baseResult(
+      'PROHIBITED',
+      input,
+      ['Comando bloqueado: no se permiten operaciones transaccionales ni datos de pago en este simulador.'],
+      'El entorno de entrenamiento no ejecuta emision, reembolso, reemision ni procesamiento de pagos.',
+      { safe: false, status: 'BLOCKED' },
+    );
   } else if (parsed.type === 'EMPTY') {
     result = baseResult('EMPTY', input, [parsed.message], 'No se ha ejecutado ningun comando.');
+  } else if (parsed.type !== 'UNKNOWN') {
+    result = baseResult(
+      parsed.type,
+      input,
+      [`${parsed.type}: comando reconocido, pendiente de implementacion en el simulador de entrenamiento.`],
+      'El comando se ha identificado de forma segura, pero todavia no tiene una simulacion ejecutable.',
+      { status: 'NOT_IMPLEMENTED' },
+    );
   } else {
     result = baseResult(
       'UNKNOWN',

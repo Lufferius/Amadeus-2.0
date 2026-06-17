@@ -95,6 +95,7 @@ export function testParserExplicitlyProhibitsTransactionalAndPaymentCommands() {
   const prohibited = [
     'TTP',
     'TRF',
+    'TRF 123-4567890123',
     'FXQ',
     'TRDC',
     'REFUND 1234567890',
@@ -102,8 +103,11 @@ export function testParserExplicitlyProhibitsTransactionalAndPaymentCommands() {
     'FP CCVI4111111111111111/1228',
     'FPCCVI4111111111111111/1228',
     'VI4111111111111111/1228',
+    'VI 4111 1111 1111 1111',
     'CARD 4111 1111 1111 1111',
     '4111 1111 1111 1111',
+    '4111 1111 1111 1111/1228',
+    'FP VI4111111111111111/1228',
   ];
 
   for (const input of prohibited) {
@@ -115,6 +119,20 @@ export function testParserExplicitlyProhibitsTransactionalAndPaymentCommands() {
   const ordinaryNumericToken = parseCommand('1234567890123456');
   assert(ordinaryNumericToken.type === 'UNKNOWN', 'A non-card long numeric token should remain unknown');
   assert(ordinaryNumericToken.safe === false, 'Unknown numeric tokens should retain the existing unsafe default');
+}
+
+export function testRuntimeHandlesPendingAndProhibitedCommandsWithoutUndefinedOutput() {
+  const session = createTerminalSession();
+
+  const pending = runTerminalCommand(session, 'ER');
+  assert(pending.type === 'PNR_END_RETRIEVE', 'Pending ER should preserve its parsed type');
+  assert(pending.status === 'NOT_IMPLEMENTED', 'Pending ER should expose an explicit implementation status');
+  assert(pending.output.every((line) => typeof line === 'string' && !line.includes('undefined')), 'Pending output must contain only defined explanatory text');
+
+  const prohibited = runTerminalCommand(session, 'TTP');
+  assert(prohibited.type === 'PROHIBITED', 'TTP runtime result should preserve PROHIBITED type');
+  assert(prohibited.safe === false, 'TTP runtime result should remain unsafe');
+  assert(prohibited.output.every((line) => typeof line === 'string' && !line.includes('undefined')), 'Prohibited output must contain only defined explanatory text');
 }
 
 export function testCrypticTrainingFlowBuildsLocalFictionalPnr() {

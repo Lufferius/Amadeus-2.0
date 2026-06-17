@@ -7,10 +7,12 @@ function result(type, args = [], safe = true) {
 }
 
 function looksLikePaymentCard(input) {
-  if (/^(?:(?:CC)?(?:VI|MC|AX)|CC)\d{12,19}(?:[\s/].*)?$/.test(input)) return true;
-  if (!/^\d(?:[ -]?\d){11,18}$/.test(input)) return false;
+  const paymentPrefix = input.match(/^FP\s+(?:CC)?(?:VI|MC|AX)?\s*(.+)$/);
+  const cardPrefix = input.match(/^(?:(?:CC)?(?:VI|MC|AX)|CC)\s*(.+)$/);
+  const candidate = (paymentPrefix?.[1] ?? cardPrefix?.[1] ?? input).replace(/\/\d{4}$/, '');
+  if (!/^\d(?:[ -]?\d){11,18}$/.test(candidate)) return false;
 
-  const digits = input.replace(/[ -]/g, '');
+  const digits = candidate.replace(/[ -]/g, '');
   let sum = 0;
   let doubleDigit = false;
 
@@ -37,7 +39,7 @@ export function parseCommand(input = '') {
     };
   }
 
-  if (/^(?:TTP|TRF)(?:\/.*)?$/.test(normalized)
+  if (/^(?:TTP|TRF)(?:(?:\/|\s+).*)?$/.test(normalized)
     || /^(?:FXQ|TRDC)(?:\/.*)?$/.test(normalized)
     || /^(?:REFUND|REISSUE)(?:\s+.*)?$/.test(normalized)
     || /^(?:FP\s*CC|CARD\s+).*$/.test(normalized)
