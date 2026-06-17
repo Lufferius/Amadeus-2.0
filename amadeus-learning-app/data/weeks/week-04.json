@@ -25,16 +25,15 @@
           "title": "Ejemplo 1",
           "content": "Una tarifa simulada puede ser más barata pero menos flexible.",
           "simulatedTerminal": {
-            "command": "SHOW FARE_RULE BASIC",
+            "command": "SHOW FARE_RULE FLEX",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> SHOW FARE_RULE BASIC",
-              "BASIC ficticia: menor precio inicial.",
-              "Cambios: no permitidos en el ejemplo.",
-              "Reembolso: no contemplado en el ejemplo.",
-              "Riesgo: alta restriccion si el plan cambia."
+              "> SHOW FARE_RULE FLEX",
+              "FLEX ficticia: precio inicial mayor.",
+              "Cambios: permitidos con condiciones simuladas.",
+              "Reembolso: parcial segun escenario ficticio.",
+              "Riesgo: menor si el viajero necesita flexibilidad."
             ],
-            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         },
         {
@@ -43,14 +42,13 @@
           "simulatedTerminal": {
             "command": "SHOW FARE_RULE BASIC",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW FARE_RULE BASIC",
               "BASIC ficticia: menor precio inicial.",
               "Cambios: no permitidos en el ejemplo.",
               "Reembolso: no contemplado en el ejemplo.",
               "Riesgo: alta restriccion si el plan cambia."
             ],
-            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         }
       ],
@@ -154,16 +152,15 @@
           "title": "Ejemplo 1",
           "content": "Básica simulada: menor precio y más restricciones.",
           "simulatedTerminal": {
-            "command": "SHOW FARE_RULE FLEX",
+            "command": "SHOW FARE_RULE BASIC",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> SHOW FARE_RULE FLEX",
-              "FLEX ficticia: precio inicial mayor.",
-              "Cambios: permitidos con condiciones simuladas.",
-              "Reembolso: parcial segun escenario ficticio.",
-              "Riesgo: menor si el viajero necesita flexibilidad."
+              "> SHOW FARE_RULE BASIC",
+              "BASIC ficticia: menor precio inicial.",
+              "Cambios: no permitidos en el ejemplo.",
+              "Reembolso: no contemplado en el ejemplo.",
+              "Riesgo: alta restriccion si el plan cambia."
             ],
-            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         },
         {
@@ -172,14 +169,13 @@
           "simulatedTerminal": {
             "command": "SHOW FARE_RULE FLEX",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW FARE_RULE FLEX",
               "FLEX ficticia: precio inicial mayor.",
               "Cambios: permitidos con condiciones simuladas.",
               "Reembolso: parcial segun escenario ficticio.",
               "Riesgo: menor si el viajero necesita flexibilidad."
             ],
-            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         }
       ],
@@ -285,14 +281,13 @@
           "simulatedTerminal": {
             "command": "SHOW FARE_RULE BASIC",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW FARE_RULE BASIC",
               "BASIC ficticia: menor precio inicial.",
               "Cambios: no permitidos en el ejemplo.",
               "Reembolso: no contemplado en el ejemplo.",
               "Riesgo: alta restriccion si el plan cambia."
             ],
-            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         },
         {
@@ -301,14 +296,13 @@
           "simulatedTerminal": {
             "command": "SHOW FARE_RULE BASIC",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW FARE_RULE BASIC",
               "BASIC ficticia: menor precio inicial.",
               "Cambios: no permitidos en el ejemplo.",
               "Reembolso: no contemplado en el ejemplo.",
               "Riesgo: alta restriccion si el plan cambia."
             ],
-            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         }
       ],
@@ -412,32 +406,30 @@
           "title": "Ejemplo 1",
           "content": "Regla simulada: cambios permitidos con condición de ejemplo.",
           "simulatedTerminal": {
-            "command": "SHOW FARE_RULE FLEX",
+            "command": "SHOW FARE_RULE BASIC",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> SHOW FARE_RULE FLEX",
-              "FLEX ficticia: precio inicial mayor.",
-              "Cambios: permitidos con condiciones simuladas.",
-              "Reembolso: parcial segun escenario ficticio.",
-              "Riesgo: menor si el viajero necesita flexibilidad."
+              "> SHOW FARE_RULE BASIC",
+              "BASIC ficticia: menor precio inicial.",
+              "Cambios: no permitidos en el ejemplo.",
+              "Reembolso: no contemplado en el ejemplo.",
+              "Riesgo: alta restriccion si el plan cambia."
             ],
-            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         },
         {
           "title": "Ejemplo 2",
           "content": "Regla simulada: reembolso no contemplado en el escenario de práctica.",
           "simulatedTerminal": {
-            "command": "SHOW FARE_RULE FLEX",
+            "command": "SHOW FARE_RULE BASIC",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> SHOW FARE_RULE FLEX",
-              "FLEX ficticia: precio inicial mayor.",
-              "Cambios: permitidos con condiciones simuladas.",
-              "Reembolso: parcial segun escenario ficticio.",
-              "Riesgo: menor si el viajero necesita flexibilidad."
+              "> SHOW FARE_RULE BASIC",
+              "BASIC ficticia: menor precio inicial.",
+              "Cambios: no permitidos en el ejemplo.",
+              "Reembolso: no contemplado en el ejemplo.",
+              "Riesgo: alta restriccion si el plan cambia."
             ],
-            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         }
       ],
@@ -541,26 +533,30 @@
           "title": "Ejemplo 1",
           "content": "Pregunta útil: ¿necesitas posibilidad de cambio?",
           "simulatedTerminal": {
-            "command": "PRACTICE FARES",
+            "command": "SHOW FARE_RULE BASIC",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> PRACTICE FARES",
-              "Practica: A) tarifa BASIC barata sin cambios. B) tarifa FLEX mas cara con cambios. La politica ficticia prioriza flexibilidad. Responde A o B."
+              "> SHOW FARE_RULE BASIC",
+              "BASIC ficticia: menor precio inicial.",
+              "Cambios: no permitidos en el ejemplo.",
+              "Reembolso: no contemplado en el ejemplo.",
+              "Riesgo: alta restriccion si el plan cambia."
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         },
         {
           "title": "Ejemplo 2",
           "content": "Pregunta útil: ¿viajas con equipaje facturado?",
           "simulatedTerminal": {
-            "command": "PRACTICE FARES",
+            "command": "SHOW FARE_RULE BASIC",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> PRACTICE FARES",
-              "Practica: A) tarifa BASIC barata sin cambios. B) tarifa FLEX mas cara con cambios. La politica ficticia prioriza flexibilidad. Responde A o B."
+              "> SHOW FARE_RULE BASIC",
+              "BASIC ficticia: menor precio inicial.",
+              "Cambios: no permitidos en el ejemplo.",
+              "Reembolso: no contemplado en el ejemplo.",
+              "Riesgo: alta restriccion si el plan cambia."
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         }
       ],

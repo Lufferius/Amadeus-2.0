@@ -31,7 +31,6 @@
           "simulatedTerminal": {
             "command": "SHOW SAMPLE_PNR",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW SAMPLE_PNR",
               "PNR FICTICIO: DEMO42",
               "Pasajera: Ana Demo",
@@ -42,7 +41,7 @@
               "OSI ficticio: viaje de formacion interna",
               "Ticketing deadline ficticio: 18:00 del dia de practica"
             ],
-            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
           }
         },
         {
@@ -51,7 +50,6 @@
           "simulatedTerminal": {
             "command": "SHOW SAMPLE_PNR",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW SAMPLE_PNR",
               "PNR FICTICIO: DEMO42",
               "Pasajera: Ana Demo",
@@ -62,7 +60,7 @@
               "OSI ficticio: viaje de formacion interna",
               "Ticketing deadline ficticio: 18:00 del dia de practica"
             ],
-            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
           }
         }
       ],
@@ -166,26 +164,38 @@
           "title": "Ejemplo 1",
           "content": "Nombre válido de práctica: Alex Prueba.",
           "simulatedTerminal": {
-            "command": "GLOSSARY PNR",
+            "command": "SHOW SAMPLE_PNR",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> GLOSSARY PNR",
-              "Expediente de reserva. Aqui se usa un PNR ficticio para aprender estructura sin modificar nada real."
+              "> SHOW SAMPLE_PNR",
+              "PNR FICTICIO: DEMO42",
+              "Pasajera: Ana Demo",
+              "Cliente corporativo: DemoCorp",
+              "Segmentos: MAD-AMS 09:10-11:45 / AMS-MAD 18:20-20:55",
+              "Contacto: training@example.invalid",
+              "SSR ficticio: asistencia WCHR pendiente de confirmar en escenario",
+              "OSI ficticio: viaje de formacion interna",
+              "Ticketing deadline ficticio: 18:00 del dia de practica"
             ],
-            "explanation": "El glosario usa definiciones pedagogicas y no sustituye formacion autorizada. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
           }
         },
         {
           "title": "Ejemplo 2",
           "content": "Dato no válido: copiar el documento de identidad de una persona real.",
           "simulatedTerminal": {
-            "command": "GLOSSARY PNR",
+            "command": "SHOW SAMPLE_PNR",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> GLOSSARY PNR",
-              "Expediente de reserva. Aqui se usa un PNR ficticio para aprender estructura sin modificar nada real."
+              "> SHOW SAMPLE_PNR",
+              "PNR FICTICIO: DEMO42",
+              "Pasajera: Ana Demo",
+              "Cliente corporativo: DemoCorp",
+              "Segmentos: MAD-AMS 09:10-11:45 / AMS-MAD 18:20-20:55",
+              "Contacto: training@example.invalid",
+              "SSR ficticio: asistencia WCHR pendiente de confirmar en escenario",
+              "OSI ficticio: viaje de formacion interna",
+              "Ticketing deadline ficticio: 18:00 del dia de practica"
             ],
-            "explanation": "El glosario usa definiciones pedagogicas y no sustituye formacion autorizada. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
           }
         }
       ],
@@ -291,7 +301,6 @@
           "simulatedTerminal": {
             "command": "SHOW SAMPLE_PNR",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW SAMPLE_PNR",
               "PNR FICTICIO: DEMO42",
               "Pasajera: Ana Demo",
@@ -302,7 +311,7 @@
               "OSI ficticio: viaje de formacion interna",
               "Ticketing deadline ficticio: 18:00 del dia de practica"
             ],
-            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
           }
         },
         {
@@ -311,7 +320,6 @@
           "simulatedTerminal": {
             "command": "SHOW SAMPLE_PNR",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW SAMPLE_PNR",
               "PNR FICTICIO: DEMO42",
               "Pasajera: Ana Demo",
@@ -322,7 +330,7 @@
               "OSI ficticio: viaje de formacion interna",
               "Ticketing deadline ficticio: 18:00 del dia de practica"
             ],
-            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
           }
         }
       ],
@@ -428,11 +436,10 @@
           "simulatedTerminal": {
             "command": "PRACTICE SSR_OSI",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> PRACTICE SSR_OSI",
               "Practica: pasajera ficticia necesita asistencia de silla de ruedas. Responde SSR, OSI, REMARK o POLICY."
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta."
           }
         },
         {
@@ -441,11 +448,10 @@
           "simulatedTerminal": {
             "command": "PRACTICE SSR_OSI",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> PRACTICE SSR_OSI",
               "Practica: pasajera ficticia necesita asistencia de silla de ruedas. Responde SSR, OSI, REMARK o POLICY."
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta."
           }
         }
       ],
@@ -555,7 +561,6 @@
           "simulatedTerminal": {
             "command": "SHOW SAMPLE_PNR",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW SAMPLE_PNR",
               "PNR FICTICIO: DEMO42",
               "Pasajera: Ana Demo",
@@ -566,20 +571,26 @@
               "OSI ficticio: viaje de formacion interna",
               "Ticketing deadline ficticio: 18:00 del dia de practica"
             ],
-            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
           }
         },
         {
           "title": "Ejemplo 2",
           "content": "La nota de entrenamiento menciona equipaje, pero la tarifa no se ha revisado.",
           "simulatedTerminal": {
-            "command": "PRACTICE SSR_OSI",
+            "command": "SHOW SAMPLE_PNR",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> PRACTICE SSR_OSI",
-              "Practica: pasajera ficticia necesita asistencia de silla de ruedas. Responde SSR, OSI, REMARK o POLICY."
+              "> SHOW SAMPLE_PNR",
+              "PNR FICTICIO: DEMO42",
+              "Pasajera: Ana Demo",
+              "Cliente corporativo: DemoCorp",
+              "Segmentos: MAD-AMS 09:10-11:45 / AMS-MAD 18:20-20:55",
+              "Contacto: training@example.invalid",
+              "SSR ficticio: asistencia WCHR pendiente de confirmar en escenario",
+              "OSI ficticio: viaje de formacion interna",
+              "Ticketing deadline ficticio: 18:00 del dia de practica"
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Este PNR es inventado para aprender anatomia de una reserva sin tocar sistemas reales."
           }
         }
       ],

@@ -77,9 +77,7 @@ function renderExampleItem(item) {
   const terminal = item.simulatedTerminal
     ? `
       <div class="example-terminal">
-        <div class="example-terminal-title">Salida simulada del terminal seguro</div>
         <pre>${item.simulatedTerminal.output.join('\n')}</pre>
-        <p>${item.simulatedTerminal.explanation}</p>
       </div>
     `
     : '';

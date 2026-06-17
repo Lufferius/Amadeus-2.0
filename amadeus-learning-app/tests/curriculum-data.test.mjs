@@ -69,11 +69,23 @@ function assertLesson(lesson, expectedPrefix) {
     assertText(example.simulatedTerminal.command, `${lesson.id}: example simulated terminal command is required`);
     assertArray(example.simulatedTerminal.output, `${lesson.id}: example simulated terminal output must be an array`);
     assert(example.simulatedTerminal.output.length >= 2, `${lesson.id}: example simulated terminal output must include at least 2 lines`);
+    assert(example.simulatedTerminal.output[0] === `> ${example.simulatedTerminal.command}`, `${lesson.id}: example output must start with the exact command`);
+    assert(!example.simulatedTerminal.output.join('\n').includes('Training simulator only'), `${lesson.id}: example output should not include the generic terminal disclaimer`);
     assertText(example.simulatedTerminal.explanation, `${lesson.id}: example simulated terminal explanation is required`);
     assert(
       /^(HELP|GLOSSARY\s+[A-Z_]+|SHOW\s+(SAMPLE_PNR|AVAILABILITY\s+[A-Z]{3}\s+[A-Z]{3}|FARE_RULE\s+(BASIC|FLEX))|PRACTICE\s+(SEGMENTS|SSR_OSI|FARES))$/.test(example.simulatedTerminal.command),
       `${lesson.id}: example simulated terminal command must be supported and safe`,
     );
+    const exampleText = `${lesson.title} ${example.title} ${example.content}`.toLowerCase();
+    if (exampleText.includes('disponibilidad') || exampleText.includes('madrid') || exampleText.includes('ámsterdam') || exampleText.includes('amsterdam')) {
+      assert(example.simulatedTerminal.command === 'SHOW AVAILABILITY MAD AMS', `${lesson.id}: availability examples must show availability output`);
+    }
+    if (exampleText.includes('pnr')) {
+      assert(example.simulatedTerminal.command === 'SHOW SAMPLE_PNR', `${lesson.id}: PNR examples must show sample PNR output`);
+    }
+    if ((exampleText.includes('tarifa') || exampleText.includes('regla')) && !exampleText.includes('pnr')) {
+      assert(example.simulatedTerminal.command.startsWith('SHOW FARE_RULE'), `${lesson.id}: fare examples must show fare rule output`);
+    }
   });
   assertArray(lesson.exercises, `${lesson.id}: exercises must be an array`);
   assert(lesson.exercises.length >= 2, `${lesson.id}: exercises must include at least 2 items`);

@@ -463,26 +463,11 @@ label {
   overflow: hidden;
 }
 
-.example-terminal-title {
-  background: #123a63;
-  color: #d8ecff;
-  font-size: 0.78rem;
-  font-weight: 800;
-  padding: 8px 10px;
-}
-
 .example-terminal pre {
   line-height: 1.5;
   margin: 0;
   padding: 12px;
   white-space: pre-wrap;
-}
-
-.example-terminal p {
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-  color: #b9cde3;
-  margin: 0;
-  padding: 10px 12px;
 }
 
 .fatal {

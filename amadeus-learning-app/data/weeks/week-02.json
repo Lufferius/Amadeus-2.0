@@ -27,14 +27,13 @@
           "simulatedTerminal": {
             "command": "SHOW AVAILABILITY MAD AMS",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW AVAILABILITY MAD AMS",
               "Disponibilidad ficticia MAD-AMS",
               "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
               "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
               "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
             ],
-            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad."
           }
         },
         {
@@ -43,14 +42,13 @@
           "simulatedTerminal": {
             "command": "SHOW AVAILABILITY MAD AMS",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW AVAILABILITY MAD AMS",
               "Disponibilidad ficticia MAD-AMS",
               "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
               "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
               "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
             ],
-            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad."
           }
         }
       ],
@@ -154,26 +152,30 @@
           "title": "Ejemplo 1",
           "content": "MAD-AMS es un segmento directo simulado.",
           "simulatedTerminal": {
-            "command": "PRACTICE SEGMENTS",
+            "command": "SHOW AVAILABILITY MAD AMS",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> PRACTICE SEGMENTS",
-              "Practica: MAD-AMS, AMS-LHR, LHR-MAD. Cuantos segmentos hay?"
+              "> SHOW AVAILABILITY MAD AMS",
+              "Disponibilidad ficticia MAD-AMS",
+              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
+              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
+              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad."
           }
         },
         {
           "title": "Ejemplo 2",
           "content": "MAD-PAR y PAR-AMS podrían representar dos segmentos con conexión ficticia.",
           "simulatedTerminal": {
-            "command": "PRACTICE SEGMENTS",
+            "command": "SHOW AVAILABILITY MAD AMS",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> PRACTICE SEGMENTS",
-              "Practica: MAD-AMS, AMS-LHR, LHR-MAD. Cuantos segmentos hay?"
+              "> SHOW AVAILABILITY MAD AMS",
+              "Disponibilidad ficticia MAD-AMS",
+              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
+              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
+              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad."
           }
         }
       ],
@@ -277,16 +279,15 @@
           "title": "Ejemplo 1",
           "content": "Una opción simulada puede aparecer como 'Básica' y otra como 'Flexible'.",
           "simulatedTerminal": {
-            "command": "SHOW FARE_RULE BASIC",
+            "command": "SHOW FARE_RULE FLEX",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> SHOW FARE_RULE BASIC",
-              "BASIC ficticia: menor precio inicial.",
-              "Cambios: no permitidos en el ejemplo.",
-              "Reembolso: no contemplado en el ejemplo.",
-              "Riesgo: alta restriccion si el plan cambia."
+              "> SHOW FARE_RULE FLEX",
+              "FLEX ficticia: precio inicial mayor.",
+              "Cambios: permitidos con condiciones simuladas.",
+              "Reembolso: parcial segun escenario ficticio.",
+              "Riesgo: menor si el viajero necesita flexibilidad."
             ],
-            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         },
         {
@@ -295,14 +296,13 @@
           "simulatedTerminal": {
             "command": "SHOW FARE_RULE BASIC",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> SHOW FARE_RULE BASIC",
               "BASIC ficticia: menor precio inicial.",
               "Cambios: no permitidos en el ejemplo.",
               "Reembolso: no contemplado en el ejemplo.",
               "Riesgo: alta restriccion si el plan cambia."
             ],
-            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Las reglas son simplificadas y ficticias. No se deben aplicar a tarifas reales."
           }
         }
       ],
@@ -406,32 +406,24 @@
           "title": "Ejemplo 1",
           "content": "Llegar a las 10:00 y salir a las 10:20 puede parecer una conexión ajustada.",
           "simulatedTerminal": {
-            "command": "SHOW AVAILABILITY MAD AMS",
+            "command": "PRACTICE SEGMENTS",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> SHOW AVAILABILITY MAD AMS",
-              "Disponibilidad ficticia MAD-AMS",
-              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
-              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
-              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
+              "> PRACTICE SEGMENTS",
+              "Practica: MAD-AMS, AMS-LHR, LHR-MAD. Cuantos segmentos hay?"
             ],
-            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta."
           }
         },
         {
           "title": "Ejemplo 2",
           "content": "Cambiar de ciudad entre segmentos sin traslado explicado es una alerta conceptual.",
           "simulatedTerminal": {
-            "command": "SHOW AVAILABILITY MAD AMS",
+            "command": "PRACTICE SEGMENTS",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
-              "> SHOW AVAILABILITY MAD AMS",
-              "Disponibilidad ficticia MAD-AMS",
-              "1. Directo DEMO101 09:10-11:45 tarifa BASIC restrictiva",
-              "2. Conexion DEMO220/DEMO221 10:30-14:50 tarifa BASIC economica",
-              "3. Directo DEMO305 16:00-18:35 tarifa FLEX con cambios simulados"
+              "> PRACTICE SEGMENTS",
+              "Practica: MAD-AMS, AMS-LHR, LHR-MAD. Cuantos segmentos hay?"
             ],
-            "explanation": "La disponibilidad es inventada. Sirve para comparar horario, conexion, restriccion y flexibilidad. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta."
           }
         }
       ],
@@ -537,11 +529,10 @@
           "simulatedTerminal": {
             "command": "PRACTICE SEGMENTS",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> PRACTICE SEGMENTS",
               "Practica: MAD-AMS, AMS-LHR, LHR-MAD. Cuantos segmentos hay?"
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta."
           }
         },
         {
@@ -550,11 +541,10 @@
           "simulatedTerminal": {
             "command": "PRACTICE SEGMENTS",
             "output": [
-              "Training simulator only. Not connected to Amadeus or any real booking system.",
               "> PRACTICE SEGMENTS",
               "Practica: MAD-AMS, AMS-LHR, LHR-MAD. Cuantos segmentos hay?"
             ],
-            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta. Es una salida ficticia del simulador seguro, no una pantalla real de Amadeus."
+            "explanation": "Responde solo a la pregunta de practica. La puntuacion se actualiza despues de tu respuesta."
           }
         }
       ],
