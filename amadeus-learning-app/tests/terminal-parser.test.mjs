@@ -56,6 +56,8 @@ export function testExpandedCrypticCommandsHaveStableTypesAndArguments() {
     ['XE1', 'PNR_CANCEL_ELEMENT', ['1']],
     ['SR WCHR', 'PNR_SSR', ['WCHR']],
     ['SR VGML', 'PNR_SSR', ['VGML']],
+    ['SR WCHR/P1', 'PNR_SSR', ['WCHR/P1']],
+    ['SR DOCS IB HK1-P-GBR-123', 'PNR_SSR', ['DOCS IB HK1-P-GBR-123']],
     ['OS IB TRAINING NOTE', 'PNR_OSI', ['IB', 'TRAINING NOTE']],
     ['RM TRAINING NOTE', 'PNR_REMARK', ['TRAINING NOTE']],
     ['ER', 'PNR_END_RETRIEVE', []],
@@ -99,7 +101,9 @@ export function testParserExplicitlyProhibitsTransactionalAndPaymentCommands() {
     'REISSUE 1234567890',
     'FP CCVI4111111111111111/1228',
     'FPCCVI4111111111111111/1228',
+    'VI4111111111111111/1228',
     'CARD 4111 1111 1111 1111',
+    '4111 1111 1111 1111',
   ];
 
   for (const input of prohibited) {
@@ -107,6 +111,10 @@ export function testParserExplicitlyProhibitsTransactionalAndPaymentCommands() {
     assert(parsed.type === 'PROHIBITED', `${input}: expected PROHIBITED, got ${parsed.type}`);
     assert(parsed.safe === false, `${input}: prohibited command must be unsafe`);
   }
+
+  const ordinaryNumericToken = parseCommand('1234567890123456');
+  assert(ordinaryNumericToken.type === 'UNKNOWN', 'A non-card long numeric token should remain unknown');
+  assert(ordinaryNumericToken.safe === false, 'Unknown numeric tokens should retain the existing unsafe default');
 }
 
 export function testCrypticTrainingFlowBuildsLocalFictionalPnr() {

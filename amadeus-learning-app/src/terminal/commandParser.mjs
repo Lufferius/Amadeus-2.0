@@ -6,6 +6,27 @@ function result(type, args = [], safe = true) {
   return { type, args, safe };
 }
 
+function looksLikePaymentCard(input) {
+  if (/^(?:(?:CC)?(?:VI|MC|AX)|CC)\d{12,19}(?:[\s/].*)?$/.test(input)) return true;
+  if (!/^\d(?:[ -]?\d){11,18}$/.test(input)) return false;
+
+  const digits = input.replace(/[ -]/g, '');
+  let sum = 0;
+  let doubleDigit = false;
+
+  for (let index = digits.length - 1; index >= 0; index -= 1) {
+    let digit = Number(digits[index]);
+    if (doubleDigit) {
+      digit *= 2;
+      if (digit > 9) digit -= 9;
+    }
+    sum += digit;
+    doubleDigit = !doubleDigit;
+  }
+
+  return sum % 10 === 0;
+}
+
 export function parseCommand(input = '') {
   const normalized = normalizeCommand(input);
 
@@ -20,7 +41,7 @@ export function parseCommand(input = '') {
     || /^(?:FXQ|TRDC)(?:\/.*)?$/.test(normalized)
     || /^(?:REFUND|REISSUE)(?:\s+.*)?$/.test(normalized)
     || /^(?:FP\s*CC|CARD\s+).*$/.test(normalized)
-    || /^(?:FP\s+)?(?:CC)?(?:VI|MC|AX)?\d{12,19}(?:[\s/].*)?$/.test(normalized)) {
+    || looksLikePaymentCard(normalized)) {
     return result('PROHIBITED', [normalized], false);
   }
 
@@ -70,7 +91,7 @@ export function parseCommand(input = '') {
     [/^RF\s+(.+)$/, 'CRYPTIC_RECEIVED_FROM', (match) => [match[1]]],
     [/^DO(\d+)$/, 'AVAILABILITY_DETAIL', (match) => [match[1]]],
     [/^XE(\d+)$/, 'PNR_CANCEL_ELEMENT', (match) => [match[1]]],
-    [/^SR\s+([A-Z0-9]{4})$/, 'PNR_SSR', (match) => [match[1]]],
+    [/^SR\s+(.+)$/, 'PNR_SSR', (match) => [match[1]]],
     [/^OS\s+([A-Z0-9]{2})\s+(.+)$/, 'PNR_OSI', (match) => [match[1], match[2]]],
     [/^RM\s+(.+)$/, 'PNR_REMARK', (match) => [match[1]]],
     [/^FQN(\d+)$/, 'FARE_RULE_DETAIL', (match) => [match[1]]],
